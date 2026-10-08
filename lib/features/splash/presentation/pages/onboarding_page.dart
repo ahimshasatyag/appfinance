@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../features/auth/presentation/pages/login_page.dart';
+import '../../../../shared/theme/app_theme.dart';
+import '../../../../shared/widgets/widgets.dart';
 import '../widgets/onboarding_content.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -86,7 +88,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                               width: _currentPage == index ? 20 : 6,
                               decoration: BoxDecoration(
                                 color: _currentPage == index
-                                    ? const Color(0xFF1E293B)
+                                    ? AppTheme.primaryColor
                                     : Colors.grey.shade300,
                                 borderRadius: BorderRadius.circular(3),
                               ),
@@ -95,26 +97,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         ),
                         const SizedBox(height: 24),
                         // Full width Start button
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            onPressed: _navigateToLogin,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF1E293B),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              padding: const EdgeInsets.symmetric(vertical: 16),
-                            ),
-                            child: const Text(
-                              'Start',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
+                        CustomButton(
+                          text: 'Start',
+                          onPressed: _navigateToLogin,
                         ),
                       ],
                     )
@@ -145,7 +130,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                               width: _currentPage == index ? 20 : 6,
                               decoration: BoxDecoration(
                                 color: _currentPage == index
-                                    ? const Color(0xFF1E293B)
+                                    ? AppTheme.primaryColor
                                     : Colors.grey.shade300,
                                 borderRadius: BorderRadius.circular(3),
                               ),
@@ -154,30 +139,15 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         ),
 
                         // Next Button
-                        ElevatedButton(
+                        CustomButton(
+                          text: 'Next',
+                          width: 120, // using fixed width since it's in a Row with spaceBetween
                           onPressed: () {
                             _pageController.nextPage(
                               duration: const Duration(milliseconds: 300),
                               curve: Curves.easeIn,
                             );
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF1E293B),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 24,
-                              vertical: 12,
-                            ),
-                          ),
-                          child: const Text(
-                            'Next',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
                         ),
                       ],
                     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../shared/theme/app_theme.dart';
 
 class SplashContent extends StatelessWidget {
   const SplashContent({super.key});
@@ -19,21 +20,21 @@ class SplashContent extends StatelessWidget {
           const SizedBox(height: 16),
           // Title
           const Text(
-            'Finova',
+            'Finance',
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.w900,
-              color: Color(0xFF1E293B), // Dark text color
+              color: AppTheme.primaryColor, // Dark text color
               letterSpacing: 0.5,
             ),
           ),
           const SizedBox(height: 4),
           // Subtitle
-          Text(
+          const Text(
             'Personal Finance App',
             style: TextStyle(
               fontSize: 14,
-              color: Colors.grey.shade600,
+              color: Colors.grey,
               fontWeight: FontWeight.w500,
             ),
           ),

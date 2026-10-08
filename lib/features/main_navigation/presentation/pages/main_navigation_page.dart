@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../analytics/presentation/pages/analytics_page.dart';
 import '../../../dashboard/presentation/pages/dashboard_page.dart';
 import '../../../profile/presentation/pages/profile_page.dart';
+import '../../../wallet/presentation/pages/wallet_page.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 
 class MainNavigationPage extends StatefulWidget {
@@ -16,8 +18,8 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
 
   final List<Widget> _pages = [
     const DashboardPage(),
-    const Center(child: Text('Stats Page', style: TextStyle(fontSize: 24))), // Placeholder
-    const Center(child: Text('Wallet Page', style: TextStyle(fontSize: 24))), // Placeholder
+    const AnalyticsPage(),
+    const WalletPage(),
     const ProfilePage(),
   ];
 

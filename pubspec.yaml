@@ -38,6 +38,8 @@ dependencies:
   font_awesome_flutter: ^11.0.0
   lottie: ^3.6.1
   shimmer: ^4.0.0
+  fl_chart: ^1.2.0
+  intl: ^0.20.3
 
 dev_dependencies:
   flutter_test:

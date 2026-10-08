@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../shared/theme/app_theme.dart';
 
 class OnboardingContent extends StatelessWidget {
   final String image;
@@ -30,7 +31,7 @@ class OnboardingContent extends StatelessWidget {
           style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF1E293B),
+            color: AppTheme.primaryColor,
           ),
         ),
         const SizedBox(height: 16),
