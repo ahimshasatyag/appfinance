@@ -3,8 +3,8 @@ import '../../domain/entities/wallet_entity.dart';
 import '../../domain/usecases/get_wallet_data_usecase.dart';
 import '../../data/repositories/wallet_repository_impl.dart';
 import '../../data/datasources/wallet_remote_datasource.dart';
-import '../widgets/wallet_skeleton.dart';
-import '../widgets/wallet_detail_header.dart';
+import '../widgets/wallet_detail_skeleton.dart';
+import '../widgets/wallet_physical_card.dart';
 import '../widgets/wallet_detail_summary.dart';
 import '../widgets/wallet_detail_history_chart.dart';
 import '../widgets/wallet_transaction_summary.dart';
@@ -43,7 +43,7 @@ class _WalletDetailPageState extends State<WalletDetailPage> {
         future: _futureDetail,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const WalletSkeleton();
+            return const WalletDetailSkeleton();
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (snapshot.hasData) {
@@ -59,7 +59,7 @@ class _WalletDetailPageState extends State<WalletDetailPage> {
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       children: [
-        WalletDetailHeader(wallet: detail.wallet),
+        WalletPhysicalCard(wallet: detail.wallet),
         const SizedBox(height: 24),
         WalletDetailSummary(detail: detail),
         const SizedBox(height: 24),

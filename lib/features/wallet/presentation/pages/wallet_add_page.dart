@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../shared/widgets/widgets.dart';
 
+import '../widgets/wallet_add_skeleton.dart';
+
 class WalletAddPage extends StatefulWidget {
   const WalletAddPage({super.key});
 
@@ -11,6 +13,20 @@ class WalletAddPage extends StatefulWidget {
 class _WalletAddPageState extends State<WalletAddPage> {
   String? _selectedType;
   bool _isLoading = false;
+  bool _isInitializing = true;
+
+  @override
+  void initState() {
+    super.initState();
+    // Simulate initial loading to show skeleton
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      if (mounted) {
+        setState(() {
+          _isInitializing = false;
+        });
+      }
+    });
+  }
 
   void _saveWallet() async {
     setState(() {
@@ -45,7 +61,9 @@ class _WalletAddPageState extends State<WalletAddPage> {
         iconTheme: const IconThemeData(color: Color(0xFF1E293B)),
         title: const Text('Add Wallet', style: TextStyle(color: Color(0xFF1E293B), fontWeight: FontWeight.bold)),
       ),
-      body: SingleChildScrollView(
+      body: _isInitializing
+          ? const WalletAddSkeleton()
+          : SingleChildScrollView(
         padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

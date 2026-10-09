@@ -5,35 +5,18 @@ class WalletHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              'Wallet',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w900,
-                color: Color(0xFF1E293B),
-              ),
-            ),
-            Row(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.search, color: Color(0xFF1E293B)),
-                  onPressed: () {},
-                ),
-                IconButton(
-                  icon: const Icon(Icons.more_vert, color: Color(0xFF1E293B)),
-                  onPressed: () {},
-                ),
-              ],
-            )
-          ],
+        Text(
+          'Wallet',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w900,
+            color: Color(0xFF1E293B),
+          ),
         ),
-        const Text(
+        Text(
           'Manage your money in one place',
           style: TextStyle(fontSize: 14, color: Colors.grey),
         ),
