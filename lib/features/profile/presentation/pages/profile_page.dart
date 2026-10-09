@@ -12,7 +12,8 @@ import '../bloc/profile_bloc.dart';
 import '../bloc/profile_event.dart';
 import '../bloc/profile_state.dart';
 import '../widgets/profile_menu_item.dart';
-
+import 'theme_settings_page.dart';
+import '../../../../shared/theme/theme_cubit.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
@@ -37,7 +38,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFAFAFA),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: BlocBuilder<ProfileBloc, ProfileState>(
         builder: (context, state) {
           if (state is ProfileLoading || state is ProfileInitial) {
@@ -151,7 +152,6 @@ class ProfileView extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
-                                      color: Color(0xFF2B3A4A),
                                     ),
                                   ),
                                   const SizedBox(height: 4),
@@ -159,7 +159,7 @@ class ProfileView extends StatelessWidget {
                                     'Keep your information up to date',
                                     style: TextStyle(
                                       fontSize: 12,
-                                      color: Colors.grey.shade600,
+                                      color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
                                     ),
                                   ),
                                 ],
@@ -201,7 +201,7 @@ class ProfileView extends StatelessWidget {
                           // Personal Details Card
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Theme.of(context).cardColor,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Column(
@@ -214,7 +214,7 @@ class ProfileView extends StatelessWidget {
                                 ),
                                 Divider(
                                   height: 1,
-                                  color: Colors.grey.shade100,
+                                  color: Theme.of(context).dividerColor.withOpacity(0.2),
                                   indent: 64,
                                   endIndent: 16,
                                 ),
@@ -255,7 +255,7 @@ class ProfileView extends StatelessWidget {
                                 ),
                                 Divider(
                                   height: 1,
-                                  color: Colors.grey.shade100,
+                                  color: Theme.of(context).dividerColor.withOpacity(0.2),
                                   indent: 64,
                                   endIndent: 16,
                                 ),
@@ -267,7 +267,7 @@ class ProfileView extends StatelessWidget {
                                 ),
                                 Divider(
                                   height: 1,
-                                  color: Colors.grey.shade100,
+                                  color: Theme.of(context).dividerColor.withOpacity(0.2),
                                   indent: 64,
                                   endIndent: 16,
                                 ),
@@ -285,7 +285,6 @@ class ProfileView extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFF2B3A4A),
                                 ),
                               ),
                               const SizedBox(height: 4),
@@ -293,7 +292,7 @@ class ProfileView extends StatelessWidget {
                                 'Your preferences and app settings',
                                 style: TextStyle(
                                   fontSize: 12,
-                                  color: Colors.grey.shade600,
+                                  color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
                                 ),
                               ),
                             ],
@@ -303,7 +302,7 @@ class ProfileView extends StatelessWidget {
                           // General Settings Card
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Theme.of(context).cardColor,
                               borderRadius: BorderRadius.circular(16),
                             ),
                             child: Column(
@@ -317,7 +316,7 @@ class ProfileView extends StatelessWidget {
                                       Text(
                                         'English (US)',
                                         style: TextStyle(
-                                          color: Colors.grey.shade600,
+                                          color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
                                           fontSize: 12,
                                         ),
                                       ),
@@ -334,36 +333,50 @@ class ProfileView extends StatelessWidget {
 
                                 Divider(
                                   height: 1,
-                                  color: Colors.grey.shade100,
+                                  color: Theme.of(context).dividerColor.withOpacity(0.2),
                                   indent: 64,
                                   endIndent: 16,
                                 ),
-                                ProfileMenuItem(
-                                  icon: Icons.brightness_6,
-                                  title: 'Theme',
-                                  trailing: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        'Light Mode',
-                                        style: TextStyle(
-                                          color: Colors.grey.shade600,
-                                          fontSize: 12,
-                                        ),
+                                BlocBuilder<ThemeCubit, ThemeMode>(
+                                  builder: (context, themeMode) {
+                                    String themeText = 'System Default';
+                                    if (themeMode == ThemeMode.light) themeText = 'Light Mode';
+                                    if (themeMode == ThemeMode.dark) themeText = 'Dark Mode';
+                                    return ProfileMenuItem(
+                                      icon: Icons.brightness_6,
+                                      title: 'Theme',
+                                      trailing: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text(
+                                            themeText,
+                                            style: TextStyle(
+                                              color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Icon(
+                                            Icons.chevron_right,
+                                            color: Colors.grey.shade400,
+                                            size: 20,
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(width: 8),
-                                      Icon(
-                                        Icons.chevron_right,
-                                        color: Colors.grey.shade400,
-                                        size: 20,
-                                      ),
-                                    ],
-                                  ),
-                                  onTap: () {},
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => const ThemeSettingsPage(),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
                                 ),
                                 Divider(
                                   height: 1,
-                                  color: Colors.grey.shade100,
+                                  color: Theme.of(context).dividerColor.withOpacity(0.2),
                                   indent: 64,
                                   endIndent: 16,
                                 ),
@@ -376,7 +389,7 @@ class ProfileView extends StatelessWidget {
                                       Text(
                                         'Enabled',
                                         style: TextStyle(
-                                          color: Colors.grey.shade600,
+                                          color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
                                           fontSize: 12,
                                         ),
                                       ),

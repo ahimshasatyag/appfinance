@@ -29,9 +29,9 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(24),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
       ),
       child: SafeArea(
         child: Column(
@@ -42,8 +42,7 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
               'Filter Analytics',
               style: TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF1E293B),
+                fontWeight: FontWeight.bold
               ),
             ),
             const SizedBox(height: 24),
@@ -116,12 +115,12 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
                     ),
                   );
                 },
-                child: const Text(
+                child: Text(
                   'Apply Filter',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Theme.of(context).cardColor,
                   ),
                 ),
               ),

@@ -14,25 +14,25 @@ class WalletSummary extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: _buildSummaryItem('Total Assets', currencyFormatter.format(summary.totalAssets), Colors.blue),
+          child: _buildSummaryItem(context, 'Total Assets', currencyFormatter.format(summary.totalAssets), Colors.blue),
         ),
         const SizedBox(width: 12),
         Expanded(
-          child: _buildSummaryItem('Total Debt', currencyFormatter.format(summary.totalDebt), Colors.redAccent),
+          child: _buildSummaryItem(context, 'Total Debt', currencyFormatter.format(summary.totalDebt), Colors.redAccent),
         ),
         const SizedBox(width: 12),
         Expanded(
-          child: _buildSummaryItem('Net Worth', currencyFormatter.format(summary.netWorth), Colors.green),
+          child: _buildSummaryItem(context, 'Net Worth', currencyFormatter.format(summary.netWorth), Colors.green),
         ),
       ],
     );
   }
 
-  Widget _buildSummaryItem(String title, String amount, Color color) {
+  Widget _buildSummaryItem(BuildContext context, String title, String amount, Color color) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(color: Colors.grey.withOpacity(0.08), blurRadius: 10, offset: const Offset(0, 4)),

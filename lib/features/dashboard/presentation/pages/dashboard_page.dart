@@ -40,7 +40,7 @@ class DashboardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFAFAFA),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: BlocBuilder<DashboardBloc, DashboardState>(
         builder: (context, state) {
           if (state is DashboardLoading || state is DashboardInitial) {
@@ -99,7 +99,7 @@ class DashboardView extends StatelessWidget {
                                       child: Container(
                                         padding: const EdgeInsets.all(16),
                                         decoration: BoxDecoration(
-                                          color: Colors.white,
+                                          color: Theme.of(context).cardColor,
                                           borderRadius: BorderRadius.circular(20),
                                           boxShadow: [
                                             BoxShadow(color: Colors.grey.withOpacity(0.08), blurRadius: 15, offset: const Offset(0, 5)),
@@ -121,7 +121,7 @@ class DashboardView extends StatelessWidget {
                                                   const SizedBox(height: 4),
                                                   Text(
                                                     Formatters.formatCurrency(data.income),
-                                                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF2B3A4A)),
+                                                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                                                     overflow: TextOverflow.ellipsis,
                                                   ),
                                                 ],
@@ -136,7 +136,7 @@ class DashboardView extends StatelessWidget {
                                       child: Container(
                                         padding: const EdgeInsets.all(16),
                                         decoration: BoxDecoration(
-                                          color: Colors.white,
+                                          color: Theme.of(context).cardColor,
                                           borderRadius: BorderRadius.circular(20),
                                           boxShadow: [
                                             BoxShadow(color: Colors.grey.withOpacity(0.08), blurRadius: 15, offset: const Offset(0, 5)),
@@ -158,7 +158,7 @@ class DashboardView extends StatelessWidget {
                                                   const SizedBox(height: 4),
                                                   Text(
                                                     Formatters.formatCurrency(data.expenses),
-                                                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF2B3A4A)),
+                                                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                                                     overflow: TextOverflow.ellipsis,
                                                   ),
                                                 ],

@@ -27,7 +27,7 @@ class AnalyticsCardSummary extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -69,8 +69,7 @@ class AnalyticsCardSummary extends StatelessWidget {
               amount,
               style: const TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF1E293B),
+                fontWeight: FontWeight.bold
               ),
             ),
           ),

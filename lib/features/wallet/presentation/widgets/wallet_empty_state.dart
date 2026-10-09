@@ -14,7 +14,7 @@ class WalletEmptyState extends StatelessWidget {
           const SizedBox(height: 24),
           const Text(
             'Your Wallet is Empty',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF1E293B)),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           const Text(

@@ -54,12 +54,12 @@ class _WalletAddPageState extends State<WalletAddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: 0,
-        iconTheme: const IconThemeData(color: Color(0xFF1E293B)),
-        title: const Text('Add Wallet', style: TextStyle(color: Color(0xFF1E293B), fontWeight: FontWeight.bold)),
+        iconTheme: IconThemeData(color: Theme.of(context).appBarTheme.foregroundColor),
+        title: Text('Add Wallet', style: TextStyle(color: Theme.of(context).appBarTheme.foregroundColor, fontWeight: FontWeight.bold)),
       ),
       body: _isInitializing
           ? const WalletAddSkeleton()
@@ -68,7 +68,7 @@ class _WalletAddPageState extends State<WalletAddPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Wallet Information', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF1E293B))),
+            const Text('Wallet Information', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             const SizedBox(height: 24),
             _buildTextField(label: 'Wallet Name', hint: 'e.g. Main Bank Account'),
             const SizedBox(height: 20),
@@ -126,7 +126,6 @@ class _WalletAddPageState extends State<WalletAddPage> {
             hintText: hint,
             hintStyle: const TextStyle(color: Colors.grey),
             filled: true,
-            fillColor: Colors.white,
             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
             enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: Colors.grey.shade200)),
@@ -147,7 +146,6 @@ class _WalletAddPageState extends State<WalletAddPage> {
           value: _selectedType,
           decoration: InputDecoration(
             filled: true,
-            fillColor: Colors.white,
             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
             enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: Colors.grey.shade200)),

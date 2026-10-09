@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class WalletAddSkeleton extends StatelessWidget {
-  const WalletAddSkeleton({super.key});
+class AnalyticsFormSkeleton extends StatelessWidget {
+  const AnalyticsFormSkeleton({super.key});
 
   @override
   Widget build(BuildContext context) {

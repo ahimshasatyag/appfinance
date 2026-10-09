@@ -15,7 +15,7 @@ class WalletDetailSummary extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.05), blurRadius: 10, offset: const Offset(0, 4))],
       ),
@@ -54,7 +54,7 @@ class WalletDetailSummary extends StatelessWidget {
                   const Text('Transactions', style: TextStyle(color: Colors.grey, fontSize: 14)),
                   Row(
                     children: [
-                      Text('${detail.totalTransactions} Transactions', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF1E293B))),
+                      Text('${detail.totalTransactions} Transactions', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
                       const SizedBox(width: 4),
                       const Icon(Icons.arrow_forward_ios, size: 12, color: Colors.grey),
                     ],
@@ -75,7 +75,7 @@ class WalletDetailSummary extends StatelessWidget {
         const SizedBox(height: 8),
         FittedBox(
           fit: BoxFit.scaleDown,
-          child: Text(amount, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Color(0xFF1E293B))),
+          child: Text(amount, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
         ),
       ],
     );

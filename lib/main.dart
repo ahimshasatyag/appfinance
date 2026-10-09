@@ -8,6 +8,7 @@ import 'features/auth/presentation/bloc/auth_bloc.dart';
 import 'features/auth/presentation/pages/login_page.dart';
 import 'features/splash/presentation/pages/splash_page.dart';
 import 'shared/theme/app_theme.dart';
+import 'shared/theme/theme_cubit.dart';
 
 void main() {
   // Inisialisasi dependensi
@@ -30,11 +31,20 @@ class MyApp extends StatelessWidget {
         BlocProvider<AuthBloc>(
           create: (_) => AuthBloc(loginUseCase: loginUseCase),
         ),
+        BlocProvider<ThemeCubit>(
+          create: (_) => ThemeCubit(),
+        ),
       ],
-      child: MaterialApp(
-        title: 'App Finance',
-        theme: AppTheme.lightTheme,
-        home: const SplashPage(),
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+        builder: (context, themeMode) {
+          return MaterialApp(
+            title: 'App Finance',
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: themeMode,
+            home: const SplashPage(),
+          );
+        },
       ),
     );
   }

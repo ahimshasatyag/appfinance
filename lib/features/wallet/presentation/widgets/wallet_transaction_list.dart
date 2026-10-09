@@ -19,7 +19,7 @@ class WalletTransactionList extends StatelessWidget {
             children: [
               Icon(Icons.receipt_long, size: 48, color: Colors.grey),
               SizedBox(height: 16),
-              Text('No Transactions Yet', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF1E293B))),
+              Text('No Transactions Yet', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               SizedBox(height: 8),
               Text('Transactions made with this wallet will appear here.', style: TextStyle(color: Colors.grey, fontSize: 12)),
             ],

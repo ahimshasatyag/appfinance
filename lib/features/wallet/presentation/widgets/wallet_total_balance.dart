@@ -60,8 +60,8 @@ class _WalletTotalBalanceState extends State<WalletTotalBalance> {
           const SizedBox(height: 8),
           Text(
             _obscureBalance ? '••••••••' : currencyFormatter.format(widget.summary.totalBalance),
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: Theme.of(context).cardColor,
               fontSize: 32,
               fontWeight: FontWeight.bold,
               letterSpacing: 1,

@@ -24,7 +24,7 @@ class WalletList extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('My Wallets', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF1E293B))),
+            const Text('My Wallets', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             TextButton(
               onPressed: () {},
               child: const Text('See All'),
@@ -46,8 +46,8 @@ class WalletList extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(type, style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
-                    Text('${currencyFormatter.format(typeTotal)} • ${typeWallets.length} wallets', style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                    Text(type, style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade400 : Colors.grey)),
+                    Text('${currencyFormatter.format(typeTotal)} • ${typeWallets.length} wallets', style: TextStyle(fontSize: 12, color: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade400 : Colors.grey)),
                   ],
                 ),
               ),

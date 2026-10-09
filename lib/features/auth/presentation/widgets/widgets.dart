@@ -22,7 +22,6 @@ class AuthTextField extends StatelessWidget {
       obscureText: obscureText,
       style: const TextStyle(
         fontSize: 16,
-        color: Colors.black87,
         fontWeight: FontWeight.w600,
       ),
       decoration: InputDecoration(

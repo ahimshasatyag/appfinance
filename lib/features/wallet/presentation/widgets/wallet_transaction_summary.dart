@@ -15,7 +15,7 @@ class WalletTransactionSummary extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFF1F5F9),
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
@@ -26,7 +26,7 @@ class WalletTransactionSummary extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Income', style: TextStyle(fontSize: 14, color: Color(0xFF1E293B))),
+              const Text('Income', style: TextStyle(fontSize: 14)),
               Text(currencyFormatter.format(detail.totalIncome), style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.green)),
             ],
           ),
@@ -34,7 +34,7 @@ class WalletTransactionSummary extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Expense', style: TextStyle(fontSize: 14, color: Color(0xFF1E293B))),
+              const Text('Expense', style: TextStyle(fontSize: 14)),
               Text(currencyFormatter.format(detail.totalExpense), style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.redAccent)),
             ],
           ),
@@ -44,8 +44,8 @@ class WalletTransactionSummary extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Net Flow', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF1E293B))),
-              Text(currencyFormatter.format(netFlow), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF1E293B))),
+              const Text('Net Flow', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+              Text(currencyFormatter.format(netFlow), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
             ],
           ),
           const SizedBox(height: 12),

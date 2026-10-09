@@ -12,8 +12,7 @@ class WalletHeader extends StatelessWidget {
           'Wallet',
           style: TextStyle(
             fontSize: 24,
-            fontWeight: FontWeight.w900,
-            color: Color(0xFF1E293B),
+            fontWeight: FontWeight.w900
           ),
         ),
         Text(

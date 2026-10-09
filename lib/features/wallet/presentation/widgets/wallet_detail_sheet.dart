@@ -15,8 +15,8 @@ class WalletDetailSheet extends StatelessWidget {
     final currencyFormatter = NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 0);
 
     return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
+      decoration: BoxDecoration(
+        color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
       ),
       child: SafeArea(
@@ -26,7 +26,7 @@ class WalletDetailSheet extends StatelessWidget {
             const SizedBox(height: 12),
             Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2))),
             const SizedBox(height: 24),
-            Text(wallet.name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF1E293B))),
+            Text(wallet.name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             if (wallet.accountNumber.isNotEmpty)
               Text('${wallet.type} • ${wallet.accountNumber}', style: const TextStyle(fontSize: 14, color: Colors.grey)),
             const SizedBox(height: 16),
@@ -36,7 +36,6 @@ class WalletDetailSheet extends StatelessWidget {
               Navigator.pop(context);
               Navigator.push(context, MaterialPageRoute(builder: (_) => WalletDetailPage(walletId: wallet.id)));
             }),
-            _buildActionItem(context, Icons.edit, 'Edit Wallet', () {}),
             _buildActionItem(
               context, 
               Icons.delete_outline, 
@@ -68,15 +67,18 @@ class WalletDetailSheet extends StatelessWidget {
   }
 
   Widget _buildActionItem(BuildContext context, IconData icon, String title, VoidCallback onTap, {bool isDestructive = false}) {
+    final defaultColor = Theme.of(context).brightness == Brightness.dark ? Colors.white : const Color(0xFF1E293B);
+    final color = isDestructive ? Colors.red : defaultColor;
+
     return InkWell(
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: Row(
           children: [
-            Icon(icon, color: isDestructive ? Colors.red : const Color(0xFF1E293B)),
+            Icon(icon, color: color),
             const SizedBox(width: 16),
-            Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: isDestructive ? Colors.red : const Color(0xFF1E293B))),
+            Text(title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: color)),
           ],
         ),
       ),

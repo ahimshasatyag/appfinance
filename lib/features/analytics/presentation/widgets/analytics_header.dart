@@ -22,8 +22,7 @@ class AnalyticsHeader extends StatelessWidget {
               'Analytics',
               style: TextStyle(
                 fontSize: 24,
-                fontWeight: FontWeight.w900,
-                color: Color(0xFF1E293B),
+                fontWeight: FontWeight.w900
               ),
             ),
             InkWell(
@@ -35,7 +34,7 @@ class AnalyticsHeader extends StatelessWidget {
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.grey.shade200),
                 ),
@@ -43,16 +42,14 @@ class AnalyticsHeader extends StatelessWidget {
                   children: [
                     const Icon(
                       Icons.filter_list,
-                      size: 16,
-                      color: Color(0xFF1E293B),
+                      size: 16
                     ),
                     const SizedBox(width: 8),
                     Text(
                       dateRange,
                       style: const TextStyle(
                         fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF1E293B),
+                        fontWeight: FontWeight.bold
                       ),
                     ),
                   ],

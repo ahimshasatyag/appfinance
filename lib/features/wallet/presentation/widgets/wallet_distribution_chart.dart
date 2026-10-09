@@ -35,14 +35,14 @@ class WalletDistributionChart extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.08), blurRadius: 10, offset: const Offset(0, 4))],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Balance Distribution', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF1E293B))),
+          const Text('Balance Distribution', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           const SizedBox(height: 24),
           if (validWallets.isEmpty)
              const SizedBox(height: 150, child: Center(child: Text('No data'))),
@@ -73,7 +73,7 @@ class WalletDistributionChart extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(currencyFormatter.format(totalBalance), style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Color(0xFF1E293B))),
+                        Text(currencyFormatter.format(totalBalance), style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
                         const Text('Total Balance', style: TextStyle(fontSize: 12, color: Colors.grey)),
                       ],
                     ),
@@ -95,7 +95,7 @@ class WalletDistributionChart extends StatelessWidget {
                   children: [
                     Container(width: 10, height: 10, decoration: BoxDecoration(shape: BoxShape.circle, color: _getColorForIndex(index))),
                     const SizedBox(width: 6),
-                    Text('${wallet.name} — ${percentage.toInt()}%', style: const TextStyle(fontSize: 12, color: Color(0xFF1E293B))),
+                    Text('${wallet.name} — ${percentage.toInt()}%', style: const TextStyle(fontSize: 12)),
                   ],
                 );
               }).toList(),

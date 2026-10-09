@@ -3,6 +3,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 import '../../domain/entities/analytics_entity.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../pages/analytics_add_goal_page.dart';
+import '../pages/analytics_edit_goal_page.dart';
 
 class AnalyticsChartSection extends StatelessWidget {
   final AnalyticsEntity data;
@@ -16,27 +18,27 @@ class AnalyticsChartSection extends StatelessWidget {
       children: [
         _buildSectionTitle('Income vs Expense'),
         const SizedBox(height: 16),
-        _buildIncomeExpenseLineChart(),
+        _buildIncomeExpenseLineChart(context),
         const SizedBox(height: 32),
         
         _buildSectionTitle('Expense Breakdown'),
         const SizedBox(height: 16),
-        _buildExpenseDonutChart(),
+        _buildExpenseDonutChart(context),
         const SizedBox(height: 32),
         
         _buildSectionTitle('Income Sources'),
         const SizedBox(height: 16),
-        _buildIncomeDonutChart(),
+        _buildIncomeDonutChart(context),
         const SizedBox(height: 32),
         
         _buildSectionTitle('Monthly Comparison'),
         const SizedBox(height: 16),
-        _buildMonthlyBarChart(),
+        _buildMonthlyBarChart(context),
         const SizedBox(height: 32),
         
         _buildSectionTitle('Cash Flow Analysis'),
         const SizedBox(height: 16),
-        _buildCashFlowLineChart(),
+        _buildCashFlowLineChart(context),
         const SizedBox(height: 32),
         
         _buildSectionTitle('Financial Insights'),
@@ -56,18 +58,17 @@ class AnalyticsChartSection extends StatelessWidget {
       title,
       style: const TextStyle(
         fontSize: 18,
-        fontWeight: FontWeight.bold,
-        color: Color(0xFF1E293B),
+        fontWeight: FontWeight.bold
       ),
     );
   }
 
-  Widget _buildIncomeExpenseLineChart() {
+  Widget _buildIncomeExpenseLineChart(BuildContext context) {
     return Container(
       height: 250,
       padding: const EdgeInsets.only(right: 16, top: 16, bottom: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(color: Colors.grey.withOpacity(0.08), blurRadius: 10, offset: const Offset(0, 4)),
@@ -134,26 +135,28 @@ class AnalyticsChartSection extends StatelessWidget {
     );
   }
 
-  Widget _buildExpenseDonutChart() {
+  Widget _buildExpenseDonutChart(BuildContext context) {
     return _buildDonutChartCore(
+      context,
       items: data.expenseBreakdown.map((e) => _DonutData(e.categoryName, e.percentage, e.amount, e.colorHex)).toList(),
       centerText: 'Total Expense',
     );
   }
   
-  Widget _buildIncomeDonutChart() {
+  Widget _buildIncomeDonutChart(BuildContext context) {
     return _buildDonutChartCore(
+      context,
       items: data.incomeSources.map((e) => _DonutData(e.sourceName, e.percentage, e.amount, e.colorHex)).toList(),
       centerText: 'Total Income',
     );
   }
 
-  Widget _buildDonutChartCore({required List<_DonutData> items, required String centerText}) {
+  Widget _buildDonutChartCore(BuildContext context, {required List<_DonutData> items, required String centerText}) {
     final currencyFormatter = NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 0);
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(color: Colors.grey.withOpacity(0.08), blurRadius: 10, offset: const Offset(0, 4)),
@@ -187,7 +190,7 @@ class AnalyticsChartSection extends StatelessWidget {
                       Text(centerText, style: const TextStyle(fontSize: 12, color: Colors.grey)),
                       Text(
                         currencyFormatter.format(items.fold(0.0, (sum, item) => sum + item.amount)),
-                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Color(0xFF1E293B)),
+                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -208,10 +211,10 @@ class AnalyticsChartSection extends StatelessWidget {
                   children: [
                     Container(width: 12, height: 12, decoration: BoxDecoration(color: Color(int.parse('0xFF${item.colorHex}')), shape: BoxShape.circle)),
                     const SizedBox(width: 8),
-                    Expanded(child: Text(item.name, style: const TextStyle(fontSize: 12, color: Color(0xFF1E293B)))),
+                    Expanded(child: Text(item.name, style: const TextStyle(fontSize: 12))),
                     Text('${item.percentage.toInt()}%', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey)),
                     const SizedBox(width: 8),
-                    Text(currencyFormatter.format(item.amount), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF1E293B))),
+                    Text(currencyFormatter.format(item.amount), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
                   ],
                 ),
               );
@@ -222,12 +225,12 @@ class AnalyticsChartSection extends StatelessWidget {
     );
   }
 
-  Widget _buildMonthlyBarChart() {
+  Widget _buildMonthlyBarChart(BuildContext context) {
     return Container(
       height: 250,
       padding: const EdgeInsets.only(right: 16, top: 16, bottom: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(color: Colors.grey.withOpacity(0.08), blurRadius: 10, offset: const Offset(0, 4)),
@@ -281,12 +284,12 @@ class AnalyticsChartSection extends StatelessWidget {
     );
   }
 
-  Widget _buildCashFlowLineChart() {
+  Widget _buildCashFlowLineChart(BuildContext context) {
     return Container(
       height: 250,
       padding: const EdgeInsets.only(right: 16, top: 16, bottom: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(color: Colors.grey.withOpacity(0.08), blurRadius: 10, offset: const Offset(0, 4)),
@@ -420,7 +423,7 @@ class AnalyticsChartSection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF1E293B))),
+              Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
               const SizedBox(height: 2),
               Text(subtitle, style: const TextStyle(fontSize: 12, color: Colors.grey)),
             ],
@@ -435,7 +438,7 @@ class AnalyticsChartSection extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(color: Colors.grey.withOpacity(0.08), blurRadius: 10, offset: const Offset(0, 4)),
@@ -451,7 +454,7 @@ class AnalyticsChartSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text('Monthly Savings', style: TextStyle(fontSize: 12, color: Colors.grey)),
-                  Text(currencyFormatter.format(data.savingsAnalysis.monthlySavings), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF1E293B))),
+                  Text(currencyFormatter.format(data.savingsAnalysis.monthlySavings), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 ],
               ),
               Column(
@@ -467,7 +470,22 @@ class AnalyticsChartSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Financial Goals', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF1E293B))),
+              Row(
+                children: [
+                  const Text('Financial Goals', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                  const SizedBox(width: 8),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const AnalyticsAddGoalPage()),
+                      );
+                    },
+                    borderRadius: BorderRadius.circular(8),
+                    child: const Icon(Icons.add_circle, color: AppTheme.primaryColor, size: 20),
+                  ),
+                ],
+              ),
               InkWell(
                 onTap: () => _showAllFinancialGoals(context, data.savingsAnalysis.goals),
                 borderRadius: BorderRadius.circular(8),
@@ -483,9 +501,19 @@ class AnalyticsChartSection extends StatelessWidget {
             final progress = goal.currentAmount / goal.targetAmount;
             return Padding(
               padding: const EdgeInsets.only(bottom: 16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AnalyticsEditGoalPage(goal: goal)),
+                  );
+                },
+                borderRadius: BorderRadius.circular(8),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -503,7 +531,9 @@ class AnalyticsChartSection extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text('${currencyFormatter.format(goal.currentAmount)} / ${currencyFormatter.format(goal.targetAmount)}', style: const TextStyle(fontSize: 10, color: Colors.grey)),
-                ],
+                    ],
+                  ),
+                ),
               ),
             );
           }),
@@ -522,16 +552,16 @@ class AnalyticsChartSection extends StatelessWidget {
       builder: (context) {
         return Container(
           height: MediaQuery.of(context).size.height * 0.8,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
+          decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+            borderRadius: const BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
           ),
           child: Column(
             children: [
               const SizedBox(height: 12),
               Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2))),
               const SizedBox(height: 16),
-              const Text('All Financial Goals', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF2B3A4A))),
+              const Text('All Financial Goals', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 16),
               Expanded(
                 child: ListView.builder(
@@ -542,13 +572,23 @@ class AnalyticsChartSection extends StatelessWidget {
                     final progress = goal.currentAmount / goal.targetAmount;
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 24.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => AnalyticsEditGoalPage(goal: goal)),
+                          );
+                        },
+                        borderRadius: BorderRadius.circular(8),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(goal.name, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF2B3A4A))),
+                              Text(goal.name, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                               Text('${(progress * 100).toStringAsFixed(1)}%', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppTheme.primaryColor)),
                             ],
                           ),
@@ -572,7 +612,9 @@ class AnalyticsChartSection extends StatelessWidget {
                           ),
                         ],
                       ),
-                    );
+                    ),
+                  ),
+                );
                   },
                 ),
               ),

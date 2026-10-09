@@ -57,7 +57,7 @@ class WalletTransactionItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(transaction.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF1E293B))),
+                  Text(transaction.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                   const SizedBox(height: 4),
                   Text('${transaction.type} · ${transaction.category}', style: const TextStyle(fontSize: 12, color: Colors.grey)),
                 ],
@@ -66,7 +66,7 @@ class WalletTransactionItem extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(amountText, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: isExpense ? const Color(0xFF1E293B) : Colors.green)),
+                Text(amountText, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: isExpense ? null : Colors.green)),
                 const SizedBox(height: 4),
                 Row(
                   children: [

@@ -33,12 +33,12 @@ class _WalletAllTransactionsPageState extends State<WalletAllTransactionsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: 0,
-        iconTheme: const IconThemeData(color: Color(0xFF1E293B)),
-        title: const Text('All Transactions', style: TextStyle(color: Color(0xFF1E293B), fontWeight: FontWeight.bold)),
+        iconTheme: IconThemeData(color: Theme.of(context).appBarTheme.foregroundColor),
+        title: Text('All Transactions', style: TextStyle(color: Theme.of(context).appBarTheme.foregroundColor, fontWeight: FontWeight.bold)),
       ),
       body: _isLoading
           ? const WalletAllTransactionsSkeleton()

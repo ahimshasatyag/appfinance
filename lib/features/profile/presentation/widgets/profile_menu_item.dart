@@ -43,7 +43,6 @@ class ProfileMenuItem extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF2B3A4A),
                     ),
                   ),
                   if (subtitle != null) ...[
@@ -52,7 +51,7 @@ class ProfileMenuItem extends StatelessWidget {
                       subtitle!,
                       style: TextStyle(
                         fontSize: 13,
-                        color: Colors.grey.shade600,
+                        color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
                       ),
                     ),
                   ],

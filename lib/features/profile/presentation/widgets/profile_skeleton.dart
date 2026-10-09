@@ -30,9 +30,9 @@ class ProfileSkeleton extends StatelessWidget {
                         Shimmer.fromColors(
                           baseColor: Colors.white.withValues(alpha: 0.3),
                           highlightColor: Colors.white.withValues(alpha: 0.6),
-                          child: const CircleAvatar(
+                          child: CircleAvatar(
                             radius: 40,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context).cardColor,
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -43,7 +43,7 @@ class ProfileSkeleton extends StatelessWidget {
                             width: 150,
                             height: 24,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Theme.of(context).cardColor,
                               borderRadius: BorderRadius.circular(4),
                             ),
                           ),
@@ -56,7 +56,7 @@ class ProfileSkeleton extends StatelessWidget {
                             width: 200,
                             height: 16,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Theme.of(context).cardColor,
                               borderRadius: BorderRadius.circular(4),
                             ),
                           ),
@@ -69,7 +69,7 @@ class ProfileSkeleton extends StatelessWidget {
                             width: 100,
                             height: 30,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Theme.of(context).cardColor,
                               borderRadius: BorderRadius.circular(8),
                             ),
                           ),
@@ -81,13 +81,13 @@ class ProfileSkeleton extends StatelessWidget {
                   
                   // Section Title Skeleton
                   Shimmer.fromColors(
-                    baseColor: Colors.grey.shade300,
-                    highlightColor: Colors.grey.shade100,
+                    baseColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.grey.shade300,
+                    highlightColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade700 : Colors.grey.shade100,
                     child: Container(
                       width: 120,
                       height: 20,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.circular(4),
                       ),
                     ),
@@ -96,12 +96,12 @@ class ProfileSkeleton extends StatelessWidget {
 
                   // Card Skeleton for list items
                   Shimmer.fromColors(
-                    baseColor: Colors.grey.shade300,
-                    highlightColor: Colors.grey.shade100,
+                    baseColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.grey.shade300,
+                    highlightColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade700 : Colors.grey.shade100,
                     child: Container(
                       height: 150, // Approximate height for 2 items
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.circular(16),
                       ),
                     ),
@@ -110,13 +110,13 @@ class ProfileSkeleton extends StatelessWidget {
                   
                   // Section Title Skeleton 2
                   Shimmer.fromColors(
-                    baseColor: Colors.grey.shade300,
-                    highlightColor: Colors.grey.shade100,
+                    baseColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.grey.shade300,
+                    highlightColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade700 : Colors.grey.shade100,
                     child: Container(
                       width: 140,
                       height: 20,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.circular(4),
                       ),
                     ),
@@ -125,12 +125,12 @@ class ProfileSkeleton extends StatelessWidget {
 
                   // Card Skeleton for list items 2
                   Shimmer.fromColors(
-                    baseColor: Colors.grey.shade300,
-                    highlightColor: Colors.grey.shade100,
+                    baseColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.grey.shade300,
+                    highlightColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade700 : Colors.grey.shade100,
                     child: Container(
                       height: 200, // Approximate height for 3 items
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.circular(16),
                       ),
                     ),
@@ -139,13 +139,13 @@ class ProfileSkeleton extends StatelessWidget {
                   
                   // Button Skeleton
                   Shimmer.fromColors(
-                    baseColor: Colors.grey.shade300,
-                    highlightColor: Colors.grey.shade100,
+                    baseColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.grey.shade300,
+                    highlightColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade700 : Colors.grey.shade100,
                     child: Container(
                       width: double.infinity,
                       height: 50,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),

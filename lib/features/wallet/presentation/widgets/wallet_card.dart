@@ -34,7 +34,7 @@ class WalletCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: Colors.grey.shade100),
           boxShadow: [
@@ -60,7 +60,7 @@ class WalletCard extends StatelessWidget {
                     children: [
                       Text(
                         '${wallet.name} ${wallet.accountNumber.isNotEmpty ? '• ${wallet.accountNumber}' : ''}',
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF1E293B)),
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                       const SizedBox(height: 4),
                       Text(wallet.type, style: const TextStyle(fontSize: 12, color: Colors.grey)),
@@ -72,7 +72,7 @@ class WalletCard extends StatelessWidget {
                   children: [
                     Text(
                       currencyFormatter.format(wallet.balance),
-                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF1E293B)),
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     const SizedBox(height: 4),
                     Text('${wallet.percentage.toStringAsFixed(1)}% of total', style: const TextStyle(fontSize: 12, color: Colors.grey)),
@@ -85,16 +85,16 @@ class WalletCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade50,
+                  color: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.grey.shade50,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Last activity', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                    Text('Last activity', style: TextStyle(fontSize: 12, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.grey)),
                     Text(
                       '${wallet.lastActivity!.title} · ${wallet.lastActivity!.type == 'Income' ? '+' : '-'}${currencyFormatter.format(wallet.lastActivity!.amount)}',
-                      style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFF1E293B)),
+                      style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),

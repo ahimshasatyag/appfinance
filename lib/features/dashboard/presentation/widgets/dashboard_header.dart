@@ -22,7 +22,7 @@ class DashboardHeader extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 userName,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -36,7 +36,7 @@ class DashboardHeader extends StatelessWidget {
               color: Colors.white.withOpacity(0.2),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.notifications_none,
               color: Colors.white,
             ),

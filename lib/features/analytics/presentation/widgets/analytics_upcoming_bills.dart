@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../../shared/theme/app_theme.dart';
 import '../../domain/entities/analytics_entity.dart';
+import '../pages/analytics_add_upcoming_bill_page.dart';
 
 class AnalyticsUpcomingBills extends StatelessWidget {
   final List<UpcomingBillEntity> bills;
@@ -28,7 +29,7 @@ class AnalyticsUpcomingBills extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -44,13 +45,29 @@ class AnalyticsUpcomingBills extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Upcoming Bills',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF2B3A4A),
-                ),
+              Row(
+                children: [
+                  const Text(
+                    'Upcoming Bills',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AnalyticsAddUpcomingBillPage(),
+                        ),
+                      );
+                    },
+                    borderRadius: BorderRadius.circular(8),
+                    child: const Icon(Icons.add_circle, color: AppTheme.primaryColor, size: 20),
+                  ),
+                ],
               ),
               InkWell(
                 onTap: () => _showAllUpcomingBills(context),
@@ -106,7 +123,6 @@ class AnalyticsUpcomingBills extends StatelessWidget {
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF2B3A4A),
                             ),
                           ),
                           const SizedBox(height: 4),
@@ -128,7 +144,6 @@ class AnalyticsUpcomingBills extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF2B3A4A),
                           ),
                         ),
                         const SizedBox(height: 4),
@@ -162,16 +177,16 @@ class AnalyticsUpcomingBills extends StatelessWidget {
       builder: (context) {
         return Container(
           height: MediaQuery.of(context).size.height * 0.8,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
+          decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+            borderRadius: const BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
           ),
           child: Column(
             children: [
               const SizedBox(height: 12),
               Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2))),
               const SizedBox(height: 16),
-              const Text('All Upcoming Bills', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF2B3A4A))),
+              const Text('All Upcoming Bills', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 16),
               Expanded(
                 child: ListView.builder(
@@ -196,7 +211,7 @@ class AnalyticsUpcomingBills extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(bill.name, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF2B3A4A))),
+                                Text(bill.name, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                                 const SizedBox(height: 4),
                                 Text(daysLeftText, style: const TextStyle(fontSize: 13, color: Colors.grey)),
                               ],
@@ -205,7 +220,7 @@ class AnalyticsUpcomingBills extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text(currencyFormatter.format(bill.amount), style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF2B3A4A))),
+                              Text(currencyFormatter.format(bill.amount), style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                               const SizedBox(height: 4),
                               Text(dateFormatter.format(bill.dueDate), style: const TextStyle(fontSize: 12, color: Colors.grey)),
                             ],

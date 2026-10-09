@@ -43,7 +43,7 @@ class DashboardSkeleton extends StatelessWidget {
                                 width: 100,
                                 height: 16,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: Theme.of(context).cardColor,
                                   borderRadius: BorderRadius.circular(4),
                                 ),
                               ),
@@ -56,7 +56,7 @@ class DashboardSkeleton extends StatelessWidget {
                                 width: 150,
                                 height: 24,
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: Theme.of(context).cardColor,
                                   borderRadius: BorderRadius.circular(4),
                                 ),
                               ),
@@ -66,9 +66,9 @@ class DashboardSkeleton extends StatelessWidget {
                         Shimmer.fromColors(
                           baseColor: Colors.white.withOpacity(0.3),
                           highlightColor: Colors.white.withOpacity(0.6),
-                          child: const CircleAvatar(
+                          child: CircleAvatar(
                             radius: 24,
-                            backgroundColor: Colors.white,
+                            backgroundColor: Theme.of(context).cardColor,
                           ),
                         ),
                       ],
@@ -80,12 +80,12 @@ class DashboardSkeleton extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: Shimmer.fromColors(
-                      baseColor: Colors.grey.shade300,
-                      highlightColor: Colors.grey.shade100,
+                      baseColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.grey.shade300,
+                      highlightColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade700 : Colors.grey.shade100,
                       child: Container(
                         height: 200, // Approximate height of StatsCard
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Theme.of(context).cardColor,
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
@@ -100,12 +100,12 @@ class DashboardSkeleton extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Shimmer.fromColors(
-                            baseColor: Colors.grey.shade300,
-                            highlightColor: Colors.grey.shade100,
+                            baseColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.grey.shade300,
+                            highlightColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade700 : Colors.grey.shade100,
                             child: Container(
                               height: 80,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Theme.of(context).cardColor,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                             ),
@@ -114,12 +114,12 @@ class DashboardSkeleton extends StatelessWidget {
                         const SizedBox(width: 16),
                         Expanded(
                           child: Shimmer.fromColors(
-                            baseColor: Colors.grey.shade300,
-                            highlightColor: Colors.grey.shade100,
+                            baseColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.grey.shade300,
+                            highlightColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade700 : Colors.grey.shade100,
                             child: Container(
                               height: 80,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Theme.of(context).cardColor,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                             ),
@@ -135,9 +135,9 @@ class DashboardSkeleton extends StatelessWidget {
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.all(24),
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).cardColor,
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30),
                         ),
@@ -146,13 +146,13 @@ class DashboardSkeleton extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Shimmer.fromColors(
-                            baseColor: Colors.grey.shade300,
-                            highlightColor: Colors.grey.shade100,
+                            baseColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.grey.shade300,
+                            highlightColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade700 : Colors.grey.shade100,
                             child: Container(
                               width: 120,
                               height: 20,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Theme.of(context).cardColor,
                                 borderRadius: BorderRadius.circular(4),
                               ),
                             ),
@@ -168,13 +168,13 @@ class DashboardSkeleton extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Shimmer.fromColors(
-                                        baseColor: Colors.grey.shade300,
-                                        highlightColor: Colors.grey.shade100,
+                                        baseColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.grey.shade300,
+                                        highlightColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade700 : Colors.grey.shade100,
                                         child: Container(
                                           width: 48,
                                           height: 48,
                                           decoration: BoxDecoration(
-                                            color: Colors.white,
+                                            color: Theme.of(context).cardColor,
                                             borderRadius: BorderRadius.circular(12),
                                           ),
                                         ),
@@ -185,26 +185,26 @@ class DashboardSkeleton extends StatelessWidget {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Shimmer.fromColors(
-                                              baseColor: Colors.grey.shade300,
-                                              highlightColor: Colors.grey.shade100,
+                                              baseColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.grey.shade300,
+                                              highlightColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade700 : Colors.grey.shade100,
                                               child: Container(
                                                 width: double.infinity,
                                                 height: 16,
                                                 decoration: BoxDecoration(
-                                                  color: Colors.white,
+                                                  color: Theme.of(context).cardColor,
                                                   borderRadius: BorderRadius.circular(4),
                                                 ),
                                               ),
                                             ),
                                             const SizedBox(height: 8),
                                             Shimmer.fromColors(
-                                              baseColor: Colors.grey.shade300,
-                                              highlightColor: Colors.grey.shade100,
+                                              baseColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade800 : Colors.grey.shade300,
+                                              highlightColor: Theme.of(context).brightness == Brightness.dark ? Colors.grey.shade700 : Colors.grey.shade100,
                                               child: Container(
                                                 width: 100,
                                                 height: 12,
                                                 decoration: BoxDecoration(
-                                                  color: Colors.white,
+                                                  color: Theme.of(context).cardColor,
                                                   borderRadius: BorderRadius.circular(4),
                                                 ),
                                               ),

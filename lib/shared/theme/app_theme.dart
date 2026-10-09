@@ -1,26 +1,32 @@
 import 'package:flutter/material.dart';
+import 'app_colors.dart';
+import 'app_text_styles.dart';
 
 class AppTheme {
-  // Definisi warna sesuai permintaan
-  static const Color primaryColor = Color(0xFF0D6EFF); // warna utama
-  static const Color secondaryColor = Color(0xFF0CBDE8); // warna kedua
-  static const Color tertiaryColor = Color(0xFF00FFC7); // warna ketiga
-  static const Color customColor = Color(0xFF0CE859); // bebas
-  static const Color mixedColor = Color(0xFF1AFF00); // campur
+  // Keep backward compatibility for other files using AppTheme.primaryColor
+  static const Color primaryColor = AppColors.primary;
+  static const Color secondaryColor = AppColors.secondary;
+  static const Color tertiaryColor = AppColors.tertiary;
+  static const Color customColor = AppColors.custom;
+  static const Color mixedColor = AppColors.mixed;
 
   static ThemeData get lightTheme {
     return ThemeData(
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: primaryColor,
-        primary: primaryColor,
-        secondary: secondaryColor,
-        tertiary: tertiaryColor,
+      brightness: Brightness.light,
+      colorScheme: const ColorScheme.light(
+        primary: AppColors.primary,
+        secondary: AppColors.secondary,
+        tertiary: AppColors.tertiary,
+        background: AppColors.lightBackground,
+        surface: AppColors.lightSurface,
       ),
+      scaffoldBackgroundColor: AppColors.lightBackground,
       useMaterial3: true,
+      textTheme: AppTextStyles.lightTextTheme,
       
       // Tema untuk AppBar
       appBarTheme: const AppBarTheme(
-        backgroundColor: primaryColor,
+        backgroundColor: AppColors.primary,
         foregroundColor: Colors.white,
         centerTitle: true,
       ),
@@ -28,7 +34,7 @@ class AppTheme {
       // Tema untuk tombol
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: primaryColor,
+          backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
         ),
       ),
@@ -37,16 +43,63 @@ class AppTheme {
       inputDecorationTheme: const InputDecorationTheme(
         border: OutlineInputBorder(),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: primaryColor, width: 2.0),
+          borderSide: BorderSide(color: AppColors.primary, width: 2.0),
         ),
-        floatingLabelStyle: TextStyle(color: primaryColor),
+        floatingLabelStyle: TextStyle(color: AppColors.primary),
       ),
       
       // Warna untuk kursor text field
       textSelectionTheme: const TextSelectionThemeData(
-        cursorColor: primaryColor,
-        selectionColor: secondaryColor,
-        selectionHandleColor: primaryColor,
+        cursorColor: AppColors.primary,
+        selectionColor: AppColors.secondary,
+        selectionHandleColor: AppColors.primary,
+      ),
+    );
+  }
+
+  static ThemeData get darkTheme {
+    return ThemeData(
+      brightness: Brightness.dark,
+      colorScheme: const ColorScheme.dark(
+        primary: AppColors.primary,
+        secondary: AppColors.secondary,
+        tertiary: AppColors.tertiary,
+        background: AppColors.darkBackground,
+        surface: AppColors.darkSurface,
+      ),
+      scaffoldBackgroundColor: AppColors.darkBackground,
+      useMaterial3: true,
+      textTheme: AppTextStyles.darkTextTheme,
+      
+      // Tema untuk AppBar
+      appBarTheme: const AppBarTheme(
+        backgroundColor: AppColors.darkSurface,
+        foregroundColor: AppColors.darkTextPrimary,
+        centerTitle: true,
+      ),
+      
+      // Tema untuk tombol
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primary,
+          foregroundColor: Colors.white,
+        ),
+      ),
+      
+      // Tema umum untuk input field
+      inputDecorationTheme: const InputDecorationTheme(
+        border: OutlineInputBorder(),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.primary, width: 2.0),
+        ),
+        floatingLabelStyle: TextStyle(color: AppColors.primary),
+      ),
+      
+      // Warna untuk kursor text field
+      textSelectionTheme: const TextSelectionThemeData(
+        cursorColor: AppColors.primary,
+        selectionColor: AppColors.secondary,
+        selectionHandleColor: AppColors.primary,
       ),
     );
   }

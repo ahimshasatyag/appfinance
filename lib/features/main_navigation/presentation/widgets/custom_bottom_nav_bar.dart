@@ -16,7 +16,7 @@ class CustomBottomNavBar extends StatelessWidget {
     return BottomAppBar(
       shape: const CircularNotchedRectangle(),
       notchMargin: 8.0,
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.surface,
       child: SizedBox(
         height: 60,
         child: Row(

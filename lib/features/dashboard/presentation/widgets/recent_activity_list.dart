@@ -22,7 +22,7 @@ class RecentActivityList extends StatelessWidget {
             children: [
               const Text(
                 'Transactions History',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2B3A4A)),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Text(
                 'See all',
@@ -83,7 +83,7 @@ class RecentActivityList extends StatelessWidget {
               children: [
                 Text(
                   tx.title,
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF2B3A4A)),
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 4),
                 Text(

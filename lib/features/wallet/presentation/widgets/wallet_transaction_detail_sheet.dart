@@ -19,9 +19,9 @@ class WalletTransactionDetailSheet extends StatelessWidget {
     final amountText = '${isExpense ? '- ' : ''}${currencyFormatter.format(transaction.amount)}';
     
     return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
+      decoration: BoxDecoration(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        borderRadius: const BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
       ),
       child: SafeArea(
         child: SingleChildScrollView(
@@ -37,11 +37,11 @@ class WalletTransactionDetailSheet extends StatelessWidget {
               Center(
                 child: Column(
                   children: [
-                    Text(transaction.merchant, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w900, color: Color(0xFF1E293B))),
+                    Text(transaction.merchant, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w900)),
                     const SizedBox(height: 4),
                     Text(transaction.type, style: TextStyle(fontSize: 14, color: isExpense ? Colors.redAccent : Colors.green, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 12),
-                    Text(amountText, style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Color(0xFF1E293B))),
+                    Text(amountText, style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 8),
                     Text('${dateFormatter.format(transaction.date)}\n${timeFormatter.format(transaction.date)}', textAlign: TextAlign.center, style: const TextStyle(fontSize: 14, color: Colors.grey)),
                   ],
@@ -49,7 +49,7 @@ class WalletTransactionDetailSheet extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               
-              const Text('Transaction Information', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF1E293B))),
+              const Text('Transaction Information', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               const SizedBox(height: 16),
               _buildInfoRow('Wallet', '${wallet.name} ${wallet.accountNumber.isNotEmpty ? '•••• ' + wallet.accountNumber.substring(wallet.accountNumber.length > 4 ? wallet.accountNumber.length - 4 : 0) : ''}'),
               _buildInfoRow('Category', transaction.category),
@@ -62,7 +62,7 @@ class WalletTransactionDetailSheet extends StatelessWidget {
                 const SizedBox(height: 12),
                 const Text('Notes', style: TextStyle(fontSize: 12, color: Colors.grey)),
                 const SizedBox(height: 4),
-                Text(transaction.notes, style: const TextStyle(fontSize: 14, color: Color(0xFF1E293B))),
+                Text(transaction.notes, style: const TextStyle(fontSize: 14)),
               ],
             ],
           ),
@@ -78,7 +78,7 @@ class WalletTransactionDetailSheet extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(title, style: const TextStyle(fontSize: 14, color: Colors.grey)),
-          Text(value, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: const Color(0xFF1E293B))),
+          Text(value, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
         ],
       ),
     );
