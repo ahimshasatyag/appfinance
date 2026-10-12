@@ -6,6 +6,7 @@ import 'features/auth/data/datasources/auth_remote_datasource.dart';
 import 'features/auth/data/repositories/auth_repository_impl.dart';
 import 'features/auth/domain/usecases/login_usecase.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
+import 'features/profile/presentation/cubit/notification_settings_cubit.dart';
 import 'features/splash/presentation/pages/splash_page.dart';
 import 'l10n/app_localizations.dart';
 import 'shared/theme/app_theme.dart';
@@ -37,6 +38,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<LocaleCubit>(
           create: (_) => LocaleCubit(),
+        ),
+        BlocProvider<NotificationSettingsCubit>(
+          create: (_) => NotificationSettingsCubit(),
         ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(

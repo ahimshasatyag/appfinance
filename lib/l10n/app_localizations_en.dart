@@ -541,4 +541,106 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get understand => 'Understand';
+
+  @override
+  String get notificationSettings => 'Notification Settings';
+
+  @override
+  String get notificationCenter => 'Notification Center';
+
+  @override
+  String get quietModeSection => 'QUIET MODE';
+
+  @override
+  String get doNotDisturb => 'Do Not Disturb';
+
+  @override
+  String get doNotDisturbSubtitle =>
+      'Mute all notification sounds, vibrations, and banners';
+
+  @override
+  String get dndEnabledSnackbar => 'Do Not Disturb mode is enabled';
+
+  @override
+  String get dndDisabledSnackbar => 'Do Not Disturb mode is disabled';
+
+  @override
+  String get quietScheduleTitle => 'Automatic Quiet Hours Schedule';
+
+  @override
+  String quietScheduleSubtitle(String startTime, String endTime) {
+    return 'Notifications are muted from $startTime to $endTime every day.';
+  }
+
+  @override
+  String get changeQuietHours => 'Change Quiet Hours';
+
+  @override
+  String get selectQuietStart => 'SELECT QUIET START TIME';
+
+  @override
+  String get selectQuietEnd => 'SELECT QUIET END TIME';
+
+  @override
+  String get mainNotificationsSection => 'MAIN NOTIFICATIONS';
+
+  @override
+  String get allowAllNotifications => 'Allow All Notifications';
+
+  @override
+  String get allowAllNotificationsSubtitle =>
+      'Enable all reminders and system notifications';
+
+  @override
+  String get alertCategoriesSection => 'NOTIFICATION CATEGORIES';
+
+  @override
+  String get transactionsAndTransfers => 'Transactions & Transfers';
+
+  @override
+  String get transactionsAndTransfersSubtitle =>
+      'Income alerts, QRIS & card payments';
+
+  @override
+  String get billReminders => 'Bill Reminders';
+
+  @override
+  String get billRemindersSubtitle =>
+      'Reminders before bills (electricity, internet, water) are due';
+
+  @override
+  String get budgetAlerts => 'Budget Alerts';
+
+  @override
+  String get budgetAlertsSubtitle => 'Alerts when spending nears monthly limit';
+
+  @override
+  String get securityAndAccount => 'Security & Account';
+
+  @override
+  String get securityAndAccountSubtitle =>
+      'New login detection, password changes & account verification';
+
+  @override
+  String get promoAndCashback => 'Promos & Cashback';
+
+  @override
+  String get promoAndCashbackSubtitle =>
+      'Discount info, promo offers & cashback bonuses';
+
+  @override
+  String get soundAndVibrationSection => 'SOUND & VIBRATION';
+
+  @override
+  String get notificationSound => 'Notification Sound';
+
+  @override
+  String get notificationSoundSubtitle =>
+      'Play sound when a notification arrives';
+
+  @override
+  String get vibration => 'Vibration';
+
+  @override
+  String get vibrationSubtitle => 'Vibrate phone when notification is received';
 }

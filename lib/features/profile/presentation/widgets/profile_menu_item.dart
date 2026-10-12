@@ -51,16 +51,14 @@ class ProfileMenuItem extends StatelessWidget {
                       subtitle!,
                       style: TextStyle(
                         fontSize: 13,
-                        color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                        color: Theme.of(context).textTheme.bodyMedium?.color?.withValues(alpha: 0.6),
                       ),
                     ),
                   ],
                 ],
               ),
             ),
-            if (trailing != null) trailing!,
-            if (trailing == null)
-              Icon(Icons.chevron_right, color: Colors.grey.shade400, size: 20),
+            trailing ?? Icon(Icons.chevron_right, color: Colors.grey.shade400, size: 20),
           ],
         ),
       ),

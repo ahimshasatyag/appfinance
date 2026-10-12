@@ -31,6 +31,7 @@ class WalletDetailSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currencyFormatter = NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 0);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
       decoration: BoxDecoration(
@@ -42,13 +43,34 @@ class WalletDetailSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const SizedBox(height: 12),
-            Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2))),
+            Container(
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: isDark ? Colors.grey.shade700 : Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
             const SizedBox(height: 24),
-            Text(wallet.name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Text(
+              wallet.name,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: isDark ? Colors.white : const Color(0xFF1E293B),
+              ),
+            ),
             if (wallet.accountNumber.isNotEmpty)
               Text('${_getTypeDisplayName(context, wallet.type)} • ${wallet.accountNumber}', style: const TextStyle(fontSize: 14, color: Colors.grey)),
             const SizedBox(height: 16),
-            Text(currencyFormatter.format(wallet.balance), style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: AppTheme.primaryColor)),
+            Text(
+              currencyFormatter.format(wallet.balance),
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: isDark ? Colors.white : AppTheme.primaryColor,
+              ),
+            ),
             const SizedBox(height: 32),
             _buildActionItem(context, Icons.info_outline, context.l10n.viewDetails, () {
               Navigator.pop(context);

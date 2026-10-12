@@ -78,7 +78,11 @@ class WalletCard extends StatelessWidget {
                     children: [
                       Text(
                         '${wallet.name} ${wallet.accountNumber.isNotEmpty ? '• ${wallet.accountNumber}' : ''}',
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Theme.of(context).brightness == Brightness.dark ? Colors.white : const Color(0xFF1E293B),
+                        ),
                       ),
                       const SizedBox(height: 4),
                       Text(_getTypeDisplayName(context, wallet.type), style: const TextStyle(fontSize: 12, color: Colors.grey)),
@@ -90,7 +94,11 @@ class WalletCard extends StatelessWidget {
                   children: [
                     Text(
                       currencyFormatter.format(wallet.balance),
-                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Theme.of(context).brightness == Brightness.dark ? Colors.white : const Color(0xFF1E293B),
+                      ),
                     ),
                     const SizedBox(height: 4),
                     Text('${wallet.percentage.toStringAsFixed(1)}% ${context.l10n.ofTotal}', style: const TextStyle(fontSize: 12, color: Colors.grey)),

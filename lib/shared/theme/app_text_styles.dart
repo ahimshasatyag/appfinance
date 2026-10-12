@@ -84,6 +84,8 @@ class AppTextStyles {
       headlineMedium: h4.copyWith(color: color),
       headlineSmall: h5.copyWith(color: color),
       titleLarge: h6.copyWith(color: color),
+      titleMedium: bodyLarge.copyWith(color: color),
+      titleSmall: bodyMedium.copyWith(color: color),
       bodyLarge: bodyLarge.copyWith(color: color),
       bodyMedium: bodyMedium.copyWith(color: color),
       bodySmall: bodySmall.copyWith(color: color),

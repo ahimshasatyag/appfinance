@@ -541,4 +541,107 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get understand => 'Mengerti';
+
+  @override
+  String get notificationSettings => 'Pengaturan Notifikasi';
+
+  @override
+  String get notificationCenter => 'Pusat Notifikasi';
+
+  @override
+  String get quietModeSection => 'MODE HENING';
+
+  @override
+  String get doNotDisturb => 'Jangan Ganggu';
+
+  @override
+  String get doNotDisturbSubtitle =>
+      'Heningkan semua suara notifikasi, getaran, dan pop-up banner';
+
+  @override
+  String get dndEnabledSnackbar => 'Mode Jangan Ganggu telah diaktifkan';
+
+  @override
+  String get dndDisabledSnackbar => 'Mode Jangan Ganggu dimatikan';
+
+  @override
+  String get quietScheduleTitle => 'Jadwal Waktu Hening Otomatis';
+
+  @override
+  String quietScheduleSubtitle(String startTime, String endTime) {
+    return 'Pemberitahuan dibungkam dari jam $startTime hingga $endTime setiap hari.';
+  }
+
+  @override
+  String get changeQuietHours => 'Ubah Jam Hening';
+
+  @override
+  String get selectQuietStart => 'PILIH JAM MULAI HENING';
+
+  @override
+  String get selectQuietEnd => 'PILIH JAM SELESAI HENING';
+
+  @override
+  String get mainNotificationsSection => 'NOTIFIKASI UTAMA';
+
+  @override
+  String get allowAllNotifications => 'Izinkan Semua Notifikasi';
+
+  @override
+  String get allowAllNotificationsSubtitle =>
+      'Aktifkan semua pengingat dan pemberitahuan sistem';
+
+  @override
+  String get alertCategoriesSection => 'KATEGORI PEMBERITAHUAN';
+
+  @override
+  String get transactionsAndTransfers => 'Transaksi & Transfer';
+
+  @override
+  String get transactionsAndTransfersSubtitle =>
+      'Pemberitahuan uang masuk, pembayaran QRIS & kartu';
+
+  @override
+  String get billReminders => 'Pengingat Tagihan';
+
+  @override
+  String get billRemindersSubtitle =>
+      'Pengingat sebelum jatuh tempo tagihan listrik, internet & air';
+
+  @override
+  String get budgetAlerts => 'Peringatan Anggaran';
+
+  @override
+  String get budgetAlertsSubtitle =>
+      'Peringatan saat pengeluaran mendekati batas bulanan';
+
+  @override
+  String get securityAndAccount => 'Keamanan & Akun';
+
+  @override
+  String get securityAndAccountSubtitle =>
+      'Deteksi login baru, perubahan sandi & verifikasi akun';
+
+  @override
+  String get promoAndCashback => 'Promo & Cashback';
+
+  @override
+  String get promoAndCashbackSubtitle =>
+      'Informasi diskon, penawaran promo & bonus cashback';
+
+  @override
+  String get soundAndVibrationSection => 'SUARA & GETARAN';
+
+  @override
+  String get notificationSound => 'Suara Notifikasi';
+
+  @override
+  String get notificationSoundSubtitle =>
+      'Bunyikan nada saat ada notifikasi masuk';
+
+  @override
+  String get vibration => 'Getaran';
+
+  @override
+  String get vibrationSubtitle => 'Getarkan ponsel saat pemberitahuan diterima';
 }

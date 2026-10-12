@@ -75,16 +75,18 @@ class _AnalyticsAddGoalPageState extends State<AnalyticsAddGoalPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: 0,
-        iconTheme: IconThemeData(color: Theme.of(context).appBarTheme.foregroundColor),
+        iconTheme: IconThemeData(color: isDark ? Colors.white : const Color(0xFF1E293B)),
         title: Text(
           context.l10n.addFinancialGoal,
           style: TextStyle(
-            color: Theme.of(context).appBarTheme.foregroundColor,
+            color: isDark ? Colors.white : const Color(0xFF1E293B),
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -96,19 +98,22 @@ class _AnalyticsAddGoalPageState extends State<AnalyticsAddGoalPage> {
           children: [
             Text(
               context.l10n.goalDetails,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 18,
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
+                color: isDark ? Colors.white : const Color(0xFF1E293B),
               ),
             ),
             const SizedBox(height: 24),
             _buildTextField(
+              context: context,
               label: context.l10n.goalName,
               hint: context.l10n.goalNameHint,
               controller: _nameController,
             ),
             const SizedBox(height: 20),
             _buildTextField(
+              context: context,
               label: context.l10n.currentAmountOptional,
               hint: context.l10n.currentAmountHint,
               keyboardType: TextInputType.number,
@@ -117,6 +122,7 @@ class _AnalyticsAddGoalPageState extends State<AnalyticsAddGoalPage> {
             ),
             const SizedBox(height: 20),
             _buildTextField(
+              context: context,
               label: context.l10n.targetAmount,
               hint: context.l10n.targetAmountHint,
               keyboardType: TextInputType.number,
@@ -136,21 +142,24 @@ class _AnalyticsAddGoalPageState extends State<AnalyticsAddGoalPage> {
   }
 
   Widget _buildTextField({
+    required BuildContext context,
     required String label,
     required String hint,
     TextInputType keyboardType = TextInputType.text,
     required TextEditingController controller,
     List<TextInputFormatter>? inputFormatters,
   }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
-            color: Colors.grey,
+            color: isDark ? Colors.grey.shade400 : Colors.grey,
           ),
         ),
         const SizedBox(height: 8),
@@ -158,10 +167,17 @@ class _AnalyticsAddGoalPageState extends State<AnalyticsAddGoalPage> {
           controller: controller,
           keyboardType: keyboardType,
           inputFormatters: inputFormatters,
+          style: TextStyle(
+            fontSize: 16,
+            color: isDark ? Colors.white : const Color(0xFF1E293B),
+          ),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: const TextStyle(color: Colors.grey),
+            hintStyle: TextStyle(
+              color: isDark ? Colors.grey.shade500 : Colors.grey,
+            ),
             filled: true,
+            fillColor: isDark ? const Color(0xFF1E293B) : Colors.white,
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 16,
@@ -172,7 +188,9 @@ class _AnalyticsAddGoalPageState extends State<AnalyticsAddGoalPage> {
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Colors.grey.shade200),
+              borderSide: BorderSide(
+                color: isDark ? Colors.grey.shade700 : Colors.grey.shade200,
+              ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),

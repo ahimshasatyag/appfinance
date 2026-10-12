@@ -62,6 +62,8 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
@@ -73,17 +75,32 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Center(
+              child: Container(
+                width: 40,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: isDark ? Colors.grey.shade700 : Colors.grey.shade300,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
             Text(
               context.l10n.filterAnalytics,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
+                color: isDark ? Colors.white : const Color(0xFF1E293B),
               ),
             ),
             const SizedBox(height: 24),
             Text(
               context.l10n.dateRange,
-              style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
+              ),
             ),
             const SizedBox(height: 12),
             Wrap(
@@ -94,9 +111,21 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
                 return ChoiceChip(
                   label: Text(_getDateRangeLabel(context, range)),
                   selected: isSelected,
-                  selectedColor: AppTheme.primaryColor.withOpacity(0.1),
+                  selectedColor: isDark
+                      ? AppTheme.primaryColor.withValues(alpha: 0.25)
+                      : AppTheme.primaryColor.withValues(alpha: 0.12),
+                  backgroundColor: isDark
+                      ? const Color(0xFF0F172A)
+                      : Colors.grey.shade100,
+                  side: BorderSide(
+                    color: isSelected
+                        ? AppTheme.primaryColor
+                        : (isDark ? Colors.grey.shade700 : Colors.grey.shade300),
+                  ),
                   labelStyle: TextStyle(
-                    color: isSelected ? AppTheme.primaryColor : Colors.black87,
+                    color: isSelected
+                        ? (isDark ? const Color(0xFF60A5FA) : AppTheme.primaryColor)
+                        : (isDark ? Colors.white : Colors.black87),
                     fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                   ),
                   onSelected: (selected) {
@@ -108,7 +137,10 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
             const SizedBox(height: 24),
             Text(
               context.l10n.account,
-              style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: isDark ? Colors.grey.shade400 : Colors.grey.shade600,
+              ),
             ),
             const SizedBox(height: 12),
             Wrap(
@@ -119,9 +151,21 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
                 return ChoiceChip(
                   label: Text(_getAccountLabel(context, account)),
                   selected: isSelected,
-                  selectedColor: AppTheme.primaryColor.withOpacity(0.1),
+                  selectedColor: isDark
+                      ? AppTheme.primaryColor.withValues(alpha: 0.25)
+                      : AppTheme.primaryColor.withValues(alpha: 0.12),
+                  backgroundColor: isDark
+                      ? const Color(0xFF0F172A)
+                      : Colors.grey.shade100,
+                  side: BorderSide(
+                    color: isSelected
+                        ? AppTheme.primaryColor
+                        : (isDark ? Colors.grey.shade700 : Colors.grey.shade300),
+                  ),
                   labelStyle: TextStyle(
-                    color: isSelected ? AppTheme.primaryColor : Colors.black87,
+                    color: isSelected
+                        ? (isDark ? const Color(0xFF60A5FA) : AppTheme.primaryColor)
+                        : (isDark ? Colors.white : Colors.black87),
                     fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                   ),
                   onSelected: (selected) {
@@ -152,10 +196,10 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
                 },
                 child: Text(
                   context.l10n.applyFilter,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).cardColor,
+                    color: Colors.white,
                   ),
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../app/config/l10n.dart';
+import '../../../notifications/presentation/pages/notification_center_page.dart';
 
 class DashboardHeader extends StatelessWidget {
   final String userName;
@@ -23,7 +24,7 @@ class DashboardHeader extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 userName,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -31,15 +32,25 @@ class DashboardHeader extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Icon(
-              Icons.notifications_none,
-              color: Colors.white,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const NotificationCenterPage(),
+                ),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.2),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Icon(
+                Icons.notifications_none,
+                color: Colors.white,
+              ),
             ),
           )
         ],

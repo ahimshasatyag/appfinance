@@ -89,22 +89,38 @@ class _AnalyticsAddUpcomingBillPageState extends State<AnalyticsAddUpcomingBillP
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: 0,
-        iconTheme: IconThemeData(color: Theme.of(context).appBarTheme.foregroundColor),
-        title: Text(context.l10n.addUpcomingBill, style: TextStyle(color: Theme.of(context).appBarTheme.foregroundColor, fontWeight: FontWeight.bold)),
+        iconTheme: IconThemeData(color: isDark ? Colors.white : const Color(0xFF1E293B)),
+        title: Text(
+          context.l10n.addUpcomingBill,
+          style: TextStyle(
+            color: isDark ? Colors.white : const Color(0xFF1E293B),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: _isInitializing ? const AnalyticsFormSkeleton() : SingleChildScrollView(
         padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(context.l10n.billDetails, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(
+              context.l10n.billDetails,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: isDark ? Colors.white : const Color(0xFF1E293B),
+              ),
+            ),
             const SizedBox(height: 24),
             _buildTextField(
+              context: context,
               label: context.l10n.description, 
               hint: context.l10n.descriptionHint, 
               controller: _descriptionController
@@ -113,7 +129,14 @@ class _AnalyticsAddUpcomingBillPageState extends State<AnalyticsAddUpcomingBillP
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(context.l10n.date, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.grey)),
+                Text(
+                  context.l10n.date,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.grey.shade400 : Colors.grey,
+                  ),
+                ),
                 const SizedBox(height: 8),
                 InkWell(
                   onTap: () => _selectDate(context),
@@ -121,9 +144,11 @@ class _AnalyticsAddUpcomingBillPageState extends State<AnalyticsAddUpcomingBillP
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
+                      color: isDark ? const Color(0xFF1E293B) : Colors.white,
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.grey.shade200),
+                      border: Border.all(
+                        color: isDark ? Colors.grey.shade700 : Colors.grey.shade200,
+                      ),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -133,11 +158,17 @@ class _AnalyticsAddUpcomingBillPageState extends State<AnalyticsAddUpcomingBillP
                               ? context.l10n.selectDate 
                               : DateFormat('dd MMM yyyy').format(_selectedDate!),
                           style: TextStyle(
-                            color: _selectedDate == null ? Colors.grey : Theme.of(context).textTheme.bodyLarge?.color,
+                            color: _selectedDate == null 
+                                ? (isDark ? Colors.grey.shade500 : Colors.grey)
+                                : (isDark ? Colors.white : const Color(0xFF1E293B)),
                             fontSize: 16,
                           ),
                         ),
-                        const Icon(Icons.calendar_today, color: Colors.grey, size: 20),
+                        Icon(
+                          Icons.calendar_today,
+                          color: isDark ? Colors.white70 : Colors.grey,
+                          size: 20,
+                        ),
                       ],
                     ),
                   ),
@@ -146,6 +177,7 @@ class _AnalyticsAddUpcomingBillPageState extends State<AnalyticsAddUpcomingBillP
             ),
             const SizedBox(height: 20),
             _buildTextField(
+              context: context,
               label: context.l10n.price, 
               hint: context.l10n.priceHint, 
               keyboardType: TextInputType.number, 
@@ -165,28 +197,50 @@ class _AnalyticsAddUpcomingBillPageState extends State<AnalyticsAddUpcomingBillP
   }
 
   Widget _buildTextField({
+    required BuildContext context,
     required String label, 
     required String hint, 
     TextInputType keyboardType = TextInputType.text, 
     required TextEditingController controller,
     List<TextInputFormatter>? inputFormatters,
   }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.grey)),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            color: isDark ? Colors.grey.shade400 : Colors.grey,
+          ),
+        ),
         const SizedBox(height: 8),
         TextField(
           controller: controller,
           keyboardType: keyboardType,
           inputFormatters: inputFormatters,
+          style: TextStyle(
+            fontSize: 16,
+            color: isDark ? Colors.white : const Color(0xFF1E293B),
+          ),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: const TextStyle(color: Colors.grey),
+            hintStyle: TextStyle(
+              color: isDark ? Colors.grey.shade500 : Colors.grey,
+            ),
             filled: true,
+            fillColor: isDark ? const Color(0xFF1E293B) : Colors.white,
             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-            enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: Colors.grey.shade200)),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: isDark ? Colors.grey.shade700 : Colors.grey.shade200,
+              ),
+            ),
             focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppTheme.primaryColor)),
           ),
         ),

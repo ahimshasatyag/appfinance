@@ -728,5 +728,138 @@
   "understand": "Understand",
   "@understand": {
     "description": "Tombol mengerti"
+  },
+  "notificationSettings": "Notification Settings",
+  "@notificationSettings": {
+    "description": "Judul halaman pengaturan notifikasi"
+  },
+  "notificationCenter": "Notification Center",
+  "@notificationCenter": {
+    "description": "Pusat notifikasi"
+  },
+  "quietModeSection": "QUIET MODE",
+  "@quietModeSection": {
+    "description": "Header bagian mode hening"
+  },
+  "doNotDisturb": "Do Not Disturb",
+  "@doNotDisturb": {
+    "description": "Opsi jangan ganggu"
+  },
+  "doNotDisturbSubtitle": "Mute all notification sounds, vibrations, and banners",
+  "@doNotDisturbSubtitle": {
+    "description": "Keterangan opsi jangan ganggu"
+  },
+  "dndEnabledSnackbar": "Do Not Disturb mode is enabled",
+  "@dndEnabledSnackbar": {
+    "description": "Pesan snackbar DND aktif"
+  },
+  "dndDisabledSnackbar": "Do Not Disturb mode is disabled",
+  "@dndDisabledSnackbar": {
+    "description": "Pesan snackbar DND nonaktif"
+  },
+  "quietScheduleTitle": "Automatic Quiet Hours Schedule",
+  "@quietScheduleTitle": {
+    "description": "Judul jadwal jam hening"
+  },
+  "quietScheduleSubtitle": "Notifications are muted from {startTime} to {endTime} every day.",
+  "@quietScheduleSubtitle": {
+    "description": "Keterangan jadwal jam hening",
+    "placeholders": {
+      "startTime": {
+        "type": "String"
+      },
+      "endTime": {
+        "type": "String"
+      }
+    }
+  },
+  "changeQuietHours": "Change Quiet Hours",
+  "@changeQuietHours": {
+    "description": "Tombol ubah jam hening"
+  },
+  "selectQuietStart": "SELECT QUIET START TIME",
+  "@selectQuietStart": {
+    "description": "Dialog pilih jam mulai hening"
+  },
+  "selectQuietEnd": "SELECT QUIET END TIME",
+  "@selectQuietEnd": {
+    "description": "Dialog pilih jam selesai hening"
+  },
+  "mainNotificationsSection": "MAIN NOTIFICATIONS",
+  "@mainNotificationsSection": {
+    "description": "Header notifikasi utama"
+  },
+  "allowAllNotifications": "Allow All Notifications",
+  "@allowAllNotifications": {
+    "description": "Izinkan semua notifikasi"
+  },
+  "allowAllNotificationsSubtitle": "Enable all reminders and system notifications",
+  "@allowAllNotificationsSubtitle": {
+    "description": "Keterangan izinkan semua notifikasi"
+  },
+  "alertCategoriesSection": "NOTIFICATION CATEGORIES",
+  "@alertCategoriesSection": {
+    "description": "Header kategori notifikasi"
+  },
+  "transactionsAndTransfers": "Transactions & Transfers",
+  "@transactionsAndTransfers": {
+    "description": "Transaksi & transfer"
+  },
+  "transactionsAndTransfersSubtitle": "Income alerts, QRIS & card payments",
+  "@transactionsAndTransfersSubtitle": {
+    "description": "Keterangan transaksi & transfer"
+  },
+  "billReminders": "Bill Reminders",
+  "@billReminders": {
+    "description": "Pengingat tagihan"
+  },
+  "billRemindersSubtitle": "Reminders before bills (electricity, internet, water) are due",
+  "@billRemindersSubtitle": {
+    "description": "Keterangan pengingat tagihan"
+  },
+  "budgetAlerts": "Budget Alerts",
+  "@budgetAlerts": {
+    "description": "Peringatan anggaran"
+  },
+  "budgetAlertsSubtitle": "Alerts when spending nears monthly limit",
+  "@budgetAlertsSubtitle": {
+    "description": "Keterangan peringatan anggaran"
+  },
+  "securityAndAccount": "Security & Account",
+  "@securityAndAccount": {
+    "description": "Keamanan & akun"
+  },
+  "securityAndAccountSubtitle": "New login detection, password changes & account verification",
+  "@securityAndAccountSubtitle": {
+    "description": "Keterangan keamanan & akun"
+  },
+  "promoAndCashback": "Promos & Cashback",
+  "@promoAndCashback": {
+    "description": "Promo & cashback"
+  },
+  "promoAndCashbackSubtitle": "Discount info, promo offers & cashback bonuses",
+  "@promoAndCashbackSubtitle": {
+    "description": "Keterangan promo & cashback"
+  },
+  "soundAndVibrationSection": "SOUND & VIBRATION",
+  "@soundAndVibrationSection": {
+    "description": "Header suara & getaran"
+  },
+  "notificationSound": "Notification Sound",
+  "@notificationSound": {
+    "description": "Suara notifikasi"
+  },
+  "notificationSoundSubtitle": "Play sound when a notification arrives",
+  "@notificationSoundSubtitle": {
+    "description": "Keterangan suara notifikasi"
+  },
+  "vibration": "Vibration",
+  "@vibration": {
+    "description": "Getaran"
+  },
+  "vibrationSubtitle": "Vibrate phone when notification is received",
+  "@vibrationSubtitle": {
+    "description": "Keterangan getaran"
   }
 }
+

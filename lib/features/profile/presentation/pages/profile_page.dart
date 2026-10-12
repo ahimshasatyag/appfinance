@@ -16,6 +16,8 @@ import 'language_settings_page.dart';
 import 'theme_settings_page.dart';
 import '../../../../app/config/l10n.dart';
 import '../../../../shared/theme/theme_cubit.dart';
+import '../cubit/notification_settings_cubit.dart';
+import 'notification_settings_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -79,8 +81,8 @@ class ProfileView extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           border: Border.all(
-                                            color: Colors.white.withOpacity(
-                                              0.5,
+                                            color: Colors.white.withValues(
+                                              alpha: 0.5,
                                             ),
                                             width: 2,
                                           ),
@@ -133,7 +135,7 @@ class ProfileView extends StatelessWidget {
                                 Text(
                                   profile.email,
                                   style: TextStyle(
-                                    color: Colors.white.withOpacity(0.7),
+                                    color: Colors.white.withValues(alpha: 0.7),
                                     fontSize: 14,
                                   ),
                                 ),
@@ -430,32 +432,63 @@ class ProfileView extends StatelessWidget {
                                   indent: 64,
                                   endIndent: 16,
                                 ),
-                                ProfileMenuItem(
-                                  icon: Icons.notifications,
-                                  title: context.l10n.notifications,
-                                  trailing: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        context.l10n.enabled,
-                                        style: TextStyle(
-                                          color: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium
-                                              ?.color
-                                              ?.withValues(alpha: 0.6),
-                                          fontSize: 12,
-                                        ),
+                                BlocBuilder<NotificationSettingsCubit,
+                                    NotificationSettingsState>(
+                                  builder: (context, notifState) {
+                                    String statusText;
+                                    if (notifState.isDoNotDisturb) {
+                                      statusText = context.l10n.doNotDisturb;
+                                    } else if (!notifState
+                                        .enableAllNotifications) {
+                                      statusText = context.l10n.disabled;
+                                    } else {
+                                      statusText = context.l10n.enabled;
+                                    }
+
+                                    return ProfileMenuItem(
+                                      icon: notifState.isDoNotDisturb
+                                          ? Icons.do_not_disturb_on_rounded
+                                          : Icons.notifications,
+                                      title: context.l10n.notifications,
+                                      trailing: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text(
+                                            statusText,
+                                            style: TextStyle(
+                                              color: notifState.isDoNotDisturb
+                                                  ? const Color(0xFF8B5CF6)
+                                                  : Theme.of(context)
+                                                      .textTheme
+                                                      .bodyMedium
+                                                      ?.color
+                                                      ?.withValues(alpha: 0.6),
+                                              fontSize: 12,
+                                              fontWeight:
+                                                  notifState.isDoNotDisturb
+                                                      ? FontWeight.bold
+                                                      : FontWeight.normal,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Icon(
+                                            Icons.chevron_right,
+                                            color: Colors.grey.shade400,
+                                            size: 20,
+                                          ),
+                                        ],
                                       ),
-                                      const SizedBox(width: 8),
-                                      Icon(
-                                        Icons.chevron_right,
-                                        color: Colors.grey.shade400,
-                                        size: 20,
-                                      ),
-                                    ],
-                                  ),
-                                  onTap: () {},
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (_) =>
+                                                const NotificationSettingsPage(),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
                                 ),
                               ],
                             ),

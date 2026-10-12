@@ -1123,6 +1123,192 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Understand'**
   String get understand;
+
+  /// Judul halaman pengaturan notifikasi
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Settings'**
+  String get notificationSettings;
+
+  /// Pusat notifikasi
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Center'**
+  String get notificationCenter;
+
+  /// Header bagian mode hening
+  ///
+  /// In en, this message translates to:
+  /// **'QUIET MODE'**
+  String get quietModeSection;
+
+  /// Opsi jangan ganggu
+  ///
+  /// In en, this message translates to:
+  /// **'Do Not Disturb'**
+  String get doNotDisturb;
+
+  /// Keterangan opsi jangan ganggu
+  ///
+  /// In en, this message translates to:
+  /// **'Mute all notification sounds, vibrations, and banners'**
+  String get doNotDisturbSubtitle;
+
+  /// Pesan snackbar DND aktif
+  ///
+  /// In en, this message translates to:
+  /// **'Do Not Disturb mode is enabled'**
+  String get dndEnabledSnackbar;
+
+  /// Pesan snackbar DND nonaktif
+  ///
+  /// In en, this message translates to:
+  /// **'Do Not Disturb mode is disabled'**
+  String get dndDisabledSnackbar;
+
+  /// Judul jadwal jam hening
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic Quiet Hours Schedule'**
+  String get quietScheduleTitle;
+
+  /// Keterangan jadwal jam hening
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications are muted from {startTime} to {endTime} every day.'**
+  String quietScheduleSubtitle(String startTime, String endTime);
+
+  /// Tombol ubah jam hening
+  ///
+  /// In en, this message translates to:
+  /// **'Change Quiet Hours'**
+  String get changeQuietHours;
+
+  /// Dialog pilih jam mulai hening
+  ///
+  /// In en, this message translates to:
+  /// **'SELECT QUIET START TIME'**
+  String get selectQuietStart;
+
+  /// Dialog pilih jam selesai hening
+  ///
+  /// In en, this message translates to:
+  /// **'SELECT QUIET END TIME'**
+  String get selectQuietEnd;
+
+  /// Header notifikasi utama
+  ///
+  /// In en, this message translates to:
+  /// **'MAIN NOTIFICATIONS'**
+  String get mainNotificationsSection;
+
+  /// Izinkan semua notifikasi
+  ///
+  /// In en, this message translates to:
+  /// **'Allow All Notifications'**
+  String get allowAllNotifications;
+
+  /// Keterangan izinkan semua notifikasi
+  ///
+  /// In en, this message translates to:
+  /// **'Enable all reminders and system notifications'**
+  String get allowAllNotificationsSubtitle;
+
+  /// Header kategori notifikasi
+  ///
+  /// In en, this message translates to:
+  /// **'NOTIFICATION CATEGORIES'**
+  String get alertCategoriesSection;
+
+  /// Transaksi & transfer
+  ///
+  /// In en, this message translates to:
+  /// **'Transactions & Transfers'**
+  String get transactionsAndTransfers;
+
+  /// Keterangan transaksi & transfer
+  ///
+  /// In en, this message translates to:
+  /// **'Income alerts, QRIS & card payments'**
+  String get transactionsAndTransfersSubtitle;
+
+  /// Pengingat tagihan
+  ///
+  /// In en, this message translates to:
+  /// **'Bill Reminders'**
+  String get billReminders;
+
+  /// Keterangan pengingat tagihan
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders before bills (electricity, internet, water) are due'**
+  String get billRemindersSubtitle;
+
+  /// Peringatan anggaran
+  ///
+  /// In en, this message translates to:
+  /// **'Budget Alerts'**
+  String get budgetAlerts;
+
+  /// Keterangan peringatan anggaran
+  ///
+  /// In en, this message translates to:
+  /// **'Alerts when spending nears monthly limit'**
+  String get budgetAlertsSubtitle;
+
+  /// Keamanan & akun
+  ///
+  /// In en, this message translates to:
+  /// **'Security & Account'**
+  String get securityAndAccount;
+
+  /// Keterangan keamanan & akun
+  ///
+  /// In en, this message translates to:
+  /// **'New login detection, password changes & account verification'**
+  String get securityAndAccountSubtitle;
+
+  /// Promo & cashback
+  ///
+  /// In en, this message translates to:
+  /// **'Promos & Cashback'**
+  String get promoAndCashback;
+
+  /// Keterangan promo & cashback
+  ///
+  /// In en, this message translates to:
+  /// **'Discount info, promo offers & cashback bonuses'**
+  String get promoAndCashbackSubtitle;
+
+  /// Header suara & getaran
+  ///
+  /// In en, this message translates to:
+  /// **'SOUND & VIBRATION'**
+  String get soundAndVibrationSection;
+
+  /// Suara notifikasi
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Sound'**
+  String get notificationSound;
+
+  /// Keterangan suara notifikasi
+  ///
+  /// In en, this message translates to:
+  /// **'Play sound when a notification arrives'**
+  String get notificationSoundSubtitle;
+
+  /// Getaran
+  ///
+  /// In en, this message translates to:
+  /// **'Vibration'**
+  String get vibration;
+
+  /// Keterangan getaran
+  ///
+  /// In en, this message translates to:
+  /// **'Vibrate phone when notification is received'**
+  String get vibrationSubtitle;
 }
 
 class _AppLocalizationsDelegate

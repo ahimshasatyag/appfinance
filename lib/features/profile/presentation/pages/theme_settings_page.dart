@@ -126,8 +126,8 @@ class ThemeSettingsPage extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: isSelected 
-                    ? AppTheme.primaryColor.withOpacity(0.1) 
-                    : (isDarkMode ? Colors.white.withOpacity(0.05) : Colors.grey.shade50),
+                    ? AppTheme.primaryColor.withValues(alpha: 0.1) 
+                    : (isDarkMode ? Colors.white.withValues(alpha: 0.05) : Colors.grey.shade50),
                 shape: BoxShape.circle,
               ),
               child: Icon(
