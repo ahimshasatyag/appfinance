@@ -3,12 +3,30 @@ import 'package:intl/intl.dart';
 import '../../domain/entities/wallet_entity.dart';
 import '../../../../shared/theme/app_theme.dart';
 import '../../../../shared/widgets/widgets.dart';
+import '../../../../app/config/l10n.dart';
 import '../pages/wallet_detail_page.dart';
 
 class WalletDetailSheet extends StatelessWidget {
   final WalletEntity wallet;
 
   const WalletDetailSheet({super.key, required this.wallet});
+
+  String _getTypeDisplayName(BuildContext context, String type) {
+    switch (type) {
+      case 'Bank Account':
+        return context.l10n.bankAccount;
+      case 'E-Wallet':
+        return context.l10n.eWallet;
+      case 'Cash':
+        return context.l10n.cash;
+      case 'Credit Card':
+        return context.l10n.creditCard;
+      case 'Investment':
+        return context.l10n.investment;
+      default:
+        return type;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +35,7 @@ class WalletDetailSheet extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
+        borderRadius: const BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
       ),
       child: SafeArea(
         child: Column(
@@ -28,31 +46,33 @@ class WalletDetailSheet extends StatelessWidget {
             const SizedBox(height: 24),
             Text(wallet.name, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             if (wallet.accountNumber.isNotEmpty)
-              Text('${wallet.type} • ${wallet.accountNumber}', style: const TextStyle(fontSize: 14, color: Colors.grey)),
+              Text('${_getTypeDisplayName(context, wallet.type)} • ${wallet.accountNumber}', style: const TextStyle(fontSize: 14, color: Colors.grey)),
             const SizedBox(height: 16),
             Text(currencyFormatter.format(wallet.balance), style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: AppTheme.primaryColor)),
             const SizedBox(height: 32),
-            _buildActionItem(context, Icons.info_outline, 'View Details', () {
+            _buildActionItem(context, Icons.info_outline, context.l10n.viewDetails, () {
               Navigator.pop(context);
               Navigator.push(context, MaterialPageRoute(builder: (_) => WalletDetailPage(walletId: wallet.id)));
             }),
             _buildActionItem(
               context, 
               Icons.delete_outline, 
-              'Delete Wallet', 
+              context.l10n.deleteWallet, 
               () {
                 Navigator.pop(context); // Close the bottom sheet first
                 CustomDialog.showWarning(
                   context,
-                  title: 'Delete Wallet',
-                  message: 'Are you sure you want to delete this wallet? This action cannot be undone.',
-                  confirmText: 'Delete',
+                  title: context.l10n.deleteWallet,
+                  message: context.l10n.deleteWalletConfirmation,
+                  confirmText: context.l10n.delete,
+                  cancelText: context.l10n.cancel,
                   onConfirm: () {
                     // Logic to delete wallet
                     CustomDialog.showSuccess(
                       context,
-                      title: 'Deleted',
-                      message: 'Wallet has been deleted successfully.',
+                      title: context.l10n.deleted,
+                      message: context.l10n.walletDeletedSuccess,
+                      confirmText: context.l10n.ok,
                     );
                   },
                 );

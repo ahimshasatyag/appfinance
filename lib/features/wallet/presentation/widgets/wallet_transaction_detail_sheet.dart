@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../domain/entities/wallet_entity.dart';
-import '../pages/receipt_viewer_page.dart';
+import '../../../../app/config/l10n.dart';
 
 class WalletTransactionDetailSheet extends StatelessWidget {
   final WalletTransactionEntity transaction;
   final WalletEntity wallet;
 
   const WalletTransactionDetailSheet({super.key, required this.transaction, required this.wallet});
+
+  String _getTransactionTypeName(BuildContext context, String type) {
+    switch (type) {
+      case 'Income':
+        return context.l10n.income;
+      case 'Expense':
+        return context.l10n.expenses;
+      case 'Transfer':
+        return context.l10n.transfer;
+      default:
+        return type;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +52,7 @@ class WalletTransactionDetailSheet extends StatelessWidget {
                   children: [
                     Text(transaction.merchant, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w900)),
                     const SizedBox(height: 4),
-                    Text(transaction.type, style: TextStyle(fontSize: 14, color: isExpense ? Colors.redAccent : Colors.green, fontWeight: FontWeight.bold)),
+                    Text(_getTransactionTypeName(context, transaction.type), style: TextStyle(fontSize: 14, color: isExpense ? Colors.redAccent : Colors.green, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 12),
                     Text(amountText, style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 8),
@@ -49,18 +62,18 @@ class WalletTransactionDetailSheet extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               
-              const Text('Transaction Information', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              Text(context.l10n.transactionInformation, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               const SizedBox(height: 16),
-              _buildInfoRow('Wallet', '${wallet.name} ${wallet.accountNumber.isNotEmpty ? '•••• ' + wallet.accountNumber.substring(wallet.accountNumber.length > 4 ? wallet.accountNumber.length - 4 : 0) : ''}'),
-              _buildInfoRow('Category', transaction.category),
-              _buildInfoRow('Merchant', transaction.merchant),
-              _buildInfoRow('Payment Method', transaction.paymentMethod),
-              _buildInfoRow('Transaction ID', transaction.id),
-              _buildInfoRow('Date', dateFormatter.format(transaction.date)),
-              _buildInfoRow('Time', timeFormatter.format(transaction.date)),
+              _buildInfoRow(context.l10n.navWallet, '${wallet.name} ${wallet.accountNumber.isNotEmpty ? '•••• ' + wallet.accountNumber.substring(wallet.accountNumber.length > 4 ? wallet.accountNumber.length - 4 : 0) : ''}'),
+              _buildInfoRow(context.l10n.category, transaction.category),
+              _buildInfoRow(context.l10n.merchant, transaction.merchant),
+              _buildInfoRow(context.l10n.paymentMethod, transaction.paymentMethod),
+              _buildInfoRow(context.l10n.transactionId, transaction.id),
+              _buildInfoRow(context.l10n.date, dateFormatter.format(transaction.date)),
+              _buildInfoRow(context.l10n.time, timeFormatter.format(transaction.date)),
               if (transaction.notes.isNotEmpty) ...[
                 const SizedBox(height: 12),
-                const Text('Notes', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                Text(context.l10n.notes, style: const TextStyle(fontSize: 12, color: Colors.grey)),
                 const SizedBox(height: 4),
                 Text(transaction.notes, style: const TextStyle(fontSize: 14)),
               ],

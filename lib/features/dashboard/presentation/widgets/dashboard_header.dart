@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../app/config/l10n.dart';
 
 class DashboardHeader extends StatelessWidget {
   final String userName;
@@ -15,9 +16,9 @@ class DashboardHeader extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Good afternoon',
-                style: TextStyle(color: Colors.white70, fontSize: 14),
+              Text(
+                context.l10n.goodAfternoon,
+                style: const TextStyle(color: Colors.white70, fontSize: 14),
               ),
               const SizedBox(height: 4),
               Text(

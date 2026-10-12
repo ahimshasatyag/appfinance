@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../domain/entities/wallet_entity.dart';
+import '../../../../app/config/l10n.dart';
 import 'wallet_transaction_item.dart';
 
 class WalletTransactionList extends StatelessWidget {
@@ -12,16 +13,16 @@ class WalletTransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (transactions.isEmpty) {
-      return const Center(
+      return Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 40.0),
+          padding: const EdgeInsets.symmetric(vertical: 40.0),
           child: Column(
             children: [
-              Icon(Icons.receipt_long, size: 48, color: Colors.grey),
-              SizedBox(height: 16),
-              Text('No Transactions Yet', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-              SizedBox(height: 8),
-              Text('Transactions made with this wallet will appear here.', style: TextStyle(color: Colors.grey, fontSize: 12)),
+              const Icon(Icons.receipt_long, size: 48, color: Colors.grey),
+              const SizedBox(height: 16),
+              Text(context.l10n.noTransactionsYet, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+              const SizedBox(height: 8),
+              Text(context.l10n.noTransactionsDescription, style: const TextStyle(color: Colors.grey, fontSize: 12)),
             ],
           ),
         ),
@@ -38,9 +39,9 @@ class WalletTransactionList extends StatelessWidget {
       final dateStr = DateFormat('yyyy-MM-dd').format(t.date);
       String key;
       if (dateStr == todayStr) {
-        key = 'TODAY';
+        key = context.l10n.today.toUpperCase();
       } else if (dateStr == yesterdayStr) {
-        key = 'YESTERDAY';
+        key = context.l10n.yesterday.toUpperCase();
       } else {
         key = DateFormat('dd MMM yyyy').format(t.date).toUpperCase();
       }

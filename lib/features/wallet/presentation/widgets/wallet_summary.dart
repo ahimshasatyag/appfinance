@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../domain/entities/wallet_entity.dart';
+import '../../../../app/config/l10n.dart';
 
 class WalletSummary extends StatelessWidget {
   final WalletSummaryEntity summary;
@@ -14,15 +15,15 @@ class WalletSummary extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: _buildSummaryItem(context, 'Total Assets', currencyFormatter.format(summary.totalAssets), Colors.blue),
+          child: _buildSummaryItem(context, context.l10n.totalAssets, currencyFormatter.format(summary.totalAssets), Colors.blue),
         ),
         const SizedBox(width: 12),
         Expanded(
-          child: _buildSummaryItem(context, 'Total Debt', currencyFormatter.format(summary.totalDebt), Colors.redAccent),
+          child: _buildSummaryItem(context, context.l10n.totalDebt, currencyFormatter.format(summary.totalDebt), Colors.redAccent),
         ),
         const SizedBox(width: 12),
         Expanded(
-          child: _buildSummaryItem(context, 'Net Worth', currencyFormatter.format(summary.netWorth), Colors.green),
+          child: _buildSummaryItem(context, context.l10n.netWorth, currencyFormatter.format(summary.netWorth), Colors.green),
         ),
       ],
     );

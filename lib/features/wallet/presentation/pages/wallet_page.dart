@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../app/config/l10n.dart';
 import '../bloc/wallet_bloc.dart';
 import '../bloc/wallet_event.dart';
 import '../bloc/wallet_state.dart';
@@ -46,7 +47,7 @@ class WalletView extends StatelessWidget {
         },
         backgroundColor: AppTheme.primaryColor,
         icon: const Icon(Icons.add, color: Colors.white),
-        label: const Text('Add Wallet', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+        label: Text(context.l10n.addWallet, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
       ),
       body: SafeArea(
         child: BlocBuilder<WalletBloc, WalletState>(

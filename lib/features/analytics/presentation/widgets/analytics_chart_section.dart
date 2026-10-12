@@ -3,6 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 import '../../domain/entities/analytics_entity.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../app/config/l10n.dart';
 import '../pages/analytics_add_goal_page.dart';
 import '../pages/analytics_edit_goal_page.dart';
 
@@ -16,37 +17,37 @@ class AnalyticsChartSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildSectionTitle('Income vs Expense'),
+        _buildSectionTitle(context.l10n.incomeVsExpense),
         const SizedBox(height: 16),
         _buildIncomeExpenseLineChart(context),
         const SizedBox(height: 32),
         
-        _buildSectionTitle('Expense Breakdown'),
+        _buildSectionTitle(context.l10n.expenseBreakdown),
         const SizedBox(height: 16),
         _buildExpenseDonutChart(context),
         const SizedBox(height: 32),
         
-        _buildSectionTitle('Income Sources'),
+        _buildSectionTitle(context.l10n.incomeSources),
         const SizedBox(height: 16),
         _buildIncomeDonutChart(context),
         const SizedBox(height: 32),
         
-        _buildSectionTitle('Monthly Comparison'),
+        _buildSectionTitle(context.l10n.monthlyComparison),
         const SizedBox(height: 16),
         _buildMonthlyBarChart(context),
         const SizedBox(height: 32),
         
-        _buildSectionTitle('Cash Flow Analysis'),
+        _buildSectionTitle(context.l10n.cashFlowAnalysis),
         const SizedBox(height: 16),
         _buildCashFlowLineChart(context),
         const SizedBox(height: 32),
         
-        _buildSectionTitle('Financial Insights'),
+        _buildSectionTitle(context.l10n.financialInsights),
         const SizedBox(height: 16),
-        _buildInsights(),
+        _buildInsights(context),
         const SizedBox(height: 32),
         
-        _buildSectionTitle('Savings & Goals'),
+        _buildSectionTitle(context.l10n.savingsAndGoals),
         const SizedBox(height: 16),
         _buildSavingsAnalysis(context),
       ],
@@ -139,7 +140,7 @@ class AnalyticsChartSection extends StatelessWidget {
     return _buildDonutChartCore(
       context,
       items: data.expenseBreakdown.map((e) => _DonutData(e.categoryName, e.percentage, e.amount, e.colorHex)).toList(),
-      centerText: 'Total Expense',
+      centerText: context.l10n.totalExpense,
     );
   }
   
@@ -147,7 +148,7 @@ class AnalyticsChartSection extends StatelessWidget {
     return _buildDonutChartCore(
       context,
       items: data.incomeSources.map((e) => _DonutData(e.sourceName, e.percentage, e.amount, e.colorHex)).toList(),
-      centerText: 'Total Income',
+      centerText: context.l10n.totalIncome,
     );
   }
 
@@ -363,7 +364,7 @@ class AnalyticsChartSection extends StatelessWidget {
     );
   }
 
-  Widget _buildInsights() {
+  Widget _buildInsights(BuildContext context) {
     final currencyFormatter = NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 0);
     return Container(
       padding: const EdgeInsets.all(16),
@@ -377,29 +378,29 @@ class AnalyticsChartSection extends StatelessWidget {
           _buildInsightItem(
             icon: Icons.lightbulb,
             color: Colors.amber,
-            title: 'Your spending decreased by ${data.insights.spendingChangePercentage.abs()}%',
-            subtitle: 'You spent ${currencyFormatter.format(data.insights.spendingDifference)} less than last month.',
+            title: context.l10n.spendingDecreased(data.insights.spendingChangePercentage.abs().toString()),
+            subtitle: context.l10n.spendingDecreasedSubtitle(currencyFormatter.format(data.insights.spendingDifference)),
           ),
           const SizedBox(height: 12),
           _buildInsightItem(
             icon: Icons.trending_up,
             color: Colors.green,
-            title: 'Income is growing',
-            subtitle: 'Your income increased by ${data.insights.incomeChangePercentage}% compared to last month.',
+            title: context.l10n.incomeGrowing,
+            subtitle: context.l10n.incomeGrowingSubtitle(data.insights.incomeChangePercentage.toString()),
           ),
           const SizedBox(height: 12),
           _buildInsightItem(
             icon: Icons.warning_amber_rounded,
             color: Colors.orange,
-            title: '${data.insights.topExpenseCategory} spending is high',
-            subtitle: 'It represents ${data.insights.topExpensePercentage}% of your monthly expenses.',
+            title: context.l10n.spendingHigh(data.insights.topExpenseCategory),
+            subtitle: context.l10n.spendingHighSubtitle(data.insights.topExpensePercentage.toString()),
           ),
           const SizedBox(height: 12),
           _buildInsightItem(
             icon: Icons.track_changes,
             color: AppTheme.primaryColor,
-            title: 'You\'re on track',
-            subtitle: 'You saved ${data.insights.savingsRate}% of your total income this month.',
+            title: context.l10n.onTrack,
+            subtitle: context.l10n.onTrackSubtitle(data.insights.savingsRate.toString()),
           ),
         ],
       ),
@@ -453,14 +454,14 @@ class AnalyticsChartSection extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Monthly Savings', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                  Text(context.l10n.monthlySavings, style: const TextStyle(fontSize: 12, color: Colors.grey)),
                   Text(currencyFormatter.format(data.savingsAnalysis.monthlySavings), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 ],
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Text('Savings Rate', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                  Text(context.l10n.savingsRate, style: const TextStyle(fontSize: 12, color: Colors.grey)),
                   Text('${data.savingsAnalysis.savingsRate}%', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.green)),
                 ],
               ),
@@ -472,7 +473,7 @@ class AnalyticsChartSection extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Text('Financial Goals', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                  Text(context.l10n.financialGoals, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
                   const SizedBox(width: 8),
                   InkWell(
                     onTap: () {
@@ -491,7 +492,7 @@ class AnalyticsChartSection extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                  child: const Text('See all', style: TextStyle(fontSize: 12, color: AppTheme.primaryColor, fontWeight: FontWeight.bold)),
+                  child: Text(context.l10n.seeAll, style: const TextStyle(fontSize: 12, color: AppTheme.primaryColor, fontWeight: FontWeight.bold)),
                 ),
               ),
             ],
@@ -561,7 +562,7 @@ class AnalyticsChartSection extends StatelessWidget {
               const SizedBox(height: 12),
               Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2))),
               const SizedBox(height: 16),
-              const Text('All Financial Goals', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text(context.l10n.allFinancialGoals, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 16),
               Expanded(
                 child: ListView.builder(

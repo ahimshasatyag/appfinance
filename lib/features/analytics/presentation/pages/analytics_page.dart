@@ -16,6 +16,7 @@ import '../../domain/entities/analytics_entity.dart';
 import '../../domain/usecases/get_analytics_data_usecase.dart';
 import '../../data/repositories/analytics_repository_impl.dart';
 import '../../data/datasources/analytics_remote_datasource.dart';
+import '../../../../app/config/l10n.dart';
 
 class AnalyticsPage extends StatelessWidget {
   const AnalyticsPage({super.key});
@@ -107,7 +108,7 @@ class _AnalyticsViewState extends State<AnalyticsView> {
       physics: const NeverScrollableScrollPhysics(),
       children: [
         AnalyticsCardSummary(
-          title: 'Total Balance',
+          title: context.l10n.totalBalance,
           amount: currencyFormatter.format(data.totalBalance),
           percentageChange: data.balanceChangePercentage,
           icon: Icons.account_balance_wallet,
@@ -115,7 +116,7 @@ class _AnalyticsViewState extends State<AnalyticsView> {
           iconBackgroundColor: AppTheme.primaryColor.withOpacity(0.1),
         ),
         AnalyticsCardSummary(
-          title: 'Total Income',
+          title: context.l10n.totalIncome,
           amount: currencyFormatter.format(data.totalIncome),
           percentageChange: data.incomeChangePercentage,
           icon: Icons.arrow_downward,
@@ -123,7 +124,7 @@ class _AnalyticsViewState extends State<AnalyticsView> {
           iconBackgroundColor: Colors.green.withOpacity(0.1),
         ),
         AnalyticsCardSummary(
-          title: 'Total Expense',
+          title: context.l10n.totalExpense,
           amount: currencyFormatter.format(data.totalExpense),
           percentageChange: data.expenseChangePercentage,
           icon: Icons.arrow_upward,
@@ -131,7 +132,7 @@ class _AnalyticsViewState extends State<AnalyticsView> {
           iconBackgroundColor: Colors.redAccent.withOpacity(0.1),
         ),
         AnalyticsCardSummary(
-          title: 'Net Cash Flow',
+          title: context.l10n.netCashFlow,
           amount: currencyFormatter.format(data.netCashFlow),
           percentageChange: data.netCashFlowChangePercentage,
           icon: Icons.swap_vert,

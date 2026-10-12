@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../app/config/l10n.dart';
 import '../../domain/entities/wallet_entity.dart';
 import '../../domain/usecases/get_wallet_data_usecase.dart';
 import '../../data/repositories/wallet_repository_impl.dart';
@@ -69,7 +70,7 @@ class _WalletDetailPageState extends State<WalletDetailPage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text('Transaction History', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(context.l10n.recentTransactions, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             Row(
               children: [
                 IconButton(icon: const Icon(Icons.search, color: Colors.grey), onPressed: () {}),

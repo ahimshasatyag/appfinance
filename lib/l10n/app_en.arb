@@ -1,0 +1,732 @@
+{
+  "@@locale": "en",
+  "appTitle": "App Finance",
+  "@appTitle": {
+    "description": "Judul aplikasi"
+  },
+  
+  "navHome": "Home",
+  "@navHome": {
+    "description": "Label navigasi Beranda"
+  },
+  "navAnalytics": "Analytics",
+  "@navAnalytics": {
+    "description": "Label navigasi Analisis"
+  },
+  "navWallet": "Wallet",
+  "@navWallet": {
+    "description": "Label navigasi Dompet"
+  },
+  "navProfile": "Profile",
+  "@navProfile": {
+    "description": "Label navigasi Profil"
+  },
+
+  "totalBalance": "Total Balance",
+  "@totalBalance": {
+    "description": "Label total saldo di dashboard"
+  },
+  "income": "Income",
+  "@income": {
+    "description": "Label pemasukan"
+  },
+  "expenses": "Expenses",
+  "@expenses": {
+    "description": "Label pengeluaran"
+  },
+  "recentTransactions": "Recent Transactions",
+  "@recentTransactions": {
+    "description": "Label transaksi terbaru"
+  },
+  "seeAll": "See All",
+  "@seeAll": {
+    "description": "Tombol lihat semua"
+  },
+  "noTransactions": "No transactions yet",
+  "@noTransactions": {
+    "description": "Teks saat belum ada transaksi"
+  },
+
+  "welcomeBack": "Welcome Back",
+  "@welcomeBack": {
+    "description": "Pesan selamat datang di auth"
+  },
+  "login": "Login",
+  "@login": {
+    "description": "Tombol login"
+  },
+  "email": "Email",
+  "@email": {
+    "description": "Label input email"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Label input kata sandi"
+  },
+  "signOut": "Sign Out",
+  "@signOut": {
+    "description": "Tombol keluar"
+  },
+  "signOutConfirmation": "Are you sure you want to sign out?",
+  "@signOutConfirmation": {
+    "description": "Pesan konfirmasi keluar akun"
+  },
+
+  "personalDetails": "Personal Details",
+  "@personalDetails": {
+    "description": "Judul bagian detail pribadi"
+  },
+  "personalDetailsSubtitle": "Keep your information up to date",
+  "@personalDetailsSubtitle": {
+    "description": "Subjudul bagian detail pribadi"
+  },
+  "fullName": "Full Name",
+  "@fullName": {
+    "description": "Label nama lengkap"
+  },
+  "phone": "Phone",
+  "@phone": {
+    "description": "Label nomor telepon"
+  },
+  "verified": "Verified",
+  "@verified": {
+    "description": "Status email/nomor terverifikasi"
+  },
+  "editDetails": "Edit Details",
+  "@editDetails": {
+    "description": "Tombol edit detail profil"
+  },
+
+  "generalSettings": "General Settings",
+  "@generalSettings": {
+    "description": "Judul pengaturan umum"
+  },
+  "generalSettingsSubtitle": "Your preferences and app settings",
+  "@generalSettingsSubtitle": {
+    "description": "Subjudul pengaturan umum"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Menu pengaturan bahasa"
+  },
+  "languageSettings": "Language Settings",
+  "@languageSettings": {
+    "description": "Judul halaman pengaturan bahasa"
+  },
+  "chooseLanguageSubtitle": "Select your preferred language for the app",
+  "@chooseLanguageSubtitle": {
+    "description": "Keterangan pemilihan bahasa"
+  },
+  "selectLanguage": "Select Language",
+  "@selectLanguage": {
+    "description": "Judul dialog/halaman pilih bahasa"
+  },
+  "indonesian": "Indonesian",
+  "@indonesian": {
+    "description": "Nama bahasa Indonesia"
+  },
+  "english": "English",
+  "@english": {
+    "description": "Nama bahasa Inggris"
+  },
+
+  "theme": "Theme",
+  "@theme": {
+    "description": "Menu pengaturan tema"
+  },
+  "themeSettings": "Theme Settings",
+  "@themeSettings": {
+    "description": "Judul halaman pengaturan tema"
+  },
+  "appearance": "Appearance",
+  "@appearance": {
+    "description": "Bagian tampilan tema"
+  },
+  "lightMode": "Light Mode",
+  "@lightMode": {
+    "description": "Opsi mode terang"
+  },
+  "lightModeSubtitle": "Bright and clean look",
+  "@lightModeSubtitle": {
+    "description": "Keterangan mode terang"
+  },
+  "darkMode": "Dark Mode",
+  "@darkMode": {
+    "description": "Opsi mode gelap"
+  },
+  "darkModeSubtitle": "Easy on the eyes",
+  "@darkModeSubtitle": {
+    "description": "Keterangan mode gelap"
+  },
+  "systemDefault": "System Default",
+  "@systemDefault": {
+    "description": "Opsi mengikuti sistem"
+  },
+  "systemDefaultSubtitle": "Follows your phone settings",
+  "@systemDefaultSubtitle": {
+    "description": "Keterangan opsi mengikuti sistem"
+  },
+  "notifications": "Notifications",
+  "@notifications": {
+    "description": "Menu pengaturan notifikasi"
+  },
+
+  "enabled": "Enabled",
+  "@enabled": {
+    "description": "Status aktif"
+  },
+  "disabled": "Disabled",
+  "@disabled": {
+    "description": "Status tidak aktif"
+  },
+
+  "success": "Success",
+  "@success": {
+    "description": "Judul dialog sukses"
+  },
+  "save": "Save",
+  "@save": {
+    "description": "Tombol simpan"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Tombol batal"
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Tombol hapus"
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "Tombol ubah"
+  },
+  "retry": "Retry",
+  "@retry": {
+    "description": "Tombol coba lagi"
+  },
+  "loading": "Loading...",
+  "@loading": {
+    "description": "Teks saat memuat"
+  },
+
+  "addWallet": "Add Wallet",
+  "@addWallet": {
+    "description": "Tombol tambah dompet"
+  },
+  "walletInformation": "Wallet Information",
+  "@walletInformation": {
+    "description": "Informasi dompet"
+  },
+  "walletName": "Wallet Name",
+  "@walletName": {
+    "description": "Nama dompet"
+  },
+  "walletNameHint": "e.g. Main Bank Account",
+  "@walletNameHint": {
+    "description": "Contoh nama dompet"
+  },
+  "walletType": "Wallet Type",
+  "@walletType": {
+    "description": "Tipe dompet"
+  },
+  "selectType": "Select Type",
+  "@selectType": {
+    "description": "Pilih tipe"
+  },
+  "bankAccount": "Bank Account",
+  "@bankAccount": {
+    "description": "Rekening bank"
+  },
+  "eWallet": "E-Wallet",
+  "@eWallet": {
+    "description": "Dompet elektronik"
+  },
+  "cash": "Cash",
+  "@cash": {
+    "description": "Uang tunai"
+  },
+  "creditCard": "Credit Card",
+  "@creditCard": {
+    "description": "Kartu kredit"
+  },
+  "investment": "Investment",
+  "@investment": {
+    "description": "Investasi"
+  },
+  "accountNumber": "Account Number",
+  "@accountNumber": {
+    "description": "Nomor rekening"
+  },
+  "cardNumber": "Card Number",
+  "@cardNumber": {
+    "description": "Nomor kartu"
+  },
+  "validThru": "Valid Thru",
+  "@validThru": {
+    "description": "Masa berlaku"
+  },
+  "cvv": "CVV",
+  "@cvv": {
+    "description": "CVV"
+  },
+  "saveWallet": "Save Wallet",
+  "@saveWallet": {
+    "description": "Simpan dompet"
+  },
+  "walletAddedSuccess": "Wallet has been added successfully",
+  "@walletAddedSuccess": {
+    "description": "Pesan sukses tambah dompet"
+  },
+  "allTransactions": "All Transactions",
+  "@allTransactions": {
+    "description": "Semua transaksi"
+  },
+  "myWallets": "My Wallets",
+  "@myWallets": {
+    "description": "Dompet saya"
+  },
+
+  "totalIncome": "Total Income",
+  "@totalIncome": {
+    "description": "Total pemasukan"
+  },
+  "totalExpense": "Total Expense",
+  "@totalExpense": {
+    "description": "Total pengeluaran"
+  },
+  "netCashFlow": "Net Cash Flow",
+  "@netCashFlow": {
+    "description": "Arus kas bersih"
+  },
+  "addFinancialGoal": "Add Financial Goal",
+  "@addFinancialGoal": {
+    "description": "Tambah target keuangan"
+  },
+  "editFinancialGoal": "Edit Financial Goal",
+  "@editFinancialGoal": {
+    "description": "Ubah target keuangan"
+  },
+  "goalDetails": "Goal Details",
+  "@goalDetails": {
+    "description": "Detail target"
+  },
+  "goalName": "Goal Name",
+  "@goalName": {
+    "description": "Nama target"
+  },
+  "goalNameHint": "e.g. New Car, Vacation",
+  "@goalNameHint": {
+    "description": "Contoh nama target"
+  },
+  "currentAmountOptional": "Current Amount (Optional)",
+  "@currentAmountOptional": {
+    "description": "Jumlah saat ini opsional"
+  },
+  "targetAmount": "Target Amount",
+  "@targetAmount": {
+    "description": "Jumlah target"
+  },
+  "saveGoal": "Save Goal",
+  "@saveGoal": {
+    "description": "Simpan target"
+  },
+  "updateGoal": "Update Goal",
+  "@updateGoal": {
+    "description": "Perbarui target"
+  },
+  "goalAddedSuccess": "Financial Goal has been added successfully",
+  "@goalAddedSuccess": {
+    "description": "Pesan sukses tambah target"
+  },
+  "goalUpdatedSuccess": "Financial Goal has been updated successfully",
+  "@goalUpdatedSuccess": {
+    "description": "Pesan sukses update target"
+  },
+  "addUpcomingBill": "Add Upcoming Bill",
+  "@addUpcomingBill": {
+    "description": "Tambah tagihan mendatang"
+  },
+  "billDetails": "Bill Details",
+  "@billDetails": {
+    "description": "Detail tagihan"
+  },
+  "description": "Description",
+  "@description": {
+    "description": "Deskripsi"
+  },
+  "descriptionHint": "e.g. Netflix Subscription, Rent",
+  "@descriptionHint": {
+    "description": "Contoh deskripsi tagihan"
+  },
+  "date": "Date",
+  "@date": {
+    "description": "Tanggal"
+  },
+  "selectDate": "Select Date",
+  "@selectDate": {
+    "description": "Pilih tanggal"
+  },
+  "price": "Price",
+  "@price": {
+    "description": "Harga / Jumlah tagihan"
+  },
+  "saveBill": "Save Bill",
+  "@saveBill": {
+    "description": "Simpan tagihan"
+  },
+  "billAddedSuccess": "Upcoming Bill has been added successfully",
+  "@billAddedSuccess": {
+    "description": "Pesan sukses tambah tagihan"
+  },
+  "pleaseFillRequiredFields": "Please fill all required fields",
+  "@pleaseFillRequiredFields": {
+    "description": "Pesan validasi form belum lengkap"
+  },
+  "financialGoals": "Financial Goals",
+  "@financialGoals": {
+    "description": "Target keuangan"
+  },
+  "upcomingBills": "Upcoming Bills",
+  "@upcomingBills": {
+    "description": "Tagihan mendatang"
+  },
+  "allUpcomingBills": "All Upcoming Bills",
+  "@allUpcomingBills": {
+    "description": "Semua tagihan mendatang"
+  },
+  "allFinancialGoals": "All Financial Goals",
+  "@allFinancialGoals": {
+    "description": "Semua target keuangan"
+  },
+  "goodAfternoon": "Good afternoon",
+  "@goodAfternoon": {
+    "description": "Salam selamat siang"
+  },
+  "incomeThisMonth": "income this month",
+  "@incomeThisMonth": {
+    "description": "Pemasukan bulan ini"
+  },
+  "expenseThisMonth": "expense this month",
+  "@expenseThisMonth": {
+    "description": "Pengeluaran bulan ini"
+  },
+  "thisMonth": "This Month",
+  "@thisMonth": {
+    "description": "Bulan ini"
+  },
+  "totalAssets": "Total Assets",
+  "@totalAssets": {
+    "description": "Total aset"
+  },
+  "totalDebt": "Total Debt",
+  "@totalDebt": {
+    "description": "Total hutang"
+  },
+  "netWorth": "Net Worth",
+  "@netWorth": {
+    "description": "Kekayaan bersih"
+  },
+  "balanceDistribution": "Balance Distribution",
+  "@balanceDistribution": {
+    "description": "Distribusi saldo"
+  },
+  "noData": "No data",
+  "@noData": {
+    "description": "Tidak ada data"
+  },
+  "walletsCount": "wallets",
+  "@walletsCount": {
+    "description": "Jumlah dompet"
+  },
+  "transfer": "Transfer",
+  "@transfer": {
+    "description": "Transfer"
+  },
+  "transactions": "Transactions",
+  "@transactions": {
+    "description": "Transaksi"
+  },
+  "netFlow": "Net Flow",
+  "@netFlow": {
+    "description": "Arus bersih"
+  },
+  "today": "Today",
+  "@today": {
+    "description": "Hari ini"
+  },
+  "yesterday": "Yesterday",
+  "@yesterday": {
+    "description": "Kemarin"
+  },
+  "noTransactionsYet": "No Transactions Yet",
+  "@noTransactionsYet": {
+    "description": "Belum ada transaksi"
+  },
+  "noTransactionsDescription": "Transactions made with this wallet will appear here.",
+  "@noTransactionsDescription": {
+    "description": "Keterangan belum ada transaksi pada dompet"
+  },
+  "transactionInformation": "Transaction Information",
+  "@transactionInformation": {
+    "description": "Informasi transaksi"
+  },
+  "merchant": "Merchant",
+  "@merchant": {
+    "description": "Merchant"
+  },
+  "paymentMethod": "Payment Method",
+  "@paymentMethod": {
+    "description": "Metode pembayaran"
+  },
+  "transactionId": "Transaction ID",
+  "@transactionId": {
+    "description": "ID Transaksi"
+  },
+  "time": "Time",
+  "@time": {
+    "description": "Waktu"
+  },
+  "notes": "Notes",
+  "@notes": {
+    "description": "Catatan"
+  },
+  "dueToday": "Due today",
+  "@dueToday": {
+    "description": "Jatuh tempo hari ini"
+  },
+  "dueInDays": "Due in {days} days",
+  "@dueInDays": {
+    "description": "Jatuh tempo dalam x hari",
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "transactionsHistory": "Transactions History",
+  "@transactionsHistory": {
+    "description": "Riwayat transaksi"
+  },
+  "allTransactionsTitle": "All Transactions",
+  "@allTransactionsTitle": {
+    "description": "Semua transaksi modal judul"
+  },
+  "incomeVsExpense": "Income vs Expense",
+  "@incomeVsExpense": {
+    "description": "Pemasukan vs Pengeluaran"
+  },
+  "expenseBreakdown": "Expense Breakdown",
+  "@expenseBreakdown": {
+    "description": "Rincian pengeluaran"
+  },
+  "incomeSources": "Income Sources",
+  "@incomeSources": {
+    "description": "Sumber pemasukan"
+  },
+  "monthlyComparison": "Monthly Comparison",
+  "@monthlyComparison": {
+    "description": "Perbandingan bulanan"
+  },
+  "cashFlowAnalysis": "Cash Flow Analysis",
+  "@cashFlowAnalysis": {
+    "description": "Analisis arus kas"
+  },
+  "financialInsights": "Financial Insights",
+  "@financialInsights": {
+    "description": "Wawasan keuangan"
+  },
+  "savingsAndGoals": "Savings & Goals",
+  "@savingsAndGoals": {
+    "description": "Tabungan dan target"
+  },
+  "monthlySavings": "Monthly Savings",
+  "@monthlySavings": {
+    "description": "Tabungan bulanan"
+  },
+  "savingsRate": "Savings Rate",
+  "@savingsRate": {
+    "description": "Tingkat tabungan"
+  },
+  "currentAmountHint": "e.g. 1,000,000",
+  "@currentAmountHint": {
+    "description": "Contoh nominal saat ini"
+  },
+  "targetAmountHint": "e.g. 50,000,000",
+  "@targetAmountHint": {
+    "description": "Contoh nominal target"
+  },
+  "priceHint": "e.g. 150,000",
+  "@priceHint": {
+    "description": "Contoh nominal harga tagihan"
+  },
+  "analyticsSubtitle": "Track and understand your financial performance",
+  "@analyticsSubtitle": {
+    "description": "Subjudul halaman analisis"
+  },
+  "vsLastPeriod": "vs last period",
+  "@vsLastPeriod": {
+    "description": "Perbandingan dengan periode lalu"
+  },
+  "filterAnalytics": "Filter Analytics",
+  "@filterAnalytics": {
+    "description": "Judul filter analisis"
+  },
+  "dateRange": "Date Range",
+  "@dateRange": {
+    "description": "Rentang tanggal"
+  },
+  "account": "Account",
+  "@account": {
+    "description": "Akun"
+  },
+  "applyFilter": "Apply Filter",
+  "@applyFilter": {
+    "description": "Terapkan filter"
+  },
+  "thisWeek": "This Week",
+  "@thisWeek": {
+    "description": "Minggu ini"
+  },
+  "last3Months": "Last 3 Months",
+  "@last3Months": {
+    "description": "3 bulan terakhir"
+  },
+  "thisYear": "This Year",
+  "@thisYear": {
+    "description": "Tahun ini"
+  },
+  "customRange": "Custom Range",
+  "@customRange": {
+    "description": "Rentang kustom"
+  },
+  "allAccounts": "All Accounts",
+  "@allAccounts": {
+    "description": "Semua akun"
+  },
+  "spendingDecreased": "Your spending decreased by {percentage}%",
+  "@spendingDecreased": {
+    "description": "Pengeluaran menurun",
+    "placeholders": {
+      "percentage": {
+        "type": "String"
+      }
+    }
+  },
+  "spendingDecreasedSubtitle": "You spent {amount} less than last month.",
+  "@spendingDecreasedSubtitle": {
+    "description": "Subjudul pengeluaran menurun",
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "incomeGrowing": "Income is growing",
+  "@incomeGrowing": {
+    "description": "Pemasukan meningkat"
+  },
+  "incomeGrowingSubtitle": "Your income increased by {percentage}% compared to last month.",
+  "@incomeGrowingSubtitle": {
+    "description": "Subjudul pemasukan meningkat",
+    "placeholders": {
+      "percentage": {
+        "type": "String"
+      }
+    }
+  },
+  "spendingHigh": "{category} spending is high",
+  "@spendingHigh": {
+    "description": "Pengeluaran kategori tinggi",
+    "placeholders": {
+      "category": {
+        "type": "String"
+      }
+    }
+  },
+  "spendingHighSubtitle": "It represents {percentage}% of your monthly expenses.",
+  "@spendingHighSubtitle": {
+    "description": "Subjudul pengeluaran tinggi",
+    "placeholders": {
+      "percentage": {
+        "type": "String"
+      }
+    }
+  },
+  "onTrack": "You're on track",
+  "@onTrack": {
+    "description": "Target berjalan baik"
+  },
+  "onTrackSubtitle": "You saved {percentage}% of your total income this month.",
+  "@onTrackSubtitle": {
+    "description": "Subjudul target berjalan baik",
+    "placeholders": {
+      "percentage": {
+        "type": "String"
+      }
+    }
+  },
+  "viewDetails": "View Details",
+  "@viewDetails": {
+    "description": "Lihat detail dompet"
+  },
+  "deleteWallet": "Delete Wallet",
+  "@deleteWallet": {
+    "description": "Hapus dompet"
+  },
+  "deleteWalletConfirmation": "Are you sure you want to delete this wallet? This action cannot be undone.",
+  "@deleteWalletConfirmation": {
+    "description": "Konfirmasi hapus dompet"
+  },
+  "deleted": "Deleted",
+  "@deleted": {
+    "description": "Status sudah dihapus"
+  },
+  "walletDeletedSuccess": "Wallet has been deleted successfully.",
+  "@walletDeletedSuccess": {
+    "description": "Pesan sukses dompet dihapus"
+  },
+  "ofTotal": "of total",
+  "@ofTotal": {
+    "description": "Dari total saldo"
+  },
+  "lastActivity": "Last activity",
+  "@lastActivity": {
+    "description": "Aktivitas terakhir dompet"
+  },
+  "emptyWallet": "Your Wallet is Empty",
+  "@emptyWallet": {
+    "description": "Judul dompet kosong"
+  },
+  "emptyWalletSubtitle": "Add your first wallet to start managing your finances.",
+  "@emptyWalletSubtitle": {
+    "description": "Keterangan dompet kosong"
+  },
+  "walletSubtitle": "Manage your money in one place",
+  "@walletSubtitle": {
+    "description": "Subjudul halaman dompet"
+  },
+  "balance": "Balance",
+  "@balance": {
+    "description": "Saldo"
+  },
+  "balanceHistory": "Balance History",
+  "@balanceHistory": {
+    "description": "Riwayat saldo"
+  },
+  "category": "Category",
+  "@category": {
+    "description": "Kategori transaksi"
+  },
+  "ok": "OK",
+  "@ok": {
+    "description": "Tombol OK"
+  },
+  "close": "Close",
+  "@close": {
+    "description": "Tombol tutup"
+  },
+  "understand": "Understand",
+  "@understand": {
+    "description": "Tombol mengerti"
+  }
+}

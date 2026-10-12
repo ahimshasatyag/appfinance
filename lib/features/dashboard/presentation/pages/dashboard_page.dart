@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../app/config/l10n.dart';
 import '../../../../shared/theme/app_theme.dart';
-import '../../../../shared/widgets/custom_loading.dart';
 import '../../domain/usecases/get_dashboard_data_usecase.dart';
 import '../../data/repositories/dashboard_repository_impl.dart';
 import '../../data/datasources/dashboard_remote_datasource.dart';
@@ -117,7 +117,7 @@ class DashboardView extends StatelessWidget {
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  const Text('Income', style: TextStyle(color: Colors.grey, fontSize: 13)),
+                                                  Text(context.l10n.income, style: const TextStyle(color: Colors.grey, fontSize: 13)),
                                                   const SizedBox(height: 4),
                                                   Text(
                                                     Formatters.formatCurrency(data.income),
@@ -154,7 +154,7 @@ class DashboardView extends StatelessWidget {
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: [
-                                                  const Text('Expenses', style: TextStyle(color: Colors.grey, fontSize: 13)),
+                                                  Text(context.l10n.expenses, style: const TextStyle(color: Colors.grey, fontSize: 13)),
                                                   const SizedBox(height: 4),
                                                   Text(
                                                     Formatters.formatCurrency(data.expenses),

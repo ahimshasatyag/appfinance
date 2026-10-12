@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../app/config/l10n.dart';
 
 class AnalyticsCardSummary extends StatelessWidget {
   final String title;
@@ -25,7 +26,7 @@ class AnalyticsCardSummary extends StatelessWidget {
     final changeIcon = isPositive ? Icons.arrow_upward : Icons.arrow_downward;
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(16),
@@ -43,33 +44,37 @@ class AnalyticsCardSummary extends StatelessWidget {
           Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(7),
                 decoration: BoxDecoration(
                   color: iconBackgroundColor,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Icon(icon, color: iconColor, size: 20),
+                child: Icon(icon, color: iconColor, size: 18),
               ),
-              const SizedBox(width: 12),
-              Text(
-                title,
-                style: const TextStyle(
-                  color: Colors.grey,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 14),
           FittedBox(
             fit: BoxFit.scaleDown,
             alignment: Alignment.centerLeft,
             child: Text(
               amount,
               style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -83,26 +88,31 @@ class AnalyticsCardSummary extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(changeIcon, color: changeColor, size: 12),
-                    const SizedBox(width: 4),
+                    const SizedBox(width: 2),
                     Text(
                       '${percentageChange.abs()}%',
                       style: TextStyle(
                         color: changeColor,
-                        fontSize: 12,
+                        fontSize: 11,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(width: 8),
-              const Text(
-                'vs last period',
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 10,
+              const SizedBox(width: 6),
+              Flexible(
+                child: Text(
+                  context.l10n.vsLastPeriod,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    fontSize: 10,
+                  ),
                 ),
               ),
             ],

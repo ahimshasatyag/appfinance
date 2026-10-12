@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../app/config/l10n.dart';
 import '../../../../core/utils/formatters.dart';
 
 class StatsCard extends StatelessWidget {
@@ -69,7 +70,7 @@ class StatsCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Balance: ${Formatters.formatCurrency(totalBalance)}',
+                '${context.l10n.totalBalance}: ${Formatters.formatCurrency(totalBalance)}',
                 style: const TextStyle(color: Colors.white70, fontSize: 14),
               ),
               const SizedBox(height: 8),

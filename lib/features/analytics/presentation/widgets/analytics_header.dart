@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../app/config/l10n.dart';
 
 class AnalyticsHeader extends StatelessWidget {
   final String dateRange;
@@ -10,6 +11,23 @@ class AnalyticsHeader extends StatelessWidget {
     required this.onFilterTap,
   });
 
+  String _getDateRangeLabel(BuildContext context, String range) {
+    switch (range) {
+      case 'This Week':
+        return context.l10n.thisWeek;
+      case 'This Month':
+        return context.l10n.thisMonth;
+      case 'Last 3 Months':
+        return context.l10n.last3Months;
+      case 'This Year':
+        return context.l10n.thisYear;
+      case 'Custom Range':
+        return context.l10n.customRange;
+      default:
+        return range;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,9 +36,9 @@ class AnalyticsHeader extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              'Analytics',
-              style: TextStyle(
+            Text(
+              context.l10n.navAnalytics,
+              style: const TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w900
               ),
@@ -46,7 +64,7 @@ class AnalyticsHeader extends StatelessWidget {
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      dateRange,
+                      _getDateRangeLabel(context, dateRange),
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold
@@ -59,9 +77,9 @@ class AnalyticsHeader extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 4),
-        const Text(
-          'Track and understand your financial performance',
-          style: TextStyle(fontSize: 14, color: Colors.grey),
+        Text(
+          context.l10n.analyticsSubtitle,
+          style: const TextStyle(fontSize: 14, color: Colors.grey),
         ),
       ],
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../app/config/l10n.dart';
 import '../../domain/entities/analytics_entity.dart';
 
 class AnalyticsRecentTransactions extends StatelessWidget {
@@ -47,9 +48,9 @@ class AnalyticsRecentTransactions extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Transactions History',
-                style: TextStyle(
+              Text(
+                context.l10n.transactionsHistory,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -57,11 +58,11 @@ class AnalyticsRecentTransactions extends StatelessWidget {
               InkWell(
                 onTap: () => _showAllTransactions(context),
                 borderRadius: BorderRadius.circular(8),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                   child: Text(
-                    'See all',
-                    style: TextStyle(
+                    context.l10n.seeAll,
+                    style: const TextStyle(
                       fontSize: 14,
                       color: AppTheme.primaryColor,
                       fontWeight: FontWeight.bold,
@@ -157,7 +158,7 @@ class AnalyticsRecentTransactions extends StatelessWidget {
               const SizedBox(height: 12),
               Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2))),
               const SizedBox(height: 16),
-              const Text('All Transactions', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text(context.l10n.allTransactionsTitle, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 16),
               Expanded(
                 child: ListView.builder(

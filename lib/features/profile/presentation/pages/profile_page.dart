@@ -12,8 +12,11 @@ import '../bloc/profile_bloc.dart';
 import '../bloc/profile_event.dart';
 import '../bloc/profile_state.dart';
 import '../widgets/profile_menu_item.dart';
+import 'language_settings_page.dart';
 import 'theme_settings_page.dart';
+import '../../../../app/config/l10n.dart';
 import '../../../../shared/theme/theme_cubit.dart';
+
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
@@ -147,19 +150,23 @@ class ProfileView extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Text(
-                                    'Personal Details',
-                                    style: TextStyle(
+                                  Text(
+                                    context.l10n.personalDetails,
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    'Keep your information up to date',
+                                    context.l10n.personalDetailsSubtitle,
                                     style: TextStyle(
                                       fontSize: 12,
-                                      color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium
+                                          ?.color
+                                          ?.withValues(alpha: 0.6),
                                     ),
                                   ),
                                 ],
@@ -175,17 +182,17 @@ class ProfileView extends StatelessWidget {
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
-                                child: const Row(
+                                child: Row(
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.edit,
                                       color: AppTheme.secondaryColor,
                                       size: 14,
                                     ),
-                                    SizedBox(width: 4),
+                                    const SizedBox(width: 4),
                                     Text(
-                                      'Edit Details',
-                                      style: TextStyle(
+                                      context.l10n.editDetails,
+                                      style: const TextStyle(
                                         color: AppTheme.secondaryColor,
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
@@ -208,19 +215,21 @@ class ProfileView extends StatelessWidget {
                               children: [
                                 ProfileMenuItem(
                                   icon: Icons.person,
-                                  title: 'Full Name',
+                                  title: context.l10n.fullName,
                                   subtitle: profile.fullName,
                                   onTap: () {},
                                 ),
                                 Divider(
                                   height: 1,
-                                  color: Theme.of(context).dividerColor.withOpacity(0.2),
+                                  color: Theme.of(context)
+                                      .dividerColor
+                                      .withValues(alpha: 0.2),
                                   indent: 64,
                                   endIndent: 16,
                                 ),
                                 ProfileMenuItem(
                                   icon: Icons.email,
-                                  title: 'Email',
+                                  title: context.l10n.email,
                                   subtitle: profile.email,
                                   trailing: profile.isEmailVerified
                                       ? Container(
@@ -235,12 +244,12 @@ class ProfileView extends StatelessWidget {
                                               12,
                                             ),
                                           ),
-                                          child: const Row(
+                                          child: Row(
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
                                               Text(
-                                                'Verified',
-                                                style: TextStyle(
+                                                context.l10n.verified,
+                                                style: const TextStyle(
                                                   color:
                                                       AppTheme.secondaryColor,
                                                   fontSize: 10,
@@ -255,19 +264,23 @@ class ProfileView extends StatelessWidget {
                                 ),
                                 Divider(
                                   height: 1,
-                                  color: Theme.of(context).dividerColor.withOpacity(0.2),
+                                  color: Theme.of(context)
+                                      .dividerColor
+                                      .withValues(alpha: 0.2),
                                   indent: 64,
                                   endIndent: 16,
                                 ),
                                 ProfileMenuItem(
                                   icon: Icons.phone,
-                                  title: 'Phone',
+                                  title: context.l10n.phone,
                                   subtitle: profile.phone,
                                   onTap: () {},
                                 ),
                                 Divider(
                                   height: 1,
-                                  color: Theme.of(context).dividerColor.withOpacity(0.2),
+                                  color: Theme.of(context)
+                                      .dividerColor
+                                      .withValues(alpha: 0.2),
                                   indent: 64,
                                   endIndent: 16,
                                 ),
@@ -280,19 +293,23 @@ class ProfileView extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                'General Settings',
-                                style: TextStyle(
+                              Text(
+                                context.l10n.generalSettings,
+                                style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               const SizedBox(height: 4),
                               Text(
-                                'Your preferences and app settings',
+                                context.l10n.generalSettingsSubtitle,
                                 style: TextStyle(
                                   fontSize: 12,
-                                  color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium
+                                      ?.color
+                                      ?.withValues(alpha: 0.6),
                                 ),
                               ),
                             ],
@@ -307,51 +324,26 @@ class ProfileView extends StatelessWidget {
                             ),
                             child: Column(
                               children: [
-                                ProfileMenuItem(
-                                  icon: Icons.language,
-                                  title: 'Language',
-                                  trailing: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        'English (US)',
-                                        style: TextStyle(
-                                          color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
-                                          fontSize: 12,
-                                        ),
-                                      ),
-                                      const SizedBox(width: 8),
-                                      Icon(
-                                        Icons.chevron_right,
-                                        color: Colors.grey.shade400,
-                                        size: 20,
-                                      ),
-                                    ],
-                                  ),
-                                  onTap: () {},
-                                ),
-
-                                Divider(
-                                  height: 1,
-                                  color: Theme.of(context).dividerColor.withOpacity(0.2),
-                                  indent: 64,
-                                  endIndent: 16,
-                                ),
-                                BlocBuilder<ThemeCubit, ThemeMode>(
-                                  builder: (context, themeMode) {
-                                    String themeText = 'System Default';
-                                    if (themeMode == ThemeMode.light) themeText = 'Light Mode';
-                                    if (themeMode == ThemeMode.dark) themeText = 'Dark Mode';
+                                BlocBuilder<LocaleCubit, Locale>(
+                                  builder: (context, locale) {
+                                    final languageName =
+                                        locale.languageCode == 'id'
+                                            ? 'Bahasa Indonesia'
+                                            : 'English (US)';
                                     return ProfileMenuItem(
-                                      icon: Icons.brightness_6,
-                                      title: 'Theme',
+                                      icon: Icons.language,
+                                      title: context.l10n.language,
                                       trailing: Row(
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Text(
-                                            themeText,
+                                            languageName,
                                             style: TextStyle(
-                                              color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                                              color: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium
+                                                  ?.color
+                                                  ?.withValues(alpha: 0.6),
                                               fontSize: 12,
                                             ),
                                           ),
@@ -367,7 +359,63 @@ class ProfileView extends StatelessWidget {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => const ThemeSettingsPage(),
+                                            builder: (context) =>
+                                                const LanguageSettingsPage(),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+
+                                Divider(
+                                  height: 1,
+                                  color: Theme.of(context)
+                                      .dividerColor
+                                      .withValues(alpha: 0.2),
+                                  indent: 64,
+                                  endIndent: 16,
+                                ),
+                                BlocBuilder<ThemeCubit, ThemeMode>(
+                                  builder: (context, themeMode) {
+                                    String themeText =
+                                        context.l10n.systemDefault;
+                                    if (themeMode == ThemeMode.light) {
+                                      themeText = context.l10n.lightMode;
+                                    } else if (themeMode == ThemeMode.dark) {
+                                      themeText = context.l10n.darkMode;
+                                    }
+                                    return ProfileMenuItem(
+                                      icon: Icons.brightness_6,
+                                      title: context.l10n.theme,
+                                      trailing: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text(
+                                            themeText,
+                                            style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyMedium
+                                                  ?.color
+                                                  ?.withValues(alpha: 0.6),
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Icon(
+                                            Icons.chevron_right,
+                                            color: Colors.grey.shade400,
+                                            size: 20,
+                                          ),
+                                        ],
+                                      ),
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ThemeSettingsPage(),
                                           ),
                                         );
                                       },
@@ -376,20 +424,26 @@ class ProfileView extends StatelessWidget {
                                 ),
                                 Divider(
                                   height: 1,
-                                  color: Theme.of(context).dividerColor.withOpacity(0.2),
+                                  color: Theme.of(context)
+                                      .dividerColor
+                                      .withValues(alpha: 0.2),
                                   indent: 64,
                                   endIndent: 16,
                                 ),
                                 ProfileMenuItem(
                                   icon: Icons.notifications,
-                                  title: 'Notifications',
+                                  title: context.l10n.notifications,
                                   trailing: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Text(
-                                        'Enabled',
+                                        context.l10n.enabled,
                                         style: TextStyle(
-                                          color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                                          color: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium
+                                              ?.color
+                                              ?.withValues(alpha: 0.6),
                                           fontSize: 12,
                                         ),
                                       ),
@@ -410,15 +464,15 @@ class ProfileView extends StatelessWidget {
 
                           // Sign Out Button
                           CustomButton(
-                            text: 'Sign Out',
+                            text: context.l10n.signOut,
                             backgroundColor: Colors.red,
                             onPressed: () {
                               CustomDialog.showWarning(
                                 context,
-                                title: 'Sign Out',
-                                message: 'Are you sure you want to sign out?',
-                                confirmText: 'Sign Out',
-                                cancelText: 'Batal',
+                                title: context.l10n.signOut,
+                                message: context.l10n.signOutConfirmation,
+                                confirmText: context.l10n.signOut,
+                                cancelText: context.l10n.cancel,
                                 onConfirm: () {
                                   Navigator.pushAndRemoveUntil(
                                     context,

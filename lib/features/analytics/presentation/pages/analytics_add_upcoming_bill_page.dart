@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../../../../shared/theme/app_theme.dart';
 import '../../../../shared/widgets/widgets.dart';
 import '../../../../core/utils/formatters.dart';
+import '../../../../app/config/l10n.dart';
 import '../widgets/analytics_form_skeleton.dart';
 class AnalyticsAddUpcomingBillPage extends StatefulWidget {
   const AnalyticsAddUpcomingBillPage({super.key});
@@ -38,7 +39,7 @@ class _AnalyticsAddUpcomingBillPageState extends State<AnalyticsAddUpcomingBillP
   void _saveBill() async {
     if (_descriptionController.text.trim().isEmpty || _priceController.text.trim().isEmpty || _selectedDate == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please fill all required fields')),
+        SnackBar(content: Text(context.l10n.pleaseFillRequiredFields)),
       );
       return;
     }
@@ -56,8 +57,8 @@ class _AnalyticsAddUpcomingBillPageState extends State<AnalyticsAddUpcomingBillP
       });
       CustomDialog.showSuccess(
         context,
-        title: 'Success',
-        message: 'Upcoming Bill has been added successfully',
+        title: context.l10n.success,
+        message: context.l10n.billAddedSuccess,
         onConfirm: () {
           Navigator.pop(context);
         },
@@ -94,25 +95,25 @@ class _AnalyticsAddUpcomingBillPageState extends State<AnalyticsAddUpcomingBillP
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: Theme.of(context).appBarTheme.foregroundColor),
-        title: Text('Add Upcoming Bill', style: TextStyle(color: Theme.of(context).appBarTheme.foregroundColor, fontWeight: FontWeight.bold)),
+        title: Text(context.l10n.addUpcomingBill, style: TextStyle(color: Theme.of(context).appBarTheme.foregroundColor, fontWeight: FontWeight.bold)),
       ),
       body: _isInitializing ? const AnalyticsFormSkeleton() : SingleChildScrollView(
         padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Bill Details', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(context.l10n.billDetails, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             const SizedBox(height: 24),
             _buildTextField(
-              label: 'Description', 
-              hint: 'e.g. Netflix Subscription, Rent', 
+              label: context.l10n.description, 
+              hint: context.l10n.descriptionHint, 
               controller: _descriptionController
             ),
             const SizedBox(height: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Date', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.grey)),
+                Text(context.l10n.date, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.grey)),
                 const SizedBox(height: 8),
                 InkWell(
                   onTap: () => _selectDate(context),
@@ -129,7 +130,7 @@ class _AnalyticsAddUpcomingBillPageState extends State<AnalyticsAddUpcomingBillP
                       children: [
                         Text(
                           _selectedDate == null 
-                              ? 'Select Date' 
+                              ? context.l10n.selectDate 
                               : DateFormat('dd MMM yyyy').format(_selectedDate!),
                           style: TextStyle(
                             color: _selectedDate == null ? Colors.grey : Theme.of(context).textTheme.bodyLarge?.color,
@@ -145,15 +146,15 @@ class _AnalyticsAddUpcomingBillPageState extends State<AnalyticsAddUpcomingBillP
             ),
             const SizedBox(height: 20),
             _buildTextField(
-              label: 'Price', 
-              hint: 'e.g. 150.000', 
+              label: context.l10n.price, 
+              hint: context.l10n.priceHint, 
               keyboardType: TextInputType.number, 
               controller: _priceController,
               inputFormatters: [_CurrencyInputFormatter()],
             ),
             const SizedBox(height: 40),
             CustomButton(
-              text: 'Save Bill',
+              text: context.l10n.saveBill,
               isLoading: _isLoading,
               onPressed: _saveBill,
             ),

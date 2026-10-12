@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../../../../app/config/l10n.dart';
 import '../../../../shared/theme/app_theme.dart';
 import '../../../../shared/widgets/widgets.dart';
 import '../../../../core/utils/formatters.dart';
@@ -37,7 +38,7 @@ class _AnalyticsAddGoalPageState extends State<AnalyticsAddGoalPage> {
     if (_nameController.text.trim().isEmpty ||
         _targetAmountController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please fill all required fields')),
+        SnackBar(content: Text(context.l10n.pleaseFillRequiredFields)),
       );
       return;
     }
@@ -55,8 +56,8 @@ class _AnalyticsAddGoalPageState extends State<AnalyticsAddGoalPage> {
       });
       CustomDialog.showSuccess(
         context,
-        title: 'Success',
-        message: 'Financial Goal has been added successfully',
+        title: context.l10n.success,
+        message: context.l10n.goalAddedSuccess,
         onConfirm: () {
           Navigator.pop(context);
         },
@@ -81,7 +82,7 @@ class _AnalyticsAddGoalPageState extends State<AnalyticsAddGoalPage> {
         elevation: 0,
         iconTheme: IconThemeData(color: Theme.of(context).appBarTheme.foregroundColor),
         title: Text(
-          'Add Financial Goal',
+          context.l10n.addFinancialGoal,
           style: TextStyle(
             color: Theme.of(context).appBarTheme.foregroundColor,
             fontWeight: FontWeight.bold,
@@ -93,38 +94,38 @@ class _AnalyticsAddGoalPageState extends State<AnalyticsAddGoalPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Goal Details',
-              style: TextStyle(
+            Text(
+              context.l10n.goalDetails,
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold
               ),
             ),
             const SizedBox(height: 24),
             _buildTextField(
-              label: 'Goal Name',
-              hint: 'e.g. New Car, Vacation',
+              label: context.l10n.goalName,
+              hint: context.l10n.goalNameHint,
               controller: _nameController,
             ),
             const SizedBox(height: 20),
             _buildTextField(
-              label: 'Current Amount (Optional)',
-              hint: 'e.g. 1.000.000',
+              label: context.l10n.currentAmountOptional,
+              hint: context.l10n.currentAmountHint,
               keyboardType: TextInputType.number,
               controller: _currentAmountController,
               inputFormatters: [_CurrencyInputFormatter()],
             ),
             const SizedBox(height: 20),
             _buildTextField(
-              label: 'Target Amount',
-              hint: 'e.g. 50.000.000',
+              label: context.l10n.targetAmount,
+              hint: context.l10n.targetAmountHint,
               keyboardType: TextInputType.number,
               controller: _targetAmountController,
               inputFormatters: [_CurrencyInputFormatter()],
             ),
             const SizedBox(height: 40),
             CustomButton(
-              text: 'Save Goal',
+              text: context.l10n.saveGoal,
               isLoading: _isLoading,
               onPressed: _saveGoal,
             ),

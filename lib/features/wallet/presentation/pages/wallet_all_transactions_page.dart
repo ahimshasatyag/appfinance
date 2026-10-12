@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../app/config/l10n.dart';
 import '../../domain/entities/wallet_entity.dart';
 import '../widgets/wallet_transaction_list.dart';
 
@@ -38,7 +39,7 @@ class _WalletAllTransactionsPageState extends State<WalletAllTransactionsPage> {
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: Theme.of(context).appBarTheme.foregroundColor),
-        title: Text('All Transactions', style: TextStyle(color: Theme.of(context).appBarTheme.foregroundColor, fontWeight: FontWeight.bold)),
+        title: Text(context.l10n.allTransactions, style: TextStyle(color: Theme.of(context).appBarTheme.foregroundColor, fontWeight: FontWeight.bold)),
       ),
       body: _isLoading
           ? const WalletAllTransactionsSkeleton()

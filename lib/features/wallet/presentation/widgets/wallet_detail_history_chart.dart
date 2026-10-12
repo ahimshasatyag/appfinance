@@ -3,6 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 import '../../domain/entities/wallet_entity.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../app/config/l10n.dart';
 
 class WalletDetailHistoryChart extends StatelessWidget {
   final WalletDetailEntity detail;
@@ -25,7 +26,7 @@ class WalletDetailHistoryChart extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('Balance History', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              Text(context.l10n.balanceHistory, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(

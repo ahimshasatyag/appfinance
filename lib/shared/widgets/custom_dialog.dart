@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import '../../app/config/l10n.dart';
 import 'custom_button.dart';
 import '../theme/app_theme.dart';
 
@@ -10,8 +11,10 @@ class CustomDialog {
     required String title,
     required String message,
     VoidCallback? onConfirm,
-    String confirmText = 'OK',
+    String? confirmText,
   }) {
+    final effectiveConfirmText = confirmText ?? context.l10n.ok;
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -42,7 +45,7 @@ class CustomDialog {
             ),
             const SizedBox(height: 24),
             CustomButton(
-              text: confirmText,
+              text: effectiveConfirmText,
               width: double.infinity,
               height: 45,
               onPressed: () {
@@ -61,7 +64,10 @@ class CustomDialog {
     BuildContext context, {
     required String title,
     required String message,
+    String? closeText,
   }) {
+    final effectiveCloseText = closeText ?? context.l10n.close;
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -102,9 +108,9 @@ class CustomDialog {
                   ),
                 ),
                 onPressed: () => Navigator.of(context).pop(),
-                child: const Text(
-                  'Tutup',
-                  style: TextStyle(
+                child: Text(
+                  effectiveCloseText,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -124,9 +130,12 @@ class CustomDialog {
     required String title,
     required String message,
     VoidCallback? onConfirm,
-    String confirmText = 'Mengerti',
-    String cancelText = 'Batal',
+    String? confirmText,
+    String? cancelText,
   }) {
+    final effectiveConfirmText = confirmText ?? (onConfirm != null ? context.l10n.ok : context.l10n.understand);
+    final effectiveCancelText = cancelText ?? context.l10n.cancel;
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -171,7 +180,7 @@ class CustomDialog {
                         ),
                         onPressed: () => Navigator.of(context).pop(),
                         child: Text(
-                          cancelText,
+                          effectiveCancelText,
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -197,7 +206,7 @@ class CustomDialog {
                           onConfirm();
                         },
                         child: Text(
-                          confirmText,
+                          effectiveConfirmText,
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -222,7 +231,7 @@ class CustomDialog {
                   ),
                   onPressed: () => Navigator.of(context).pop(),
                   child: Text(
-                    confirmText,
+                    effectiveConfirmText,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

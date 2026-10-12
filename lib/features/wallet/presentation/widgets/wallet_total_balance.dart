@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../domain/entities/wallet_entity.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../app/config/l10n.dart';
 
 class WalletTotalBalance extends StatefulWidget {
   final WalletSummaryEntity summary;
@@ -39,9 +40,9 @@ class _WalletTotalBalanceState extends State<WalletTotalBalance> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Total Balance',
-                style: TextStyle(color: Colors.white70, fontSize: 14),
+              Text(
+                context.l10n.totalBalance,
+                style: const TextStyle(color: Colors.white70, fontSize: 14),
               ),
               InkWell(
                 onTap: () {
@@ -85,7 +86,7 @@ class _WalletTotalBalanceState extends State<WalletTotalBalance> {
                       ],
                     ),
                     const SizedBox(height: 4),
-                    const Text('income this month', style: TextStyle(color: Colors.white70, fontSize: 12)),
+                    Text(context.l10n.incomeThisMonth, style: const TextStyle(color: Colors.white70, fontSize: 12)),
                   ],
                 ),
               ),
@@ -104,7 +105,7 @@ class _WalletTotalBalanceState extends State<WalletTotalBalance> {
                       ],
                     ),
                     const SizedBox(height: 4),
-                    const Text('expense this month', style: TextStyle(color: Colors.white70, fontSize: 12)),
+                    Text(context.l10n.expenseThisMonth, style: const TextStyle(color: Colors.white70, fontSize: 12)),
                   ],
                 ),
               ),
@@ -127,7 +128,7 @@ class _WalletTotalBalanceState extends State<WalletTotalBalance> {
                 ),
                 const SizedBox(width: 4),
                 Text(
-                  '${isPositive ? '+' : ''}${widget.summary.balanceChangePercentage}% this month',
+                  '${isPositive ? '+' : ''}${widget.summary.balanceChangePercentage}% (${context.l10n.thisMonth})',
                   style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
                 ),
               ],

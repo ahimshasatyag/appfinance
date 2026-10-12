@@ -15,8 +15,12 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomAppBar(
       shape: const CircularNotchedRectangle(),
+      clipBehavior: Clip.antiAlias,
       notchMargin: 8.0,
       color: Theme.of(context).colorScheme.surface,
+      surfaceTintColor: Colors.transparent,
+      shadowColor: Colors.transparent,
+      elevation: 0,
       child: SizedBox(
         height: 60,
         child: Row(

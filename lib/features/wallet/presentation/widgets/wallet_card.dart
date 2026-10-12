@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../domain/entities/wallet_entity.dart';
+import '../../../../app/config/l10n.dart';
 import 'wallet_detail_sheet.dart';
 
 class WalletCard extends StatelessWidget {
@@ -15,6 +16,23 @@ class WalletCard extends StatelessWidget {
     if (type.contains('Investment')) return Icons.trending_up;
     if (type.contains('Credit')) return Icons.credit_card;
     return Icons.wallet;
+  }
+
+  String _getTypeDisplayName(BuildContext context, String type) {
+    switch (type) {
+      case 'Bank Account':
+        return context.l10n.bankAccount;
+      case 'E-Wallet':
+        return context.l10n.eWallet;
+      case 'Cash':
+        return context.l10n.cash;
+      case 'Credit Card':
+        return context.l10n.creditCard;
+      case 'Investment':
+        return context.l10n.investment;
+      default:
+        return type;
+    }
   }
 
   @override
@@ -63,7 +81,7 @@ class WalletCard extends StatelessWidget {
                         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                       const SizedBox(height: 4),
-                      Text(wallet.type, style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                      Text(_getTypeDisplayName(context, wallet.type), style: const TextStyle(fontSize: 12, color: Colors.grey)),
                     ],
                   ),
                 ),
@@ -75,7 +93,7 @@ class WalletCard extends StatelessWidget {
                       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     const SizedBox(height: 4),
-                    Text('${wallet.percentage.toStringAsFixed(1)}% of total', style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                    Text('${wallet.percentage.toStringAsFixed(1)}% ${context.l10n.ofTotal}', style: const TextStyle(fontSize: 12, color: Colors.grey)),
                   ],
                 ),
               ],
@@ -91,7 +109,7 @@ class WalletCard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Last activity', style: TextStyle(fontSize: 12, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.grey)),
+                    Text(context.l10n.lastActivity, style: TextStyle(fontSize: 12, color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.grey)),
                     Text(
                       '${wallet.lastActivity!.title} · ${wallet.lastActivity!.type == 'Income' ? '+' : '-'}${currencyFormatter.format(wallet.lastActivity!.amount)}',
                       style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),

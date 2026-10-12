@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../app/config/l10n.dart';
 import '../../../../shared/widgets/widgets.dart';
 
 import '../widgets/wallet_add_skeleton.dart';
@@ -42,12 +43,29 @@ class _WalletAddPageState extends State<WalletAddPage> {
       });
       CustomDialog.showSuccess(
         context,
-        title: 'Success',
-        message: 'Wallet has been added successfully',
+        title: context.l10n.success,
+        message: context.l10n.walletAddedSuccess,
         onConfirm: () {
           Navigator.pop(context);
         },
       );
+    }
+  }
+
+  String _getTypeDisplayName(String type) {
+    switch (type) {
+      case 'Bank Account':
+        return context.l10n.bankAccount;
+      case 'E-Wallet':
+        return context.l10n.eWallet;
+      case 'Cash':
+        return context.l10n.cash;
+      case 'Credit Card':
+        return context.l10n.creditCard;
+      case 'Investment':
+        return context.l10n.investment;
+      default:
+        return type;
     }
   }
 
@@ -59,7 +77,7 @@ class _WalletAddPageState extends State<WalletAddPage> {
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: Theme.of(context).appBarTheme.foregroundColor),
-        title: Text('Add Wallet', style: TextStyle(color: Theme.of(context).appBarTheme.foregroundColor, fontWeight: FontWeight.bold)),
+        title: Text(context.l10n.addWallet, style: TextStyle(color: Theme.of(context).appBarTheme.foregroundColor, fontWeight: FontWeight.bold)),
       ),
       body: _isInitializing
           ? const WalletAddSkeleton()
@@ -68,12 +86,12 @@ class _WalletAddPageState extends State<WalletAddPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Wallet Information', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(context.l10n.walletInformation, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             const SizedBox(height: 24),
-            _buildTextField(label: 'Wallet Name', hint: 'e.g. Main Bank Account'),
+            _buildTextField(label: context.l10n.walletName, hint: context.l10n.walletNameHint),
             const SizedBox(height: 20),
             _buildDropdown(
-              label: 'Wallet Type', 
+              label: context.l10n.walletType, 
               items: ['Bank Account', 'E-Wallet', 'Cash', 'Credit Card', 'Investment'],
               onChanged: (val) {
                 setState(() {
@@ -85,25 +103,25 @@ class _WalletAddPageState extends State<WalletAddPage> {
             
             if (_selectedType == 'Credit Card' || _selectedType == 'Bank Account') ...[
               if (_selectedType == 'Bank Account') ...[
-                _buildTextField(label: 'Account Number', hint: 'e.g. 1234567890', keyboardType: TextInputType.number),
+                _buildTextField(label: context.l10n.accountNumber, hint: 'e.g. 1234567890', keyboardType: TextInputType.number),
                 const SizedBox(height: 20),
               ],
-              _buildTextField(label: 'Card Number', hint: '0000 0000 0000 0000', keyboardType: TextInputType.number),
+              _buildTextField(label: context.l10n.cardNumber, hint: '0000 0000 0000 0000', keyboardType: TextInputType.number),
               const SizedBox(height: 20),
               Row(
                 children: [
-                  Expanded(child: _buildTextField(label: 'Valid Thru', hint: 'MM/YY', keyboardType: TextInputType.datetime)),
+                  Expanded(child: _buildTextField(label: context.l10n.validThru, hint: 'MM/YY', keyboardType: TextInputType.datetime)),
                   const SizedBox(width: 16),
-                  Expanded(child: _buildTextField(label: 'CVV', hint: '123', keyboardType: TextInputType.number, obscureText: true)),
+                  Expanded(child: _buildTextField(label: context.l10n.cvv, hint: '123', keyboardType: TextInputType.number, obscureText: true)),
                 ],
               ),
             ] else ...[
-              _buildTextField(label: 'Account Number', hint: 'e.g. 1234567890', keyboardType: TextInputType.number),
+              _buildTextField(label: context.l10n.accountNumber, hint: 'e.g. 1234567890', keyboardType: TextInputType.number),
             ],
 
             const SizedBox(height: 40),
             CustomButton(
-              text: 'Save Wallet',
+              text: context.l10n.saveWallet,
               isLoading: _isLoading,
               onPressed: _saveWallet,
             ),
@@ -151,8 +169,8 @@ class _WalletAddPageState extends State<WalletAddPage> {
             enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide(color: Colors.grey.shade200)),
             focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: Colors.blue)),
           ),
-          hint: const Text('Select Type', style: TextStyle(color: Colors.grey)),
-          items: items.map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
+          hint: Text(context.l10n.selectType, style: const TextStyle(color: Colors.grey)),
+          items: items.map((e) => DropdownMenuItem(value: e, child: Text(_getTypeDisplayName(e)))).toList(),
           onChanged: onChanged,
         ),
       ],

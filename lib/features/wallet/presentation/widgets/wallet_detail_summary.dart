@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../domain/entities/wallet_entity.dart';
+import '../../../../app/config/l10n.dart';
 import '../pages/wallet_all_transactions_page.dart';
 
 class WalletDetailSummary extends StatelessWidget {
@@ -23,11 +24,11 @@ class WalletDetailSummary extends StatelessWidget {
         children: [
           Row(
             children: [
-              Expanded(child: _buildSummaryItem('Income', currencyFormatter.format(detail.totalIncome), Colors.green)),
+              Expanded(child: _buildSummaryItem(context.l10n.income, currencyFormatter.format(detail.totalIncome), Colors.green)),
               Container(width: 1, height: 40, color: Colors.grey.shade200),
-              Expanded(child: _buildSummaryItem('Expense', currencyFormatter.format(detail.totalExpense), Colors.redAccent)),
+              Expanded(child: _buildSummaryItem(context.l10n.expenses, currencyFormatter.format(detail.totalExpense), Colors.redAccent)),
               Container(width: 1, height: 40, color: Colors.grey.shade200),
-              Expanded(child: _buildSummaryItem('Transfer', currencyFormatter.format(detail.totalTransfer), Colors.blue)),
+              Expanded(child: _buildSummaryItem(context.l10n.transfer, currencyFormatter.format(detail.totalTransfer), Colors.blue)),
             ],
           ),
           const SizedBox(height: 16),
@@ -51,10 +52,10 @@ class WalletDetailSummary extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Transactions', style: TextStyle(color: Colors.grey, fontSize: 14)),
+                  Text(context.l10n.transactions, style: const TextStyle(color: Colors.grey, fontSize: 14)),
                   Row(
                     children: [
-                      Text('${detail.totalTransactions} Transactions', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                      Text('${detail.totalTransactions} ${context.l10n.transactions}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
                       const SizedBox(width: 4),
                       const Icon(Icons.arrow_forward_ios, size: 12, color: Colors.grey),
                     ],

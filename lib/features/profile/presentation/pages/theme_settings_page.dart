@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../app/config/l10n.dart';
 import '../../../../shared/theme/theme_cubit.dart';
 import '../../../../shared/theme/app_theme.dart';
 
@@ -19,7 +20,7 @@ class ThemeSettingsPage extends StatelessWidget {
         iconTheme: IconThemeData(color: isDarkMode ? Colors.white : const Color(0xFF1E293B)),
         centerTitle: true,
         title: Text(
-          'Theme Settings', 
+          context.l10n.themeSettings, 
           style: TextStyle(
             fontWeight: FontWeight.bold, 
             color: isDarkMode ? Colors.white : const Color(0xFF1E293B),
@@ -36,7 +37,7 @@ class ThemeSettingsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Appearance',
+                    context.l10n.appearance,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -50,7 +51,7 @@ class ThemeSettingsPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: isDarkMode ? [] : [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.05),
+                          color: Colors.grey.withValues(alpha: 0.05),
                           blurRadius: 10,
                           offset: const Offset(0, 4),
                         ),
@@ -60,8 +61,8 @@ class ThemeSettingsPage extends StatelessWidget {
                       children: [
                         _buildThemeOption(
                           context,
-                          title: 'Light Mode',
-                          subtitle: 'Bright and clean look',
+                          title: context.l10n.lightMode,
+                          subtitle: context.l10n.lightModeSubtitle,
                           icon: Icons.light_mode_outlined,
                           themeMode: ThemeMode.light,
                           currentThemeMode: currentThemeMode,
@@ -70,8 +71,8 @@ class ThemeSettingsPage extends StatelessWidget {
                         Divider(height: 1, color: isDarkMode ? Colors.grey.shade800 : Colors.grey.shade100, indent: 56, endIndent: 16),
                         _buildThemeOption(
                           context,
-                          title: 'Dark Mode',
-                          subtitle: 'Easy on the eyes',
+                          title: context.l10n.darkMode,
+                          subtitle: context.l10n.darkModeSubtitle,
                           icon: Icons.dark_mode_outlined,
                           themeMode: ThemeMode.dark,
                           currentThemeMode: currentThemeMode,
@@ -80,8 +81,8 @@ class ThemeSettingsPage extends StatelessWidget {
                         Divider(height: 1, color: isDarkMode ? Colors.grey.shade800 : Colors.grey.shade100, indent: 56, endIndent: 16),
                         _buildThemeOption(
                           context,
-                          title: 'System Default',
-                          subtitle: 'Follows your phone settings',
+                          title: context.l10n.systemDefault,
+                          subtitle: context.l10n.systemDefaultSubtitle,
                           icon: Icons.settings_system_daydream_outlined,
                           themeMode: ThemeMode.system,
                           currentThemeMode: currentThemeMode,

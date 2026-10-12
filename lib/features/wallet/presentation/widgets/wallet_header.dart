@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
+import '../../../../app/config/l10n.dart';
 
 class WalletHeader extends StatelessWidget {
   const WalletHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Wallet',
-          style: TextStyle(
+          context.l10n.navWallet,
+          style: const TextStyle(
             fontSize: 24,
-            fontWeight: FontWeight.w900
+            fontWeight: FontWeight.w900,
           ),
         ),
         Text(
-          'Manage your money in one place',
-          style: TextStyle(fontSize: 14, color: Colors.grey),
+          context.l10n.walletSubtitle,
+          style: const TextStyle(fontSize: 14, color: Colors.grey),
         ),
       ],
     );

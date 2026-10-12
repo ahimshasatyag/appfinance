@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../domain/entities/filter_entity.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../app/config/l10n.dart';
 
 class AnalyticsFilterSheet extends StatefulWidget {
   final FilterEntity initialFilter;
@@ -25,6 +26,40 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
     selectedAccount = widget.initialFilter.account;
   }
 
+  String _getDateRangeLabel(BuildContext context, String range) {
+    switch (range) {
+      case 'This Week':
+        return context.l10n.thisWeek;
+      case 'This Month':
+        return context.l10n.thisMonth;
+      case 'Last 3 Months':
+        return context.l10n.last3Months;
+      case 'This Year':
+        return context.l10n.thisYear;
+      case 'Custom Range':
+        return context.l10n.customRange;
+      default:
+        return range;
+    }
+  }
+
+  String _getAccountLabel(BuildContext context, String account) {
+    switch (account) {
+      case 'All Accounts':
+        return context.l10n.allAccounts;
+      case 'Cash':
+        return context.l10n.cash;
+      case 'Bank Account':
+        return context.l10n.bankAccount;
+      case 'E-Wallet':
+        return context.l10n.eWallet;
+      case 'Credit Card':
+        return context.l10n.creditCard;
+      default:
+        return account;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,17 +73,17 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Filter Analytics',
-              style: TextStyle(
+            Text(
+              context.l10n.filterAnalytics,
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold
               ),
             ),
             const SizedBox(height: 24),
-            const Text(
-              'Date Range',
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+            Text(
+              context.l10n.dateRange,
+              style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
             ),
             const SizedBox(height: 12),
             Wrap(
@@ -57,7 +92,7 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
               children: dateRanges.map((range) {
                 final isSelected = selectedDateRange == range;
                 return ChoiceChip(
-                  label: Text(range),
+                  label: Text(_getDateRangeLabel(context, range)),
                   selected: isSelected,
                   selectedColor: AppTheme.primaryColor.withOpacity(0.1),
                   labelStyle: TextStyle(
@@ -71,9 +106,9 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
               }).toList(),
             ),
             const SizedBox(height: 24),
-            const Text(
-              'Account',
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+            Text(
+              context.l10n.account,
+              style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
             ),
             const SizedBox(height: 12),
             Wrap(
@@ -82,7 +117,7 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
               children: accounts.map((account) {
                 final isSelected = selectedAccount == account;
                 return ChoiceChip(
-                  label: Text(account),
+                  label: Text(_getAccountLabel(context, account)),
                   selected: isSelected,
                   selectedColor: AppTheme.primaryColor.withOpacity(0.1),
                   labelStyle: TextStyle(
@@ -116,7 +151,7 @@ class _AnalyticsFilterSheetState extends State<AnalyticsFilterSheet> {
                   );
                 },
                 child: Text(
-                  'Apply Filter',
+                  context.l10n.applyFilter,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

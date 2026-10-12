@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../app/config/l10n.dart';
 import '../../domain/entities/analytics_entity.dart';
 import '../pages/analytics_add_upcoming_bill_page.dart';
 
@@ -47,9 +48,9 @@ class AnalyticsUpcomingBills extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Text(
-                    'Upcoming Bills',
-                    style: TextStyle(
+                  Text(
+                    context.l10n.upcomingBills,
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -72,11 +73,11 @@ class AnalyticsUpcomingBills extends StatelessWidget {
               InkWell(
                 onTap: () => _showAllUpcomingBills(context),
                 borderRadius: BorderRadius.circular(8),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                   child: Text(
-                    'See all',
-                    style: TextStyle(
+                    context.l10n.seeAll,
+                    style: const TextStyle(
                       fontSize: 14,
                       color: AppTheme.primaryColor,
                       fontWeight: FontWeight.bold,
@@ -94,7 +95,7 @@ class AnalyticsUpcomingBills extends StatelessWidget {
             itemBuilder: (context, index) {
               final bill = bills[index];
               final daysLeft = bill.dueDate.difference(DateTime.now()).inDays;
-              final daysLeftText = daysLeft == 0 ? 'Due today' : 'Due in $daysLeft days';
+              final daysLeftText = daysLeft == 0 ? context.l10n.dueToday : context.l10n.dueInDays(daysLeft);
               
               return Padding(
                 padding: const EdgeInsets.only(bottom: 20.0),
@@ -186,7 +187,7 @@ class AnalyticsUpcomingBills extends StatelessWidget {
               const SizedBox(height: 12),
               Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2))),
               const SizedBox(height: 16),
-              const Text('All Upcoming Bills', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text(context.l10n.allUpcomingBills, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 16),
               Expanded(
                 child: ListView.builder(
@@ -195,7 +196,7 @@ class AnalyticsUpcomingBills extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final bill = bills[index];
                     final daysLeft = bill.dueDate.difference(DateTime.now()).inDays;
-                    final daysLeftText = daysLeft == 0 ? 'Due today' : 'Due in $daysLeft days';
+                    final daysLeftText = daysLeft == 0 ? context.l10n.dueToday : context.l10n.dueInDays(daysLeft);
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 20.0),
                       child: Row(

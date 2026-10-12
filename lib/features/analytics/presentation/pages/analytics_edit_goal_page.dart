@@ -4,6 +4,7 @@ import '../../domain/entities/analytics_entity.dart';
 import '../../../../shared/theme/app_theme.dart';
 import '../../../../shared/widgets/widgets.dart';
 import '../../../../core/utils/formatters.dart';
+import '../../../../app/config/l10n.dart';
 import '../widgets/analytics_form_skeleton.dart';
 class AnalyticsEditGoalPage extends StatefulWidget {
   final FinancialGoal goal;
@@ -45,7 +46,7 @@ class _AnalyticsEditGoalPageState extends State<AnalyticsEditGoalPage> {
   void _saveGoal() async {
     if (_nameController.text.trim().isEmpty || _targetAmountController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Please fill all required fields')),
+        SnackBar(content: Text(context.l10n.pleaseFillRequiredFields)),
       );
       return;
     }
@@ -63,8 +64,8 @@ class _AnalyticsEditGoalPageState extends State<AnalyticsEditGoalPage> {
       });
       CustomDialog.showSuccess(
         context,
-        title: 'Success',
-        message: 'Financial Goal has been updated successfully',
+        title: context.l10n.success,
+        message: context.l10n.goalUpdatedSuccess,
         onConfirm: () {
           Navigator.pop(context);
         },
@@ -88,39 +89,39 @@ class _AnalyticsEditGoalPageState extends State<AnalyticsEditGoalPage> {
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: Theme.of(context).appBarTheme.foregroundColor),
-        title: Text('Edit Financial Goal', style: TextStyle(color: Theme.of(context).appBarTheme.foregroundColor, fontWeight: FontWeight.bold)),
+        title: Text(context.l10n.editFinancialGoal, style: TextStyle(color: Theme.of(context).appBarTheme.foregroundColor, fontWeight: FontWeight.bold)),
       ),
       body: _isInitializing ? const AnalyticsFormSkeleton() : SingleChildScrollView(
         padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Goal Details', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(context.l10n.goalDetails, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             const SizedBox(height: 24),
             _buildTextField(
-              label: 'Goal Name', 
-              hint: 'e.g. New Car, Vacation', 
+              label: context.l10n.goalName, 
+              hint: context.l10n.goalNameHint, 
               controller: _nameController
             ),
             const SizedBox(height: 20),
             _buildTextField(
-              label: 'Current Amount (Optional)', 
-              hint: 'e.g. 1.000.000', 
+              label: context.l10n.currentAmountOptional, 
+              hint: context.l10n.currentAmountHint, 
               keyboardType: TextInputType.number, 
               controller: _currentAmountController,
               inputFormatters: [_CurrencyInputFormatter()],
             ),
             const SizedBox(height: 20),
             _buildTextField(
-              label: 'Target Amount', 
-              hint: 'e.g. 50.000.000', 
+              label: context.l10n.targetAmount, 
+              hint: context.l10n.targetAmountHint, 
               keyboardType: TextInputType.number, 
               controller: _targetAmountController,
               inputFormatters: [_CurrencyInputFormatter()],
             ),
             const SizedBox(height: 40),
             CustomButton(
-              text: 'Update Goal',
+              text: context.l10n.updateGoal,
               isLoading: _isLoading,
               onPressed: _saveGoal,
             ),

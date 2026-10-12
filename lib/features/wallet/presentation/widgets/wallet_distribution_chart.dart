@@ -3,6 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 import '../../domain/entities/wallet_entity.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../app/config/l10n.dart';
 
 class WalletDistributionChart extends StatelessWidget {
   final List<WalletEntity> wallets;
@@ -42,10 +43,10 @@ class WalletDistributionChart extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Balance Distribution', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text(context.l10n.balanceDistribution, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           const SizedBox(height: 24),
           if (validWallets.isEmpty)
-             const SizedBox(height: 150, child: Center(child: Text('No data'))),
+             SizedBox(height: 150, child: Center(child: Text(context.l10n.noData))),
           if (validWallets.isNotEmpty)
             SizedBox(
               height: 200,
@@ -74,7 +75,7 @@ class WalletDistributionChart extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(currencyFormatter.format(totalBalance), style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-                        const Text('Total Balance', style: TextStyle(fontSize: 12, color: Colors.grey)),
+                        Text(context.l10n.totalBalance, style: const TextStyle(fontSize: 12, color: Colors.grey)),
                       ],
                     ),
                   ),

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'app/config/l10n.dart';
 import 'features/auth/data/datasources/auth_remote_datasource.dart';
 import 'features/auth/data/repositories/auth_repository_impl.dart';
 import 'features/auth/domain/usecases/login_usecase.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
-import 'features/auth/presentation/pages/login_page.dart';
 import 'features/splash/presentation/pages/splash_page.dart';
+import 'l10n/app_localizations.dart';
 import 'shared/theme/app_theme.dart';
 import 'shared/theme/theme_cubit.dart';
 
@@ -34,18 +35,30 @@ class MyApp extends StatelessWidget {
         BlocProvider<ThemeCubit>(
           create: (_) => ThemeCubit(),
         ),
+        BlocProvider<LocaleCubit>(
+          create: (_) => LocaleCubit(),
+        ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, themeMode) {
-          return MaterialApp(
-            title: 'App Finance',
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: themeMode,
-            home: const SplashPage(),
+          return BlocBuilder<LocaleCubit, Locale>(
+            builder: (context, locale) {
+              return MaterialApp(
+                title: 'App Finance',
+                onGenerateTitle: (context) => context.l10n.appTitle,
+                theme: AppTheme.lightTheme,
+                darkTheme: AppTheme.darkTheme,
+                themeMode: themeMode,
+                locale: locale,
+                supportedLocales: AppLocalizations.supportedLocales,
+                localizationsDelegates: AppLocalizations.localizationsDelegates,
+                home: const SplashPage(),
+              );
+            },
           );
         },
       ),
     );
   }
 }
+

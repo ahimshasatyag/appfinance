@@ -2,11 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../domain/entities/wallet_entity.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../app/config/l10n.dart';
 
 class WalletPhysicalCard extends StatelessWidget {
   final WalletEntity wallet;
 
   const WalletPhysicalCard({super.key, required this.wallet});
+
+  String _getTypeDisplayName(BuildContext context, String type) {
+    switch (type) {
+      case 'Bank Account':
+        return context.l10n.bankAccount;
+      case 'E-Wallet':
+        return context.l10n.eWallet;
+      case 'Cash':
+        return context.l10n.cash;
+      case 'Credit Card':
+        return context.l10n.creditCard;
+      case 'Investment':
+        return context.l10n.investment;
+      default:
+        return type;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,9 +93,9 @@ class WalletPhysicalCard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Balance',
-                style: TextStyle(
+              Text(
+                context.l10n.balance,
+                style: const TextStyle(
                   color: Colors.white70,
                   fontSize: 14,
                 ),
@@ -107,7 +125,7 @@ class WalletPhysicalCard extends StatelessWidget {
                 ),
               ),
               Text(
-                wallet.type,
+                _getTypeDisplayName(context, wallet.type),
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 14,

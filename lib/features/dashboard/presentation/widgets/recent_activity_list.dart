@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../app/config/l10n.dart';
 import '../../domain/entities/transaction_entity.dart';
 import '../bloc/dashboard_bloc.dart';
 import '../bloc/dashboard_event.dart';
@@ -20,12 +21,12 @@ class RecentActivityList extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Transactions History',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Text(
+                context.l10n.recentTransactions,
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Text(
-                'See all',
+                context.l10n.seeAll,
                 style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
               ),
             ],

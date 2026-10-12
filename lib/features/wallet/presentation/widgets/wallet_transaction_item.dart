@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../domain/entities/wallet_entity.dart';
+import '../../../../app/config/l10n.dart';
 import 'wallet_transaction_detail_sheet.dart';
 
 class WalletTransactionItem extends StatelessWidget {
@@ -8,6 +9,19 @@ class WalletTransactionItem extends StatelessWidget {
   final WalletEntity wallet;
 
   const WalletTransactionItem({super.key, required this.transaction, required this.wallet});
+
+  String _getTransactionTypeName(BuildContext context, String type) {
+    switch (type) {
+      case 'Income':
+        return context.l10n.income;
+      case 'Expense':
+        return context.l10n.expenses;
+      case 'Transfer':
+        return context.l10n.transfer;
+      default:
+        return type;
+    }
+  }
 
   IconData _getIcon() {
     if (transaction.type == 'Income') return Icons.arrow_downward;
@@ -59,7 +73,7 @@ class WalletTransactionItem extends StatelessWidget {
                 children: [
                   Text(transaction.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                   const SizedBox(height: 4),
-                  Text('${transaction.type} · ${transaction.category}', style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                  Text('${_getTransactionTypeName(context, transaction.type)} · ${transaction.category}', style: const TextStyle(fontSize: 12, color: Colors.grey)),
                 ],
               ),
             ),
