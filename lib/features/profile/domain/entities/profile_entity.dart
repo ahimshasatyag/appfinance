@@ -14,4 +14,22 @@ class ProfileEntity {
     required this.location,
     required this.isEmailVerified,
   });
+
+  ProfileEntity copyWith({
+    String? id,
+    String? fullName,
+    String? email,
+    String? phone,
+    String? location,
+    bool? isEmailVerified,
+  }) {
+    return ProfileEntity(
+      id: id ?? this.id,
+      fullName: fullName ?? this.fullName,
+      email: email ?? this.email,
+      phone: phone ?? this.phone,
+      location: location ?? this.location,
+      isEmailVerified: isEmailVerified ?? this.isEmailVerified,
+    );
+  }
 }

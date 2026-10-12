@@ -1,17 +1,36 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/usecases/get_profile_usecase.dart';
+import '../../domain/usecases/update_profile_usecase.dart';
 import 'profile_event.dart';
 import 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final GetProfileUseCase getProfileUseCase;
+  final UpdateProfileUseCase? updateProfileUseCase;
 
-  ProfileBloc({required this.getProfileUseCase}) : super(ProfileInitial()) {
+  ProfileBloc({
+    required this.getProfileUseCase,
+    this.updateProfileUseCase,
+  }) : super(ProfileInitial()) {
     on<LoadProfile>((event, emit) async {
       emit(ProfileLoading());
       try {
         final profile = await getProfileUseCase();
         emit(ProfileLoaded(profile));
+      } catch (e) {
+        emit(ProfileError(e.toString()));
+      }
+    });
+
+    on<UpdateProfile>((event, emit) async {
+      emit(ProfileLoading());
+      try {
+        if (updateProfileUseCase != null) {
+          final updated = await updateProfileUseCase!(event.profile);
+          emit(ProfileLoaded(updated));
+        } else {
+          emit(ProfileLoaded(event.profile));
+        }
       } catch (e) {
         emit(ProfileError(e.toString()));
       }

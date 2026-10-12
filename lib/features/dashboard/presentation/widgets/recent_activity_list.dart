@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../app/config/l10n.dart';
+import '../../../../core/utils/formatters.dart';
+import '../../../../shared/theme/app_theme.dart';
+import '../../../transaction_history/presentation/pages/transaction_history_page.dart';
 import '../../domain/entities/transaction_entity.dart';
 import '../bloc/dashboard_bloc.dart';
 import '../bloc/dashboard_event.dart';
-import '../../../../core/utils/formatters.dart';
 
 class RecentActivityList extends StatelessWidget {
   final List<TransactionEntity> transactions;
+  final VoidCallback? onSeeAll;
 
-  const RecentActivityList({super.key, required this.transactions});
+  const RecentActivityList({
+    super.key,
+    required this.transactions,
+    this.onSeeAll,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +32,28 @@ class RecentActivityList extends StatelessWidget {
                 context.l10n.recentTransactions,
                 style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Text(
-                context.l10n.seeAll,
-                style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
+              InkWell(
+                onTap: onSeeAll ??
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TransactionHistoryPage(),
+                        ),
+                      );
+                    },
+                borderRadius: BorderRadius.circular(8),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                  child: Text(
+                    context.l10n.seeAll,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: AppTheme.primaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

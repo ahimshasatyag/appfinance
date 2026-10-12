@@ -643,4 +643,154 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get vibrationSubtitle => 'Vibrate phone when notification is received';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get profileUpdatedSuccess => 'Profile updated successfully';
+
+  @override
+  String get fullNameRequired => 'Full name is required';
+
+  @override
+  String get emailRequired => 'Email is required';
+
+  @override
+  String get invalidEmail => 'Please enter a valid email address';
+
+  @override
+  String get phoneRequired => 'Phone number is required';
+
+  @override
+  String get saveChanges => 'Save Changes';
+
+  @override
+  String get enterFullNameHint => 'e.g. John Doe';
+
+  @override
+  String get enterEmailHint => 'e.g. name@example.com';
+
+  @override
+  String get enterPhoneHint => 'e.g. +62 812 3456 789';
+
+  @override
+  String get location => 'Location';
+
+  @override
+  String get enterLocationHint => 'e.g. Jakarta, Indonesia';
+
+  @override
+  String get changePhoto => 'Change Photo';
+
+  @override
+  String newNotificationsCount(int count) {
+    return '$count new';
+  }
+
+  @override
+  String get markAllAsRead => 'Mark All as Read';
+
+  @override
+  String get allNotificationsMarkedAsRead => 'All notifications marked as read';
+
+  @override
+  String get noNewNotifications => 'No New Notifications';
+
+  @override
+  String get noNotifications => 'No Notifications';
+
+  @override
+  String get allNotificationsReadSubtitle => 'You have read all notifications.';
+
+  @override
+  String get noNotificationsCategorySubtitle =>
+      'No notifications in this category yet.';
+
+  @override
+  String get emptyNotificationsDefaultSubtitle =>
+      'All notifications about transactions, bills, and account security will appear here.';
+
+  @override
+  String notificationDeleted(String title) {
+    return 'Notification \"$title\" deleted';
+  }
+
+  @override
+  String get filterAll => 'All';
+
+  @override
+  String get filterUnread => 'Unread';
+
+  @override
+  String get filterTransactions => 'Transactions';
+
+  @override
+  String get filterBills => 'Bills';
+
+  @override
+  String get filterSecurity => 'Security';
+
+  @override
+  String get markAsRead => 'Mark as read';
+
+  @override
+  String get additionalInformation => 'Additional Information';
+
+  @override
+  String get amountLabel => 'Amount';
+
+  @override
+  String get accountLabel => 'Account';
+
+  @override
+  String get categoryLabel => 'Category';
+
+  @override
+  String get dueDateLabel => 'Due Date';
+
+  @override
+  String get deviceLabel => 'Device';
+
+  @override
+  String get locationLabel => 'Location';
+
+  @override
+  String get promoCodeLabel => 'Promo Code';
+
+  @override
+  String get walletLabel => 'Wallet';
+
+  @override
+  String get typeTransaction => 'TRANSACTION';
+
+  @override
+  String get typeBill => 'BILL';
+
+  @override
+  String get typeSecurity => 'SECURITY';
+
+  @override
+  String get typePromo => 'PROMO & CASHBACK';
+
+  @override
+  String get typeSystem => 'SYSTEM';
+
+  @override
+  String get justNow => 'Just now';
+
+  @override
+  String minutesAgo(int count) {
+    return '$count minutes ago';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return '$count hours ago';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return '$count days ago';
+  }
 }

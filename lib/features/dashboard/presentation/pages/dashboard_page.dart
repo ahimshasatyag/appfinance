@@ -14,6 +14,7 @@ import '../widgets/stats_card.dart';
 import '../widgets/stacked_card_slider.dart';
 import '../widgets/recent_activity_list.dart';
 import '../widgets/dashboard_skeleton.dart';
+import '../../../transaction_history/presentation/pages/transaction_history_page.dart';
 import '../../../../core/utils/formatters.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -174,7 +175,18 @@ class DashboardView extends StatelessWidget {
                               
                               const SizedBox(height: 30),
                               Expanded(
-                                child: RecentActivityList(transactions: data.recentTransactions),
+                                child: RecentActivityList(
+                                  transactions: data.recentTransactions,
+                                  onSeeAll: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const TransactionHistoryPage(),
+                                      ),
+                                    );
+                                  },
+                                ),
                               ),
                             ],
                           ),

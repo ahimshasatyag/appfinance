@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../app/config/l10n.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../bloc/notification_event.dart';
 
@@ -19,11 +20,11 @@ class NotificationFilterChips extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final filterItems = [
-      (type: NotificationFilterType.all, label: 'Semua', count: null),
-      (type: NotificationFilterType.unread, label: 'Belum Dibaca', count: unreadCount),
-      (type: NotificationFilterType.transaction, label: 'Transaksi', count: null),
-      (type: NotificationFilterType.bill, label: 'Tagihan', count: null),
-      (type: NotificationFilterType.security, label: 'Keamanan', count: null),
+      (type: NotificationFilterType.all, label: context.l10n.filterAll, count: null),
+      (type: NotificationFilterType.unread, label: context.l10n.filterUnread, count: unreadCount),
+      (type: NotificationFilterType.transaction, label: context.l10n.filterTransactions, count: null),
+      (type: NotificationFilterType.bill, label: context.l10n.filterBills, count: null),
+      (type: NotificationFilterType.security, label: context.l10n.filterSecurity, count: null),
     ];
 
     return SizedBox(

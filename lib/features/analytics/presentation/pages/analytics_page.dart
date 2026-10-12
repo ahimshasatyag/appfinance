@@ -10,6 +10,7 @@ import '../widgets/analytics_skeleton.dart';
 import '../widgets/analytics_header.dart';
 import '../widgets/analytics_upcoming_bills.dart';
 import '../widgets/analytics_recent_transactions.dart';
+import '../../../transaction_history/presentation/pages/transaction_history_page.dart';
 import '../../../../shared/theme/app_theme.dart';
 import '../../domain/entities/filter_entity.dart';
 import '../../domain/entities/analytics_entity.dart';
@@ -86,7 +87,17 @@ class _AnalyticsViewState extends State<AnalyticsView> {
           const SizedBox(height: 24),
           AnalyticsUpcomingBills(bills: data.upcomingBills),
           const SizedBox(height: 24),
-          AnalyticsRecentTransactions(transactions: data.recentTransactions),
+          AnalyticsRecentTransactions(
+            transactions: data.recentTransactions,
+            onSeeAll: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const TransactionHistoryPage(),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

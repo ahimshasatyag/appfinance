@@ -19,7 +19,6 @@ import '../widgets/notification_empty_state.dart';
 import '../widgets/notification_filter_chips.dart';
 import '../widgets/notification_item_tile.dart';
 import '../widgets/notification_skeleton.dart';
-import '../../../profile/presentation/pages/notification_settings_page.dart';
 
 class NotificationCenterPage extends StatelessWidget {
   final NotificationBloc? bloc;
@@ -134,7 +133,7 @@ class NotificationCenterView extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Text(
-                                  '$unreadCount baru',
+                                  context.l10n.newNotificationsCount(unreadCount),
                                   style: const TextStyle(
                                     fontSize: 11,
                                     fontWeight: FontWeight.bold,
@@ -150,7 +149,7 @@ class NotificationCenterView extends StatelessWidget {
                       // Action Button: Mark all as read
                       if (unreadCount > 0)
                         IconButton(
-                          tooltip: 'Tandai Semua Dibaca',
+                          tooltip: context.l10n.markAllAsRead,
                           icon: const Icon(
                             Icons.done_all_rounded,
                             color: AppColors.primary,
@@ -161,32 +160,15 @@ class NotificationCenterView extends StatelessWidget {
                                 .read<NotificationBloc>()
                                 .add(const MarkAllNotificationsAsRead());
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Semua notifikasi ditandai dibaca'),
-                                duration: Duration(seconds: 2),
+                              SnackBar(
+                                content: Text(context.l10n.allNotificationsMarkedAsRead),
+                                duration: const Duration(seconds: 2),
                                 behavior: SnackBarBehavior.floating,
                               ),
                             );
                           },
                         ),
 
-                      // Settings button
-                      IconButton(
-                        tooltip: 'Pengaturan Notifikasi',
-                        icon: Icon(
-                          Icons.tune_rounded,
-                          color: isDark ? Colors.white70 : Colors.black54,
-                          size: 22,
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => const NotificationSettingsPage(),
-                            ),
-                          );
-                        },
-                      ),
                     ],
                   ),
                 ),
@@ -246,7 +228,7 @@ class NotificationCenterView extends StatelessWidget {
                       .add(const LoadNotifications(forceRefresh: true));
                 },
                 icon: const Icon(Icons.refresh, size: 18),
-                label: const Text('Coba Lagi'),
+                label: Text(context.l10n.retry),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primary,
                   foregroundColor: Colors.white,
@@ -262,11 +244,11 @@ class NotificationCenterView extends StatelessWidget {
       if (notifications.isEmpty) {
         return NotificationEmptyState(
           title: state.activeFilter == NotificationFilterType.unread
-              ? 'Tidak Ada Notifikasi Baru'
-              : 'Tidak Ada Notifikasi',
+              ? context.l10n.noNewNotifications
+              : context.l10n.noNotifications,
           subtitle: state.activeFilter == NotificationFilterType.unread
-              ? 'Kamu sudah membaca semua notifikasi.'
-              : 'Belum ada notifikasi pada kategori ini.',
+              ? context.l10n.allNotificationsReadSubtitle
+              : context.l10n.noNotificationsCategorySubtitle,
           onRefresh: () {
             context
                 .read<NotificationBloc>()
@@ -328,7 +310,7 @@ class NotificationCenterView extends StatelessWidget {
     context.read<NotificationBloc>().add(DeleteNotification(notification.id));
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Notifikasi "${notification.title}" dihapus'),
+        content: Text(context.l10n.notificationDeleted(notification.title)),
         behavior: SnackBarBehavior.floating,
         duration: const Duration(seconds: 3),
       ),

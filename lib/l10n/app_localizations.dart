@@ -1309,6 +1309,282 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Vibrate phone when notification is received'**
   String get vibrationSubtitle;
+
+  /// Judul halaman edit profil
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get editProfile;
+
+  /// Pesan sukses update profil
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated successfully'**
+  String get profileUpdatedSuccess;
+
+  /// Validasi nama lengkap wajib diisi
+  ///
+  /// In en, this message translates to:
+  /// **'Full name is required'**
+  String get fullNameRequired;
+
+  /// Validasi email wajib diisi
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get emailRequired;
+
+  /// Validasi format email tidak valid
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address'**
+  String get invalidEmail;
+
+  /// Validasi nomor telepon wajib diisi
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number is required'**
+  String get phoneRequired;
+
+  /// Tombol simpan perubahan
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get saveChanges;
+
+  /// Petunjuk input nama lengkap
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. John Doe'**
+  String get enterFullNameHint;
+
+  /// Petunjuk input email
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. name@example.com'**
+  String get enterEmailHint;
+
+  /// Petunjuk input nomor telepon
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. +62 812 3456 789'**
+  String get enterPhoneHint;
+
+  /// Label lokasi
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get location;
+
+  /// Petunjuk input lokasi
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Jakarta, Indonesia'**
+  String get enterLocationHint;
+
+  /// Ubah foto profil
+  ///
+  /// In en, this message translates to:
+  /// **'Change Photo'**
+  String get changePhoto;
+
+  /// Badge jumlah notifikasi baru
+  ///
+  /// In en, this message translates to:
+  /// **'{count} new'**
+  String newNotificationsCount(int count);
+
+  /// Tooltip tandai semua dibaca
+  ///
+  /// In en, this message translates to:
+  /// **'Mark All as Read'**
+  String get markAllAsRead;
+
+  /// Snackbar semua notifikasi ditandai dibaca
+  ///
+  /// In en, this message translates to:
+  /// **'All notifications marked as read'**
+  String get allNotificationsMarkedAsRead;
+
+  /// Judul tidak ada notifikasi baru
+  ///
+  /// In en, this message translates to:
+  /// **'No New Notifications'**
+  String get noNewNotifications;
+
+  /// Judul tidak ada notifikasi
+  ///
+  /// In en, this message translates to:
+  /// **'No Notifications'**
+  String get noNotifications;
+
+  /// Subjudul kamu sudah membaca semua notifikasi
+  ///
+  /// In en, this message translates to:
+  /// **'You have read all notifications.'**
+  String get allNotificationsReadSubtitle;
+
+  /// Subjudul belum ada notifikasi pada kategori ini
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications in this category yet.'**
+  String get noNotificationsCategorySubtitle;
+
+  /// Subjudul default notifikasi kosong
+  ///
+  /// In en, this message translates to:
+  /// **'All notifications about transactions, bills, and account security will appear here.'**
+  String get emptyNotificationsDefaultSubtitle;
+
+  /// Snackbar notifikasi dihapus
+  ///
+  /// In en, this message translates to:
+  /// **'Notification \"{title}\" deleted'**
+  String notificationDeleted(String title);
+
+  /// Filter semua notifikasi
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterAll;
+
+  /// Filter belum dibaca
+  ///
+  /// In en, this message translates to:
+  /// **'Unread'**
+  String get filterUnread;
+
+  /// Filter transaksi
+  ///
+  /// In en, this message translates to:
+  /// **'Transactions'**
+  String get filterTransactions;
+
+  /// Filter tagihan
+  ///
+  /// In en, this message translates to:
+  /// **'Bills'**
+  String get filterBills;
+
+  /// Filter keamanan
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get filterSecurity;
+
+  /// Menu tandai dibaca
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as read'**
+  String get markAsRead;
+
+  /// Judul informasi tambahan pada detail notifikasi
+  ///
+  /// In en, this message translates to:
+  /// **'Additional Information'**
+  String get additionalInformation;
+
+  /// Label jumlah
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get amountLabel;
+
+  /// Label akun rekening
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get accountLabel;
+
+  /// Label kategori
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get categoryLabel;
+
+  /// Label jatuh tempo
+  ///
+  /// In en, this message translates to:
+  /// **'Due Date'**
+  String get dueDateLabel;
+
+  /// Label perangkat
+  ///
+  /// In en, this message translates to:
+  /// **'Device'**
+  String get deviceLabel;
+
+  /// Label lokasi
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get locationLabel;
+
+  /// Label kode promo
+  ///
+  /// In en, this message translates to:
+  /// **'Promo Code'**
+  String get promoCodeLabel;
+
+  /// Label dompet
+  ///
+  /// In en, this message translates to:
+  /// **'Wallet'**
+  String get walletLabel;
+
+  /// Tipe notifikasi transaksi
+  ///
+  /// In en, this message translates to:
+  /// **'TRANSACTION'**
+  String get typeTransaction;
+
+  /// Tipe notifikasi tagihan
+  ///
+  /// In en, this message translates to:
+  /// **'BILL'**
+  String get typeBill;
+
+  /// Tipe notifikasi keamanan
+  ///
+  /// In en, this message translates to:
+  /// **'SECURITY'**
+  String get typeSecurity;
+
+  /// Tipe notifikasi promo
+  ///
+  /// In en, this message translates to:
+  /// **'PROMO & CASHBACK'**
+  String get typePromo;
+
+  /// Tipe notifikasi sistem
+  ///
+  /// In en, this message translates to:
+  /// **'SYSTEM'**
+  String get typeSystem;
+
+  /// Waktu baru saja
+  ///
+  /// In en, this message translates to:
+  /// **'Just now'**
+  String get justNow;
+
+  /// Waktu menit lalu
+  ///
+  /// In en, this message translates to:
+  /// **'{count} minutes ago'**
+  String minutesAgo(int count);
+
+  /// Waktu jam lalu
+  ///
+  /// In en, this message translates to:
+  /// **'{count} hours ago'**
+  String hoursAgo(int count);
+
+  /// Waktu hari lalu
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days ago'**
+  String daysAgo(int count);
 }
 
 class _AppLocalizationsDelegate

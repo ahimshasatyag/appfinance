@@ -6,6 +6,7 @@ import '../../../../shared/widgets/widgets.dart';
 import '../widgets/profile_skeleton.dart';
 import '../../../auth/presentation/pages/login_page.dart';
 import '../../domain/usecases/get_profile_usecase.dart';
+import '../../domain/usecases/update_profile_usecase.dart';
 import '../../data/repositories/profile_repository_impl.dart';
 import '../../data/datasources/profile_remote_datasource.dart';
 import '../bloc/profile_bloc.dart';
@@ -13,6 +14,7 @@ import '../bloc/profile_event.dart';
 import '../bloc/profile_state.dart';
 import '../widgets/profile_menu_item.dart';
 import 'language_settings_page.dart';
+import 'profile_edit_page.dart';
 import 'theme_settings_page.dart';
 import '../../../../app/config/l10n.dart';
 import '../../../../shared/theme/theme_cubit.dart';
@@ -24,13 +26,15 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final remoteDataSource = ProfileRemoteDataSourceImpl();
+    final repository = ProfileRepositoryImpl(
+      remoteDataSource: remoteDataSource,
+    );
+
     return BlocProvider(
       create: (context) => ProfileBloc(
-        getProfileUseCase: GetProfileUseCase(
-          ProfileRepositoryImpl(
-            remoteDataSource: ProfileRemoteDataSourceImpl(),
-          ),
-        ),
+        getProfileUseCase: GetProfileUseCase(repository),
+        updateProfileUseCase: UpdateProfileUseCase(repository),
       )..add(LoadProfile()),
       child: const ProfileView(),
     );
@@ -72,55 +76,49 @@ class ProfileView extends StatelessWidget {
                             ),
                             child: Column(
                               children: [
-                                Stack(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 40,
-                                      backgroundColor: Colors.transparent,
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: Colors.white.withValues(
-                                              alpha: 0.5,
-                                            ),
-                                            width: 2,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            profile.fullName.length >= 2
-                                                ? profile.fullName
-                                                      .substring(0, 2)
-                                                      .toUpperCase()
-                                                : profile.fullName
-                                                      .toUpperCase(),
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 28,
-                                              fontWeight: FontWeight.bold,
-                                            ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) => BlocProvider.value(
+                                          value: context.read<ProfileBloc>(),
+                                          child: ProfileEditPage(
+                                            profile: profile,
                                           ),
                                         ),
                                       ),
+                                    );
+                                  },
+                                  child: Container(
+                                    width: 86,
+                                    height: 86,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color:
+                                          Colors.white.withValues(alpha: 0.2),
+                                      border: Border.all(
+                                        color:
+                                            Colors.white.withValues(alpha: 0.6),
+                                        width: 2.5,
+                                      ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black
+                                              .withValues(alpha: 0.1),
+                                          blurRadius: 10,
+                                          offset: const Offset(0, 4),
+                                        ),
+                                      ],
                                     ),
-                                    Positioned(
-                                      bottom: 0,
-                                      right: 0,
-                                      child: Container(
-                                        padding: const EdgeInsets.all(6),
-                                        decoration: const BoxDecoration(
-                                          color: AppTheme.secondaryColor,
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: const Icon(
-                                          Icons.camera_alt,
-                                          color: Colors.white,
-                                          size: 16,
-                                        ),
+                                    child: const Center(
+                                      child: Icon(
+                                        Icons.person_rounded,
+                                        color: Colors.white,
+                                        size: 52,
                                       ),
                                     ),
-                                  ],
+                                  ),
                                 ),
                                 const SizedBox(height: 16),
                                 Text(
@@ -173,34 +171,50 @@ class ProfileView extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 12,
-                                  vertical: 6,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: AppTheme.secondaryColor.withValues(
-                                    alpha: 0.1,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.edit,
-                                      color: AppTheme.secondaryColor,
-                                      size: 14,
-                                    ),
-                                    const SizedBox(width: 4),
-                                    Text(
-                                      context.l10n.editDetails,
-                                      style: const TextStyle(
-                                        color: AppTheme.secondaryColor,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => BlocProvider.value(
+                                        value: context.read<ProfileBloc>(),
+                                        child: ProfileEditPage(
+                                          profile: profile,
+                                        ),
                                       ),
                                     ),
-                                  ],
+                                  );
+                                },
+                                borderRadius: BorderRadius.circular(8),
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 6,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: AppTheme.secondaryColor.withValues(
+                                      alpha: 0.1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.edit,
+                                        color: AppTheme.secondaryColor,
+                                        size: 14,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        context.l10n.editDetails,
+                                        style: const TextStyle(
+                                          color: AppTheme.secondaryColor,
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
@@ -223,8 +237,7 @@ class ProfileView extends StatelessWidget {
                                 ),
                                 Divider(
                                   height: 1,
-                                  color: Theme.of(context)
-                                      .dividerColor
+                                  color: Theme.of(context).dividerColor
                                       .withValues(alpha: 0.2),
                                   indent: 64,
                                   endIndent: 16,
@@ -266,8 +279,7 @@ class ProfileView extends StatelessWidget {
                                 ),
                                 Divider(
                                   height: 1,
-                                  color: Theme.of(context)
-                                      .dividerColor
+                                  color: Theme.of(context).dividerColor
                                       .withValues(alpha: 0.2),
                                   indent: 64,
                                   endIndent: 16,
@@ -277,14 +289,6 @@ class ProfileView extends StatelessWidget {
                                   title: context.l10n.phone,
                                   subtitle: profile.phone,
                                   onTap: () {},
-                                ),
-                                Divider(
-                                  height: 1,
-                                  color: Theme.of(context)
-                                      .dividerColor
-                                      .withValues(alpha: 0.2),
-                                  indent: 64,
-                                  endIndent: 16,
                                 ),
                               ],
                             ),
@@ -330,8 +334,8 @@ class ProfileView extends StatelessWidget {
                                   builder: (context, locale) {
                                     final languageName =
                                         locale.languageCode == 'id'
-                                            ? 'Bahasa Indonesia'
-                                            : 'English (US)';
+                                        ? 'Bahasa Indonesia'
+                                        : 'English (US)';
                                     return ProfileMenuItem(
                                       icon: Icons.language,
                                       title: context.l10n.language,
@@ -372,8 +376,7 @@ class ProfileView extends StatelessWidget {
 
                                 Divider(
                                   height: 1,
-                                  color: Theme.of(context)
-                                      .dividerColor
+                                  color: Theme.of(context).dividerColor
                                       .withValues(alpha: 0.2),
                                   indent: 64,
                                   endIndent: 16,
@@ -426,14 +429,15 @@ class ProfileView extends StatelessWidget {
                                 ),
                                 Divider(
                                   height: 1,
-                                  color: Theme.of(context)
-                                      .dividerColor
+                                  color: Theme.of(context).dividerColor
                                       .withValues(alpha: 0.2),
                                   indent: 64,
                                   endIndent: 16,
                                 ),
-                                BlocBuilder<NotificationSettingsCubit,
-                                    NotificationSettingsState>(
+                                BlocBuilder<
+                                  NotificationSettingsCubit,
+                                  NotificationSettingsState
+                                >(
                                   builder: (context, notifState) {
                                     String statusText;
                                     if (notifState.isDoNotDisturb) {
@@ -459,15 +463,17 @@ class ProfileView extends StatelessWidget {
                                               color: notifState.isDoNotDisturb
                                                   ? const Color(0xFF8B5CF6)
                                                   : Theme.of(context)
-                                                      .textTheme
-                                                      .bodyMedium
-                                                      ?.color
-                                                      ?.withValues(alpha: 0.6),
+                                                        .textTheme
+                                                        .bodyMedium
+                                                        ?.color
+                                                        ?.withValues(
+                                                          alpha: 0.6,
+                                                        ),
                                               fontSize: 12,
                                               fontWeight:
                                                   notifState.isDoNotDisturb
-                                                      ? FontWeight.bold
-                                                      : FontWeight.normal,
+                                                  ? FontWeight.bold
+                                                  : FontWeight.normal,
                                             ),
                                           ),
                                           const SizedBox(width: 8),

@@ -33,14 +33,14 @@ class NotificationItemTile extends StatelessWidget {
           color: Colors.redAccent.shade400,
           borderRadius: BorderRadius.circular(16),
         ),
-        child: const Row(
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Icon(Icons.delete_outline, color: Colors.white, size: 24),
-            SizedBox(width: 8),
+            const Icon(Icons.delete_outline, color: Colors.white, size: 24),
+            const SizedBox(width: 8),
             Text(
-              'Hapus',
-              style: TextStyle(
+              context.l10n.delete,
+              style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
@@ -158,7 +158,7 @@ class NotificationItemTile extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              _formatTimeAgo(notification.timestamp),
+                              _formatTimeAgo(context, notification.timestamp),
                               style: TextStyle(
                                 fontSize: 11,
                                 color: isDark
@@ -203,7 +203,7 @@ class NotificationItemTile extends StatelessWidget {
                                         ),
                                         const SizedBox(width: 8),
                                         Text(
-                                          'Tandai dibaca',
+                                          context.l10n.markAsRead,
                                           style: TextStyle(
                                             fontSize: 13,
                                             color: isDark ? Colors.white : Colors.black87,
@@ -249,18 +249,18 @@ class NotificationItemTile extends StatelessWidget {
     );
   }
 
-  static String _formatTimeAgo(DateTime dateTime) {
+  static String _formatTimeAgo(BuildContext context, DateTime dateTime) {
     final diff = DateTime.now().difference(dateTime);
     if (diff.inSeconds < 60) {
-      return 'Baru saja';
+      return context.l10n.justNow;
     } else if (diff.inMinutes < 60) {
-      return '${diff.inMinutes} menit lalu';
+      return context.l10n.minutesAgo(diff.inMinutes);
     } else if (diff.inHours < 24) {
-      return '${diff.inHours} jam lalu';
+      return context.l10n.hoursAgo(diff.inHours);
     } else if (diff.inDays == 1) {
-      return 'Kemarin, ${Formatters.formatDateTime(dateTime, format: "HH:mm")}';
+      return '${context.l10n.yesterday}, ${Formatters.formatDateTime(dateTime, format: "HH:mm")}';
     } else if (diff.inDays < 7) {
-      return '${diff.inDays} hari lalu';
+      return context.l10n.daysAgo(diff.inDays);
     } else {
       return Formatters.formatDateTime(dateTime, format: 'dd MMM, HH:mm');
     }

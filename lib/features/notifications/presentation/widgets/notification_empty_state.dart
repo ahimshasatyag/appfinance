@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
+import '../../../../app/config/l10n.dart';
 import '../../../../shared/theme/app_colors.dart';
 
 class NotificationEmptyState extends StatelessWidget {
-  final String title;
-  final String subtitle;
+  final String? title;
+  final String? subtitle;
   final VoidCallback? onRefresh;
 
   const NotificationEmptyState({
     super.key,
-    this.title = 'Tidak Ada Notifikasi',
-    this.subtitle =
-        'Semua pemberitahuan tentang transaksi, tagihan, dan keamanan akun akan muncul di sini.',
+    this.title,
+    this.subtitle,
     this.onRefresh,
   });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final effectiveTitle = title ?? context.l10n.noNotifications;
+    final effectiveSubtitle =
+        subtitle ?? context.l10n.emptyNotificationsDefaultSubtitle;
 
     return Center(
       child: Padding(
@@ -39,7 +42,7 @@ class NotificationEmptyState extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              title,
+              effectiveTitle,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18,
@@ -49,7 +52,7 @@ class NotificationEmptyState extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              subtitle,
+              effectiveSubtitle,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
@@ -64,7 +67,7 @@ class NotificationEmptyState extends StatelessWidget {
               OutlinedButton.icon(
                 onPressed: onRefresh,
                 icon: const Icon(Icons.refresh, size: 18),
-                label: const Text('Muat Ulang'),
+                label: Text(context.l10n.retry),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: AppColors.primary,
                   side: const BorderSide(color: AppColors.primary),

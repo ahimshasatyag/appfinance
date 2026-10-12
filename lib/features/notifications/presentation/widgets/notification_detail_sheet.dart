@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../app/config/l10n.dart';
 import '../../../../core/utils/formatters.dart';
 import '../../../../shared/theme/app_colors.dart';
 import '../../domain/entities/notification_entity.dart';
@@ -32,7 +33,7 @@ class NotificationDetailSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final typeConfig = _getTypeConfig(notification.type);
+    final typeConfig = _getTypeConfig(context, notification.type);
 
     return Container(
       padding: const EdgeInsets.fromLTRB(24, 12, 24, 32),
@@ -156,7 +157,7 @@ class NotificationDetailSheet extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Informasi Tambahan',
+                    context.l10n.additionalInformation,
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.bold,
@@ -171,7 +172,7 @@ class NotificationDetailSheet extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            _formatKey(entry.key),
+                            _formatKey(context, entry.key),
                             style: TextStyle(
                               fontSize: 12,
                               color: isDark ? Colors.white54 : Colors.black54,
@@ -206,7 +207,7 @@ class NotificationDetailSheet extends StatelessWidget {
                     onDelete();
                   },
                   icon: const Icon(Icons.delete_outline, size: 18),
-                  label: const Text('Hapus'),
+                  label: Text(context.l10n.delete),
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.redAccent,
                     side: const BorderSide(color: Colors.redAccent),
@@ -230,9 +231,9 @@ class NotificationDetailSheet extends StatelessWidget {
                     ),
                     elevation: 0,
                   ),
-                  child: const Text(
-                    'Tutup',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  child: Text(
+                    context.l10n.close,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -243,26 +244,26 @@ class NotificationDetailSheet extends StatelessWidget {
     );
   }
 
-  static String _formatKey(String key) {
+  static String _formatKey(BuildContext context, String key) {
     switch (key) {
       case 'amount':
-        return 'Jumlah';
+        return context.l10n.amountLabel;
       case 'account':
-        return 'Rekening / Akun';
+        return context.l10n.accountLabel;
       case 'category':
-        return 'Kategori';
+        return context.l10n.categoryLabel;
       case 'transactionId':
-        return 'ID Transaksi';
+        return context.l10n.transactionId;
       case 'dueDate':
-        return 'Jatuh Tempo';
+        return context.l10n.dueDateLabel;
       case 'device':
-        return 'Perangkat';
+        return context.l10n.deviceLabel;
       case 'location':
-        return 'Lokasi';
+        return context.l10n.locationLabel;
       case 'promoCode':
-        return 'Kode Promo';
+        return context.l10n.promoCodeLabel;
       case 'wallet':
-        return 'Dompet';
+        return context.l10n.walletLabel;
       default:
         return key;
     }
@@ -276,37 +277,37 @@ class NotificationDetailSheet extends StatelessWidget {
   }
 
   static ({IconData icon, Color color, String label}) _getTypeConfig(
-      NotificationType type) {
+      BuildContext context, NotificationType type) {
     switch (type) {
       case NotificationType.transaction:
         return (
           icon: Icons.account_balance_wallet_rounded,
           color: const Color(0xFF10B981),
-          label: 'TRANSAKSI',
+          label: context.l10n.typeTransaction,
         );
       case NotificationType.bill:
         return (
           icon: Icons.receipt_long_rounded,
           color: const Color(0xFFEF4444),
-          label: 'TAGIHAN',
+          label: context.l10n.typeBill,
         );
       case NotificationType.security:
         return (
           icon: Icons.shield_rounded,
           color: const Color(0xFFF59E0B),
-          label: 'KEAMANAN',
+          label: context.l10n.typeSecurity,
         );
       case NotificationType.promo:
         return (
           icon: Icons.card_giftcard_rounded,
           color: const Color(0xFF8B5CF6),
-          label: 'PROMO & CASHBACK',
+          label: context.l10n.typePromo,
         );
       case NotificationType.system:
         return (
           icon: Icons.notifications_active_rounded,
           color: AppColors.primary,
-          label: 'SISTEM',
+          label: context.l10n.typeSystem,
         );
     }
   }

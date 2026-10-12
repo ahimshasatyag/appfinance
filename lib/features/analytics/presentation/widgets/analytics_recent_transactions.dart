@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../../shared/theme/app_theme.dart';
 import '../../../../app/config/l10n.dart';
+import '../../../transaction_history/presentation/pages/transaction_history_page.dart';
 import '../../domain/entities/analytics_entity.dart';
 
 class AnalyticsRecentTransactions extends StatelessWidget {
   final List<TransactionEntity> transactions;
+  final VoidCallback? onSeeAll;
 
-  const AnalyticsRecentTransactions({super.key, required this.transactions});
+  const AnalyticsRecentTransactions({
+    super.key,
+    required this.transactions,
+    this.onSeeAll,
+  });
 
   IconData _getIcon(String category) {
     final text = category.toLowerCase();
@@ -36,7 +42,7 @@ class AnalyticsRecentTransactions extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -56,7 +62,16 @@ class AnalyticsRecentTransactions extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () => _showAllTransactions(context),
+                onTap: onSeeAll ??
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const TransactionHistoryPage(),
+                        ),
+                      );
+                    },
                 borderRadius: BorderRadius.circular(8),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
@@ -135,70 +150,6 @@ class AnalyticsRecentTransactions extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  void _showAllTransactions(BuildContext context) {
-    final currencyFormatter = NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 0);
-    final dateFormatter = DateFormat('dd MMM yyyy');
-
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) {
-        return Container(
-          height: MediaQuery.of(context).size.height * 0.8,
-          decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
-            borderRadius: const BorderRadius.only(topLeft: Radius.circular(24), topRight: Radius.circular(24)),
-          ),
-          child: Column(
-            children: [
-              const SizedBox(height: 12),
-              Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey.shade300, borderRadius: BorderRadius.circular(2))),
-              const SizedBox(height: 16),
-              Text(context.l10n.allTransactionsTitle, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 16),
-              Expanded(
-                child: ListView.builder(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                  itemCount: transactions.length,
-                  itemBuilder: (context, index) {
-                    final tx = transactions[index];
-                    final isExpense = tx.type == 'Expense';
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 20.0),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(12)),
-                            child: Icon(_getIcon(tx.category), color: Colors.orange, size: 28),
-                          ),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(tx.description, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                                const SizedBox(height: 4),
-                                Text(dateFormatter.format(tx.date), style: const TextStyle(fontSize: 13, color: Colors.grey)),
-                              ],
-                            ),
-                          ),
-                          Text('${isExpense ? '' : '+'}${currencyFormatter.format(tx.amount)}', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: isExpense ? Colors.red : Colors.green)),
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }

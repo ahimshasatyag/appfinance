@@ -644,4 +644,155 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get vibrationSubtitle => 'Getarkan ponsel saat pemberitahuan diterima';
+
+  @override
+  String get editProfile => 'Edit Profil';
+
+  @override
+  String get profileUpdatedSuccess => 'Profil berhasil diperbarui';
+
+  @override
+  String get fullNameRequired => 'Nama lengkap wajib diisi';
+
+  @override
+  String get emailRequired => 'Email wajib diisi';
+
+  @override
+  String get invalidEmail => 'Format email tidak valid';
+
+  @override
+  String get phoneRequired => 'Nomor telepon wajib diisi';
+
+  @override
+  String get saveChanges => 'Simpan Perubahan';
+
+  @override
+  String get enterFullNameHint => 'cth. Zubair RS';
+
+  @override
+  String get enterEmailHint => 'cth. zubair@gmail.com';
+
+  @override
+  String get enterPhoneHint => 'cth. 081234567890';
+
+  @override
+  String get location => 'Lokasi';
+
+  @override
+  String get enterLocationHint => 'cth. Jakarta, Indonesia';
+
+  @override
+  String get changePhoto => 'Ubah Foto';
+
+  @override
+  String newNotificationsCount(int count) {
+    return '$count baru';
+  }
+
+  @override
+  String get markAllAsRead => 'Tandai Semua Dibaca';
+
+  @override
+  String get allNotificationsMarkedAsRead => 'Semua notifikasi ditandai dibaca';
+
+  @override
+  String get noNewNotifications => 'Tidak Ada Notifikasi Baru';
+
+  @override
+  String get noNotifications => 'Tidak Ada Notifikasi';
+
+  @override
+  String get allNotificationsReadSubtitle =>
+      'Kamu sudah membaca semua notifikasi.';
+
+  @override
+  String get noNotificationsCategorySubtitle =>
+      'Belum ada notifikasi pada kategori ini.';
+
+  @override
+  String get emptyNotificationsDefaultSubtitle =>
+      'Semua pemberitahuan tentang transaksi, tagihan, dan keamanan akun akan muncul di sini.';
+
+  @override
+  String notificationDeleted(String title) {
+    return 'Notifikasi \"$title\" dihapus';
+  }
+
+  @override
+  String get filterAll => 'Semua';
+
+  @override
+  String get filterUnread => 'Belum Dibaca';
+
+  @override
+  String get filterTransactions => 'Transaksi';
+
+  @override
+  String get filterBills => 'Tagihan';
+
+  @override
+  String get filterSecurity => 'Keamanan';
+
+  @override
+  String get markAsRead => 'Tandai dibaca';
+
+  @override
+  String get additionalInformation => 'Informasi Tambahan';
+
+  @override
+  String get amountLabel => 'Jumlah';
+
+  @override
+  String get accountLabel => 'Rekening / Akun';
+
+  @override
+  String get categoryLabel => 'Kategori';
+
+  @override
+  String get dueDateLabel => 'Jatuh Tempo';
+
+  @override
+  String get deviceLabel => 'Perangkat';
+
+  @override
+  String get locationLabel => 'Lokasi';
+
+  @override
+  String get promoCodeLabel => 'Kode Promo';
+
+  @override
+  String get walletLabel => 'Dompet';
+
+  @override
+  String get typeTransaction => 'TRANSAKSI';
+
+  @override
+  String get typeBill => 'TAGIHAN';
+
+  @override
+  String get typeSecurity => 'KEAMANAN';
+
+  @override
+  String get typePromo => 'PROMO & CASHBACK';
+
+  @override
+  String get typeSystem => 'SISTEM';
+
+  @override
+  String get justNow => 'Baru saja';
+
+  @override
+  String minutesAgo(int count) {
+    return '$count menit lalu';
+  }
+
+  @override
+  String hoursAgo(int count) {
+    return '$count jam lalu';
+  }
+
+  @override
+  String daysAgo(int count) {
+    return '$count hari lalu';
+  }
 }

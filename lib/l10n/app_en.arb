@@ -860,6 +860,215 @@
   "vibrationSubtitle": "Vibrate phone when notification is received",
   "@vibrationSubtitle": {
     "description": "Keterangan getaran"
+  },
+  "editProfile": "Edit Profile",
+  "@editProfile": {
+    "description": "Judul halaman edit profil"
+  },
+  "profileUpdatedSuccess": "Profile updated successfully",
+  "@profileUpdatedSuccess": {
+    "description": "Pesan sukses update profil"
+  },
+  "fullNameRequired": "Full name is required",
+  "@fullNameRequired": {
+    "description": "Validasi nama lengkap wajib diisi"
+  },
+  "emailRequired": "Email is required",
+  "@emailRequired": {
+    "description": "Validasi email wajib diisi"
+  },
+  "invalidEmail": "Please enter a valid email address",
+  "@invalidEmail": {
+    "description": "Validasi format email tidak valid"
+  },
+  "phoneRequired": "Phone number is required",
+  "@phoneRequired": {
+    "description": "Validasi nomor telepon wajib diisi"
+  },
+  "saveChanges": "Save Changes",
+  "@saveChanges": {
+    "description": "Tombol simpan perubahan"
+  },
+  "enterFullNameHint": "e.g. John Doe",
+  "@enterFullNameHint": {
+    "description": "Petunjuk input nama lengkap"
+  },
+  "enterEmailHint": "e.g. name@example.com",
+  "@enterEmailHint": {
+    "description": "Petunjuk input email"
+  },
+  "enterPhoneHint": "e.g. +62 812 3456 789",
+  "@enterPhoneHint": {
+    "description": "Petunjuk input nomor telepon"
+  },
+  "location": "Location",
+  "@location": {
+    "description": "Label lokasi"
+  },
+  "enterLocationHint": "e.g. Jakarta, Indonesia",
+  "@enterLocationHint": {
+    "description": "Petunjuk input lokasi"
+  },
+  "changePhoto": "Change Photo",
+  "@changePhoto": {
+    "description": "Ubah foto profil"
+  },
+  "newNotificationsCount": "{count} new",
+  "@newNotificationsCount": {
+    "description": "Badge jumlah notifikasi baru",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "markAllAsRead": "Mark All as Read",
+  "@markAllAsRead": {
+    "description": "Tooltip tandai semua dibaca"
+  },
+  "allNotificationsMarkedAsRead": "All notifications marked as read",
+  "@allNotificationsMarkedAsRead": {
+    "description": "Snackbar semua notifikasi ditandai dibaca"
+  },
+  "noNewNotifications": "No New Notifications",
+  "@noNewNotifications": {
+    "description": "Judul tidak ada notifikasi baru"
+  },
+  "noNotifications": "No Notifications",
+  "@noNotifications": {
+    "description": "Judul tidak ada notifikasi"
+  },
+  "allNotificationsReadSubtitle": "You have read all notifications.",
+  "@allNotificationsReadSubtitle": {
+    "description": "Subjudul kamu sudah membaca semua notifikasi"
+  },
+  "noNotificationsCategorySubtitle": "No notifications in this category yet.",
+  "@noNotificationsCategorySubtitle": {
+    "description": "Subjudul belum ada notifikasi pada kategori ini"
+  },
+  "emptyNotificationsDefaultSubtitle": "All notifications about transactions, bills, and account security will appear here.",
+  "@emptyNotificationsDefaultSubtitle": {
+    "description": "Subjudul default notifikasi kosong"
+  },
+  "notificationDeleted": "Notification \"{title}\" deleted",
+  "@notificationDeleted": {
+    "description": "Snackbar notifikasi dihapus",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "filterAll": "All",
+  "@filterAll": {
+    "description": "Filter semua notifikasi"
+  },
+  "filterUnread": "Unread",
+  "@filterUnread": {
+    "description": "Filter belum dibaca"
+  },
+  "filterTransactions": "Transactions",
+  "@filterTransactions": {
+    "description": "Filter transaksi"
+  },
+  "filterBills": "Bills",
+  "@filterBills": {
+    "description": "Filter tagihan"
+  },
+  "filterSecurity": "Security",
+  "@filterSecurity": {
+    "description": "Filter keamanan"
+  },
+  "markAsRead": "Mark as read",
+  "@markAsRead": {
+    "description": "Menu tandai dibaca"
+  },
+  "additionalInformation": "Additional Information",
+  "@additionalInformation": {
+    "description": "Judul informasi tambahan pada detail notifikasi"
+  },
+  "amountLabel": "Amount",
+  "@amountLabel": {
+    "description": "Label jumlah"
+  },
+  "accountLabel": "Account",
+  "@accountLabel": {
+    "description": "Label akun rekening"
+  },
+  "categoryLabel": "Category",
+  "@categoryLabel": {
+    "description": "Label kategori"
+  },
+  "dueDateLabel": "Due Date",
+  "@dueDateLabel": {
+    "description": "Label jatuh tempo"
+  },
+  "deviceLabel": "Device",
+  "@deviceLabel": {
+    "description": "Label perangkat"
+  },
+  "locationLabel": "Location",
+  "@locationLabel": {
+    "description": "Label lokasi"
+  },
+  "promoCodeLabel": "Promo Code",
+  "@promoCodeLabel": {
+    "description": "Label kode promo"
+  },
+  "walletLabel": "Wallet",
+  "@walletLabel": {
+    "description": "Label dompet"
+  },
+  "typeTransaction": "TRANSACTION",
+  "@typeTransaction": {
+    "description": "Tipe notifikasi transaksi"
+  },
+  "typeBill": "BILL",
+  "@typeBill": {
+    "description": "Tipe notifikasi tagihan"
+  },
+  "typeSecurity": "SECURITY",
+  "@typeSecurity": {
+    "description": "Tipe notifikasi keamanan"
+  },
+  "typePromo": "PROMO & CASHBACK",
+  "@typePromo": {
+    "description": "Tipe notifikasi promo"
+  },
+  "typeSystem": "SYSTEM",
+  "@typeSystem": {
+    "description": "Tipe notifikasi sistem"
+  },
+  "justNow": "Just now",
+  "@justNow": {
+    "description": "Waktu baru saja"
+  },
+  "minutesAgo": "{count} minutes ago",
+  "@minutesAgo": {
+    "description": "Waktu menit lalu",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "hoursAgo": "{count} hours ago",
+  "@hoursAgo": {
+    "description": "Waktu jam lalu",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "daysAgo": "{count} days ago",
+  "@daysAgo": {
+    "description": "Waktu hari lalu",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   }
 }
 
