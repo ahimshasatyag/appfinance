@@ -6,6 +6,7 @@ import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';
 import '../../../../shared/widgets/widgets.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../shared/theme/app_colors.dart';
 import '../widgets/widgets.dart';
 import 'register_page.dart';
 import 'forgot_password_page.dart';
@@ -39,8 +40,10 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: AppTheme.primaryColor,
+      backgroundColor: isDark ? AppColors.darkBackground : AppTheme.primaryColor,
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthSuccess) {
@@ -70,13 +73,13 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 const SizedBox(
                   height: 100,
-                ), // Memberikan ruang teal yang lebih besar di atas
+                ), // Memberikan ruang header yang lebih besar di atas
                 Expanded(
                   child: Container(
                     width: double.infinity,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      color: isDark ? AppColors.darkSurface : Colors.white,
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(40),
                         topRight: Radius.circular(40),
                       ),
@@ -85,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.only(
                         left: 32.0,
                         right: 32.0,
-                        top: 60.0, // Memberikan jarak atas lebih dalam agar tidak terlalu nempel
+                        top: 60.0,
                         bottom: 40.0,
                       ),
                       child: Center(
@@ -93,27 +96,33 @@ class _LoginPageState extends State<LoginPage> {
                           constraints: const BoxConstraints(maxWidth: 500),
                           child: Column(
                             children: [
-                              const Text(
+                              Text(
                                 'Login Account',
                                 style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFF2B3A4A),
+                                  color: isDark ? AppColors.darkTextPrimary : const Color(0xFF2B3A4A),
                                 ),
                               ),
                               const SizedBox(height: 8),
-                              const Text(
+                              Text(
                                 'Notes Your Money',
-                                style: TextStyle(fontSize: 14, color: Colors.grey),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: isDark ? Colors.grey.shade400 : Colors.grey,
+                                ),
                               ),
 
                               const SizedBox(height: 40),
 
                               // Logo / Image
-                              Image.asset(
-                                'assets/images/finance.jpg',
-                                height: 120,
-                                fit: BoxFit.contain,
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(16),
+                                child: Image.asset(
+                                  'assets/images/finance.jpg',
+                                  height: 120,
+                                  fit: BoxFit.contain,
+                                ),
                               ),
 
                               const SizedBox(height: 50),
@@ -141,10 +150,10 @@ class _LoginPageState extends State<LoginPage> {
                                       MaterialPageRoute(builder: (context) => const ForgotPasswordPage()),
                                     );
                                   },
-                                  child: const Text(
+                                  child: Text(
                                     'Forgot Password?',
                                     style: TextStyle(
-                                      color: AppTheme.primaryColor,
+                                      color: isDark ? AppTheme.secondaryColor : AppTheme.primaryColor,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14,
                                     ),
@@ -167,10 +176,10 @@ class _LoginPageState extends State<LoginPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text(
+                                  Text(
                                     "Don't have an account ? ",
                                     style: TextStyle(
-                                      color: Colors.grey,
+                                      color: isDark ? Colors.grey.shade400 : Colors.grey,
                                       fontSize: 14,
                                     ),
                                   ),

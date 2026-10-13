@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../shared/widgets/widgets.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../shared/theme/app_colors.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';
@@ -31,8 +32,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: AppTheme.primaryColor,
+      backgroundColor: isDark ? AppColors.darkBackground : AppTheme.primaryColor,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -58,9 +61,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 Expanded(
                   child: Container(
                     width: double.infinity,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      color: isDark ? AppColors.darkSurface : Colors.white,
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(40),
                         topRight: Radius.circular(40),
                       ),
@@ -72,14 +75,21 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           constraints: const BoxConstraints(maxWidth: 500),
                           child: Column(
                             children: [
-                              const Text(
+                              Text(
                                 'Forgot Password',
-                                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF2B3A4A)),
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: isDark ? AppColors.darkTextPrimary : const Color(0xFF2B3A4A),
+                                ),
                               ),
                               const SizedBox(height: 8),
-                              const Text(
+                              Text(
                                 'Enter your email to receive a code',
-                                style: TextStyle(fontSize: 14, color: Colors.grey),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: isDark ? Colors.grey.shade400 : Colors.grey,
+                                ),
                                 textAlign: TextAlign.center,
                               ),
                               

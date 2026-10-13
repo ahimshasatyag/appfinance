@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../shared/widgets/widgets.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../shared/theme/app_colors.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';
@@ -64,8 +65,10 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: AppTheme.primaryColor,
+      backgroundColor: isDark ? AppColors.darkBackground : AppTheme.primaryColor,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -91,9 +94,9 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                 Expanded(
                   child: Container(
                     width: double.infinity,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+                    decoration: BoxDecoration(
+                      color: isDark ? AppColors.darkSurface : Colors.white,
+                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
                     ),
                     child: SingleChildScrollView(
                       padding: const EdgeInsets.only(left: 32.0, right: 32.0, top: 40.0, bottom: 40.0),
@@ -102,14 +105,21 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                           constraints: const BoxConstraints(maxWidth: 500),
                           child: Column(
                             children: [
-                              const Text(
+                              Text(
                                 'Email Verification',
-                                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF2B3A4A)),
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: isDark ? AppColors.darkTextPrimary : const Color(0xFF2B3A4A),
+                                ),
                               ),
                               const SizedBox(height: 8),
-                              const Text(
+                              Text(
                                 'Enter the 4-digit code sent to your email',
-                                style: TextStyle(fontSize: 14, color: Colors.grey),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: isDark ? Colors.grey.shade400 : Colors.grey,
+                                ),
                                 textAlign: TextAlign.center,
                               ),
                               
@@ -133,16 +143,24 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                                       keyboardType: TextInputType.number,
                                       textAlign: TextAlign.center,
                                       maxLength: 1,
-                                      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                        color: isDark ? Colors.white : const Color(0xFF2B3A4A),
+                                      ),
                                       decoration: InputDecoration(
                                         counterText: "",
+                                        filled: isDark,
+                                        fillColor: isDark ? AppColors.darkBackground : null,
                                         enabledBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(12),
-                                          borderSide: BorderSide(color: Colors.grey.shade300),
+                                          borderSide: BorderSide(
+                                            color: isDark ? Colors.white24 : Colors.grey.shade300,
+                                          ),
                                         ),
                                         focusedBorder: OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(12),
-                                          borderSide: const BorderSide(color: AppTheme.primaryColor),
+                                          borderSide: const BorderSide(color: AppTheme.primaryColor, width: 2),
                                         ),
                                       ),
                                       onChanged: (value) {
@@ -177,18 +195,18 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text(
+                                  Text(
                                     "Didn't receive code? ",
                                     style: TextStyle(
-                                      color: Colors.grey,
+                                      color: isDark ? Colors.grey.shade400 : Colors.grey,
                                       fontSize: 14,
                                     ),
                                   ),
                                   _countdown > 0
                                       ? Text(
                                           "Wait 00:${_countdown.toString().padLeft(2, '0')}",
-                                          style: const TextStyle(
-                                            color: Colors.grey,
+                                          style: TextStyle(
+                                            color: isDark ? Colors.grey.shade400 : Colors.grey,
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold,
                                           ),

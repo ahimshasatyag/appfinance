@@ -33,12 +33,16 @@ class _WalletDetailPageState extends State<WalletDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(color: Theme.of(context).appBarTheme.foregroundColor),
+        iconTheme: IconThemeData(
+          color: isDark ? Colors.white : const Color(0xFF1E293B),
+        ),
       ),
       body: FutureBuilder<WalletDetailEntity>(
         future: _futureDetail,

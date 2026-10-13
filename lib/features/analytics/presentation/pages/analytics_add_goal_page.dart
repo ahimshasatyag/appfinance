@@ -3,9 +3,11 @@ import 'package:flutter/services.dart';
 
 import '../../../../app/config/l10n.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/widgets/widgets.dart';
 import '../../../../core/utils/formatters.dart';
 import '../widgets/analytics_form_skeleton.dart';
+
 class AnalyticsAddGoalPage extends StatefulWidget {
   const AnalyticsAddGoalPage({super.key});
 
@@ -15,8 +17,7 @@ class AnalyticsAddGoalPage extends StatefulWidget {
 
 class _AnalyticsAddGoalPageState extends State<AnalyticsAddGoalPage> {
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _currentAmountController =
-      TextEditingController();
+  final TextEditingController _currentAmountController = TextEditingController();
   final TextEditingController _targetAmountController = TextEditingController();
   bool _isLoading = false;
   bool _isInitializing = true;
@@ -80,64 +81,70 @@ class _AnalyticsAddGoalPageState extends State<AnalyticsAddGoalPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(color: isDark ? Colors.white : const Color(0xFF1E293B)),
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: isDark ? Colors.white : const Color(0xFF1E293B),
+        ),
         title: Text(
           context.l10n.addFinancialGoal,
           style: TextStyle(
             color: isDark ? Colors.white : const Color(0xFF1E293B),
             fontWeight: FontWeight.bold,
+            fontSize: 18,
           ),
         ),
       ),
-      body: _isInitializing ? const AnalyticsFormSkeleton() : SingleChildScrollView(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              context.l10n.goalDetails,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : const Color(0xFF1E293B),
+      body: _isInitializing
+          ? const AnalyticsFormSkeleton()
+          : SingleChildScrollView(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    context.l10n.goalDetails,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: isDark ? Colors.white : const Color(0xFF1E293B),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  _buildTextField(
+                    context: context,
+                    label: context.l10n.goalName,
+                    hint: context.l10n.goalNameHint,
+                    controller: _nameController,
+                  ),
+                  const SizedBox(height: 20),
+                  _buildTextField(
+                    context: context,
+                    label: context.l10n.currentAmountOptional,
+                    hint: context.l10n.currentAmountHint,
+                    keyboardType: TextInputType.number,
+                    controller: _currentAmountController,
+                    inputFormatters: [_CurrencyInputFormatter()],
+                  ),
+                  const SizedBox(height: 20),
+                  _buildTextField(
+                    context: context,
+                    label: context.l10n.targetAmount,
+                    hint: context.l10n.targetAmountHint,
+                    keyboardType: TextInputType.number,
+                    controller: _targetAmountController,
+                    inputFormatters: [_CurrencyInputFormatter()],
+                  ),
+                  const SizedBox(height: 40),
+                  CustomButton(
+                    text: context.l10n.saveGoal,
+                    isLoading: _isLoading,
+                    onPressed: _saveGoal,
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 24),
-            _buildTextField(
-              context: context,
-              label: context.l10n.goalName,
-              hint: context.l10n.goalNameHint,
-              controller: _nameController,
-            ),
-            const SizedBox(height: 20),
-            _buildTextField(
-              context: context,
-              label: context.l10n.currentAmountOptional,
-              hint: context.l10n.currentAmountHint,
-              keyboardType: TextInputType.number,
-              controller: _currentAmountController,
-              inputFormatters: [_CurrencyInputFormatter()],
-            ),
-            const SizedBox(height: 20),
-            _buildTextField(
-              context: context,
-              label: context.l10n.targetAmount,
-              hint: context.l10n.targetAmountHint,
-              keyboardType: TextInputType.number,
-              controller: _targetAmountController,
-              inputFormatters: [_CurrencyInputFormatter()],
-            ),
-            const SizedBox(height: 40),
-            CustomButton(
-              text: context.l10n.saveGoal,
-              isLoading: _isLoading,
-              onPressed: _saveGoal,
-            ),
-          ],
-        ),
-      ),
     );
   }
 
@@ -151,54 +158,48 @@ class _AnalyticsAddGoalPageState extends State<AnalyticsAddGoalPage> {
   }) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: isDark ? Colors.grey.shade400 : Colors.grey,
+    return TextField(
+      controller: controller,
+      keyboardType: keyboardType,
+      inputFormatters: inputFormatters,
+      style: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        color: isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
+      ),
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(
+          color: isDark ? Colors.grey.shade400 : Colors.grey.shade500,
+          fontSize: 14,
+        ),
+        hintText: hint,
+        hintStyle: TextStyle(
+          color: isDark ? Colors.grey.shade500 : Colors.grey.shade400,
+          fontSize: 16,
+          fontWeight: FontWeight.normal,
+        ),
+        filled: true,
+        fillColor: isDark ? AppColors.darkSurface : Colors.white,
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(
+            color: isDark ? Colors.white24 : Colors.grey.shade200,
           ),
         ),
-        const SizedBox(height: 8),
-        TextField(
-          controller: controller,
-          keyboardType: keyboardType,
-          inputFormatters: inputFormatters,
-          style: TextStyle(
-            fontSize: 16,
-            color: isDark ? Colors.white : const Color(0xFF1E293B),
-          ),
-          decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: TextStyle(
-              color: isDark ? Colors.grey.shade500 : Colors.grey,
-            ),
-            filled: true,
-            fillColor: isDark ? const Color(0xFF1E293B) : Colors.white,
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 16,
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide.none,
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(
-                color: isDark ? Colors.grey.shade700 : Colors.grey.shade200,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: AppTheme.primaryColor),
-            ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(
+            color: isDark ? Colors.white24 : Colors.grey.shade200,
           ),
         ),
-      ],
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppTheme.primaryColor, width: 2),
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      ),
     );
   }
 }

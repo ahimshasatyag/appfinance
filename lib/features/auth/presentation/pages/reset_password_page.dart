@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../shared/widgets/widgets.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../shared/theme/app_colors.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';
@@ -35,8 +36,10 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: AppTheme.primaryColor,
+      backgroundColor: isDark ? AppColors.darkBackground : AppTheme.primaryColor,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -66,9 +69,9 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                 Expanded(
                   child: Container(
                     width: double.infinity,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+                    decoration: BoxDecoration(
+                      color: isDark ? AppColors.darkSurface : Colors.white,
+                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
                     ),
                     child: SingleChildScrollView(
                       padding: const EdgeInsets.only(left: 32.0, right: 32.0, top: 40.0, bottom: 40.0),
@@ -77,14 +80,21 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                           constraints: const BoxConstraints(maxWidth: 500),
                           child: Column(
                             children: [
-                              const Text(
+                              Text(
                                 'Reset Password',
-                                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF2B3A4A)),
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: isDark ? AppColors.darkTextPrimary : const Color(0xFF2B3A4A),
+                                ),
                               ),
                               const SizedBox(height: 8),
-                              const Text(
+                              Text(
                                 'Create a new strong password',
-                                style: TextStyle(fontSize: 14, color: Colors.grey),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: isDark ? Colors.grey.shade400 : Colors.grey,
+                                ),
                                 textAlign: TextAlign.center,
                               ),
                               

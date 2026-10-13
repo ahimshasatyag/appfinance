@@ -33,13 +33,25 @@ class _WalletAllTransactionsPageState extends State<WalletAllTransactionsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(color: Theme.of(context).appBarTheme.foregroundColor),
-        title: Text(context.l10n.allTransactions, style: TextStyle(color: Theme.of(context).appBarTheme.foregroundColor, fontWeight: FontWeight.bold)),
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: isDark ? Colors.white : const Color(0xFF1E293B),
+        ),
+        title: Text(
+          context.l10n.allTransactions,
+          style: TextStyle(
+            color: isDark ? Colors.white : const Color(0xFF1E293B),
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
       ),
       body: _isLoading
           ? const WalletAllTransactionsSkeleton()

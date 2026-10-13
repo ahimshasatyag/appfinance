@@ -6,6 +6,7 @@ import '../bloc/auth_state.dart';
 import '../bloc/auth_event.dart';
 import '../../../../shared/widgets/widgets.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../shared/theme/app_colors.dart';
 import '../widgets/widgets.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -42,8 +43,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: AppTheme.primaryColor,
+      backgroundColor: isDark ? AppColors.darkBackground : AppTheme.primaryColor,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -77,9 +80,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 Expanded(
                   child: Container(
                     width: double.infinity,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      color: isDark ? AppColors.darkSurface : Colors.white,
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(40),
                         topRight: Radius.circular(40),
                       ),
@@ -96,18 +99,21 @@ class _RegisterPageState extends State<RegisterPage> {
                           constraints: const BoxConstraints(maxWidth: 500),
                           child: Column(
                             children: [
-                              const Text(
+                              Text(
                                 'Sign up Account',
                                 style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFF2B3A4A),
+                                  color: isDark ? AppColors.darkTextPrimary : const Color(0xFF2B3A4A),
                                 ),
                               ),
                               const SizedBox(height: 8),
-                              const Text(
+                              Text(
                                 'Create a new account',
-                                style: TextStyle(fontSize: 14, color: Colors.grey),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: isDark ? Colors.grey.shade400 : Colors.grey,
+                                ),
                               ),
                               
                               const SizedBox(height: 40),
@@ -157,10 +163,10 @@ class _RegisterPageState extends State<RegisterPage> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text(
+                                  Text(
                                     "Already have an account ? ",
                                     style: TextStyle(
-                                      color: Colors.grey,
+                                      color: isDark ? Colors.grey.shade400 : Colors.grey,
                                       fontSize: 14,
                                     ),
                                   ),

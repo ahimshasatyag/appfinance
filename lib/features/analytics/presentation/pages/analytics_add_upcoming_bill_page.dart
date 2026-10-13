@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import '../../../../shared/theme/app_theme.dart';
+import '../../../../shared/theme/app_colors.dart';
 import '../../../../shared/widgets/widgets.dart';
 import '../../../../core/utils/formatters.dart';
 import '../../../../app/config/l10n.dart';
 import '../widgets/analytics_form_skeleton.dart';
+
 class AnalyticsAddUpcomingBillPage extends StatefulWidget {
   const AnalyticsAddUpcomingBillPage({super.key});
 
@@ -94,157 +96,168 @@ class _AnalyticsAddUpcomingBillPageState extends State<AnalyticsAddUpcomingBillP
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(color: isDark ? Colors.white : const Color(0xFF1E293B)),
+        centerTitle: true,
+        iconTheme: IconThemeData(
+          color: isDark ? Colors.white : const Color(0xFF1E293B),
+        ),
         title: Text(
           context.l10n.addUpcomingBill,
           style: TextStyle(
             color: isDark ? Colors.white : const Color(0xFF1E293B),
             fontWeight: FontWeight.bold,
+            fontSize: 18,
           ),
         ),
       ),
-      body: _isInitializing ? const AnalyticsFormSkeleton() : SingleChildScrollView(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              context.l10n.billDetails,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : const Color(0xFF1E293B),
-              ),
-            ),
-            const SizedBox(height: 24),
-            _buildTextField(
-              context: context,
-              label: context.l10n.description, 
-              hint: context.l10n.descriptionHint, 
-              controller: _descriptionController
-            ),
-            const SizedBox(height: 20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  context.l10n.date,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: isDark ? Colors.grey.shade400 : Colors.grey,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                InkWell(
-                  onTap: () => _selectDate(context),
-                  borderRadius: BorderRadius.circular(12),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                    decoration: BoxDecoration(
-                      color: isDark ? const Color(0xFF1E293B) : Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(
-                        color: isDark ? Colors.grey.shade700 : Colors.grey.shade200,
-                      ),
+      body: _isInitializing
+          ? const AnalyticsFormSkeleton()
+          : SingleChildScrollView(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    context.l10n.billDetails,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: isDark ? Colors.white : const Color(0xFF1E293B),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          _selectedDate == null 
-                              ? context.l10n.selectDate 
-                              : DateFormat('dd MMM yyyy').format(_selectedDate!),
-                          style: TextStyle(
-                            color: _selectedDate == null 
-                                ? (isDark ? Colors.grey.shade500 : Colors.grey)
-                                : (isDark ? Colors.white : const Color(0xFF1E293B)),
-                            fontSize: 16,
+                  ),
+                  const SizedBox(height: 24),
+                  _buildTextField(
+                    context: context,
+                    label: context.l10n.description,
+                    hint: context.l10n.descriptionHint,
+                    controller: _descriptionController,
+                  ),
+                  const SizedBox(height: 20),
+                  // Date Picker formatted with the same floating label design
+                  InkWell(
+                    onTap: () => _selectDate(context),
+                    borderRadius: BorderRadius.circular(12),
+                    child: InputDecorator(
+                      decoration: InputDecoration(
+                        labelText: context.l10n.date,
+                        labelStyle: TextStyle(
+                          color: isDark ? Colors.grey.shade400 : Colors.grey.shade500,
+                          fontSize: 14,
+                        ),
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                        filled: true,
+                        fillColor: isDark ? AppColors.darkSurface : Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: isDark ? Colors.white24 : Colors.grey.shade200,
                           ),
                         ),
-                        Icon(
-                          Icons.calendar_today,
-                          color: isDark ? Colors.white70 : Colors.grey,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(
+                            color: isDark ? Colors.white24 : Colors.grey.shade200,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: const BorderSide(color: AppTheme.primaryColor, width: 2),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                        suffixIcon: Icon(
+                          Icons.calendar_today_outlined,
+                          color: isDark ? Colors.grey.shade400 : Colors.grey.shade500,
                           size: 20,
                         ),
-                      ],
+                      ),
+                      child: Text(
+                        _selectedDate == null
+                            ? context.l10n.selectDate
+                            : DateFormat('dd MMM yyyy').format(_selectedDate!),
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: _selectedDate == null ? FontWeight.normal : FontWeight.w600,
+                          color: _selectedDate == null
+                              ? (isDark ? Colors.grey.shade500 : Colors.grey.shade400)
+                              : (isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 20),
+                  _buildTextField(
+                    context: context,
+                    label: context.l10n.price,
+                    hint: context.l10n.priceHint,
+                    keyboardType: TextInputType.number,
+                    controller: _priceController,
+                    inputFormatters: [_CurrencyInputFormatter()],
+                  ),
+                  const SizedBox(height: 40),
+                  CustomButton(
+                    text: context.l10n.saveBill,
+                    isLoading: _isLoading,
+                    onPressed: _saveBill,
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 20),
-            _buildTextField(
-              context: context,
-              label: context.l10n.price, 
-              hint: context.l10n.priceHint, 
-              keyboardType: TextInputType.number, 
-              controller: _priceController,
-              inputFormatters: [_CurrencyInputFormatter()],
-            ),
-            const SizedBox(height: 40),
-            CustomButton(
-              text: context.l10n.saveBill,
-              isLoading: _isLoading,
-              onPressed: _saveBill,
-            ),
-          ],
-        ),
-      ),
     );
   }
 
   Widget _buildTextField({
     required BuildContext context,
-    required String label, 
-    required String hint, 
-    TextInputType keyboardType = TextInputType.text, 
+    required String label,
+    required String hint,
+    TextInputType keyboardType = TextInputType.text,
     required TextEditingController controller,
     List<TextInputFormatter>? inputFormatters,
   }) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: isDark ? Colors.grey.shade400 : Colors.grey,
+    return TextField(
+      controller: controller,
+      keyboardType: keyboardType,
+      inputFormatters: inputFormatters,
+      style: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        color: isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary,
+      ),
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(
+          color: isDark ? Colors.grey.shade400 : Colors.grey.shade500,
+          fontSize: 14,
+        ),
+        hintText: hint,
+        hintStyle: TextStyle(
+          color: isDark ? Colors.grey.shade500 : Colors.grey.shade400,
+          fontSize: 16,
+          fontWeight: FontWeight.normal,
+        ),
+        filled: true,
+        fillColor: isDark ? AppColors.darkSurface : Colors.white,
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(
+            color: isDark ? Colors.white24 : Colors.grey.shade200,
           ),
         ),
-        const SizedBox(height: 8),
-        TextField(
-          controller: controller,
-          keyboardType: keyboardType,
-          inputFormatters: inputFormatters,
-          style: TextStyle(
-            fontSize: 16,
-            color: isDark ? Colors.white : const Color(0xFF1E293B),
-          ),
-          decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: TextStyle(
-              color: isDark ? Colors.grey.shade500 : Colors.grey,
-            ),
-            filled: true,
-            fillColor: isDark ? const Color(0xFF1E293B) : Colors.white,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(
-                color: isDark ? Colors.grey.shade700 : Colors.grey.shade200,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: AppTheme.primaryColor)),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(
+            color: isDark ? Colors.white24 : Colors.grey.shade200,
           ),
         ),
-      ],
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: const BorderSide(color: AppTheme.primaryColor, width: 2),
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      ),
     );
   }
 }
