@@ -1442,7 +1442,7 @@ abstract class AppLocalizations {
   /// **'Notification \"{title}\" deleted'**
   String notificationDeleted(String title);
 
-  /// Filter semua notifikasi
+  /// Filter semua
   ///
   /// In en, this message translates to:
   /// **'All'**
@@ -1585,6 +1585,426 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{count} days ago'**
   String daysAgo(int count);
+
+  /// Judul halaman bagi tagihan
+  ///
+  /// In en, this message translates to:
+  /// **'Split Bill'**
+  String get splitBill;
+
+  /// Tombol buat split bill
+  ///
+  /// In en, this message translates to:
+  /// **'Create Split Bill'**
+  String get createSplitBill;
+
+  /// Tombol buat split bill pertama
+  ///
+  /// In en, this message translates to:
+  /// **'+ Create First Split Bill'**
+  String get createFirstSplitBill;
+
+  /// Tombol coba lagi
+  ///
+  /// In en, this message translates to:
+  /// **'Try Again'**
+  String get tryAgain;
+
+  /// Filter belum lunas
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get filterPending;
+
+  /// Filter selesai
+  ///
+  /// In en, this message translates to:
+  /// **'Settled'**
+  String get filterSettled;
+
+  /// Status lunas
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get statusSettled;
+
+  /// Status belum selesai
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get statusPending;
+
+  /// Belum ada tagihan
+  ///
+  /// In en, this message translates to:
+  /// **'No Bills Yet'**
+  String get noBillsYet;
+
+  /// Deskripsi belum ada tagihan
+  ///
+  /// In en, this message translates to:
+  /// **'Start splitting bills with your friends by tapping the button below.'**
+  String get noBillsDescription;
+
+  /// Jumlah orang yang sudah bayar
+  ///
+  /// In en, this message translates to:
+  /// **'{paidCount}/{total} Paid'**
+  String peoplePaidCount(int paidCount, int total);
+
+  /// Tambah teman
+  ///
+  /// In en, this message translates to:
+  /// **'Add Friend'**
+  String get addFriend;
+
+  /// Nama teman
+  ///
+  /// In en, this message translates to:
+  /// **'Friend\'s Name'**
+  String get friendName;
+
+  /// Hint nama teman
+  ///
+  /// In en, this message translates to:
+  /// **'E.g.: John, Sarah'**
+  String get friendNameHint;
+
+  /// Nomor telepon opsional
+  ///
+  /// In en, this message translates to:
+  /// **'WhatsApp / Phone No. (Optional)'**
+  String get phoneNumberOptional;
+
+  /// Simpan teman
+  ///
+  /// In en, this message translates to:
+  /// **'Save Friend'**
+  String get saveFriend;
+
+  /// Pesan error nama teman kosong
+  ///
+  /// In en, this message translates to:
+  /// **'Friend name cannot be empty'**
+  String get friendNameEmptyError;
+
+  /// Edit item
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Item'**
+  String get editItem;
+
+  /// Tambah item pesanan
+  ///
+  /// In en, this message translates to:
+  /// **'Add Order Item'**
+  String get addOrderItem;
+
+  /// Pesan error nama item kosong
+  ///
+  /// In en, this message translates to:
+  /// **'Item name cannot be empty'**
+  String get itemNameEmptyError;
+
+  /// Pesan error harga nol
+  ///
+  /// In en, this message translates to:
+  /// **'Unit price must be greater than 0'**
+  String get itemPriceZeroError;
+
+  /// Label nama makanan minuman
+  ///
+  /// In en, this message translates to:
+  /// **'Food / Drink Name'**
+  String get itemNameLabel;
+
+  /// Hint nama makanan minuman
+  ///
+  /// In en, this message translates to:
+  /// **'E.g.: Fried Rice, Iced Tea'**
+  String get itemNameHint;
+
+  /// Label harga satuan
+  ///
+  /// In en, this message translates to:
+  /// **'Unit Price (Rp)'**
+  String get unitPriceLabel;
+
+  /// Perbarui item
+  ///
+  /// In en, this message translates to:
+  /// **'Update Item'**
+  String get updateItem;
+
+  /// Tambah ke tagihan
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Bill'**
+  String get addToBill;
+
+  /// Atur pajak diskon tip
+  ///
+  /// In en, this message translates to:
+  /// **'Manage Taxes, Discount & Tip'**
+  String get manageTaxesTip;
+
+  /// Pajak PB1 persen
+  ///
+  /// In en, this message translates to:
+  /// **'PB1 Tax (%)'**
+  String get taxPercentageLabel;
+
+  /// Biaya layanan persen
+  ///
+  /// In en, this message translates to:
+  /// **'Service Charge (%)'**
+  String get servicePercentageLabel;
+
+  /// Diskon nominal
+  ///
+  /// In en, this message translates to:
+  /// **'Discount (Rp)'**
+  String get discountAmountLabel;
+
+  /// Tip sukarela nominal
+  ///
+  /// In en, this message translates to:
+  /// **'Voluntary Tip (Rp)'**
+  String get tipAmountLabel;
+
+  /// Terapkan
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// Judul tagihan acara
+  ///
+  /// In en, this message translates to:
+  /// **'Bill Title / Event'**
+  String get billTitleLabel;
+
+  /// Hint judul tagihan
+  ///
+  /// In en, this message translates to:
+  /// **'E.g.: Dinner at Sushi Tei'**
+  String get billTitleHint;
+
+  /// Teman patungan dengan jumlah
+  ///
+  /// In en, this message translates to:
+  /// **'Split Friends ({count})'**
+  String splitFriends(int count);
+
+  /// Item pesanan dengan jumlah
+  ///
+  /// In en, this message translates to:
+  /// **'Order Items ({count})'**
+  String orderItems(int count);
+
+  /// Tambah item
+  ///
+  /// In en, this message translates to:
+  /// **'Add Item'**
+  String get addItem;
+
+  /// Belum ada item pesanan
+  ///
+  /// In en, this message translates to:
+  /// **'No food/drink items yet'**
+  String get noItemsYet;
+
+  /// Petunjuk tambah item
+  ///
+  /// In en, this message translates to:
+  /// **'Tap \"Add Item\" to start adding orders'**
+  String get clickAddItemHint;
+
+  /// Hitung dan simpan tagihan
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate & Save Bill'**
+  String get calculateAndSaveBill;
+
+  /// Error judul belum diisi
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a bill title first'**
+  String get enterBillTitleError;
+
+  /// Error minimal 1 item
+  ///
+  /// In en, this message translates to:
+  /// **'Please add at least 1 order item'**
+  String get addAtLeastOneItemError;
+
+  /// Sukses membuat tagihan
+  ///
+  /// In en, this message translates to:
+  /// **'Bill created successfully!'**
+  String get billCreatedSuccess;
+
+  /// Rincian split bill
+  ///
+  /// In en, this message translates to:
+  /// **'Split Bill Details'**
+  String get splitBillDetails;
+
+  /// QRIS pembayaran
+  ///
+  /// In en, this message translates to:
+  /// **'QRIS Payment'**
+  String get qrisPayment;
+
+  /// QRIS standar nasional
+  ///
+  /// In en, this message translates to:
+  /// **'National Standard QRIS'**
+  String get qrisStandard;
+
+  /// Semua pembayaran digital
+  ///
+  /// In en, this message translates to:
+  /// **'All Digital Payments'**
+  String get allDigitalPayments;
+
+  /// Teks rincian berhasil disalin
+  ///
+  /// In en, this message translates to:
+  /// **'Bill breakdown copied to clipboard!'**
+  String get copiedToClipboardSuccess;
+
+  /// Total tagihan
+  ///
+  /// In en, this message translates to:
+  /// **'Total Bill'**
+  String get totalBill;
+
+  /// Terkumpul dengan jumlah orang
+  ///
+  /// In en, this message translates to:
+  /// **'Collected ({paidCount}/{total})'**
+  String collectedAmount(int paidCount, int total);
+
+  /// Sisa belum bayar
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining to Collect'**
+  String get remainingToCollect;
+
+  /// Siapa bayar berapa
+  ///
+  /// In en, this message translates to:
+  /// **'Who Pays What ({count} People)'**
+  String whoPaysWhat(int count);
+
+  /// Saya
+  ///
+  /// In en, this message translates to:
+  /// **'Me'**
+  String get me;
+
+  /// Sudah lunas
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get alreadyPaid;
+
+  /// Rincian dropdown
+  ///
+  /// In en, this message translates to:
+  /// **'Details ▼'**
+  String get details;
+
+  /// Item yang dinikmati
+  ///
+  /// In en, this message translates to:
+  /// **'Items enjoyed:'**
+  String get enjoyedItems;
+
+  /// Pajak PB1
+  ///
+  /// In en, this message translates to:
+  /// **'PB1 Tax'**
+  String get pb1Tax;
+
+  /// Biaya layanan
+  ///
+  /// In en, this message translates to:
+  /// **'Service Fee'**
+  String get serviceFee;
+
+  /// Batal lunas
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as Unpaid'**
+  String get markAsUnpaid;
+
+  /// Tandai lunas
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as Paid'**
+  String get markAsPaid;
+
+  /// Tampilkan QRIS total tagihan
+  ///
+  /// In en, this message translates to:
+  /// **'Show Total Bill QRIS'**
+  String get showTotalQris;
+
+  /// Ringkasan biaya
+  ///
+  /// In en, this message translates to:
+  /// **'Cost Summary'**
+  String get costSummary;
+
+  /// Pajak dan tip
+  ///
+  /// In en, this message translates to:
+  /// **'Taxes & Tip'**
+  String get taxesAndTip;
+
+  /// Subtotal pesanan
+  ///
+  /// In en, this message translates to:
+  /// **'Order Subtotal'**
+  String get orderSubtotal;
+
+  /// Diskon promo
+  ///
+  /// In en, this message translates to:
+  /// **'Discount / Promo'**
+  String get discountPromo;
+
+  /// Tip sukarela
+  ///
+  /// In en, this message translates to:
+  /// **'Voluntary Tip'**
+  String get voluntaryTip;
+
+  /// Ditanggung oleh jumlah orang
+  ///
+  /// In en, this message translates to:
+  /// **'Covered by ({assigned}/{total}):'**
+  String coveredBy(int assigned, int total);
+
+  /// Pilih semua
+  ///
+  /// In en, this message translates to:
+  /// **'Select All'**
+  String get selectAll;
+
+  /// Batal semua
+  ///
+  /// In en, this message translates to:
+  /// **'Deselect All'**
+  String get unselectAll;
+
+  /// Tambah
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
 }
 
 class _AppLocalizationsDelegate

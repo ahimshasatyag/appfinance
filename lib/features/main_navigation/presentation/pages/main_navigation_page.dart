@@ -4,6 +4,7 @@ import '../../../../shared/theme/app_theme.dart';
 import '../../../analytics/presentation/pages/analytics_page.dart';
 import '../../../dashboard/presentation/pages/dashboard_page.dart';
 import '../../../profile/presentation/pages/profile_page.dart';
+import '../../../split_bill/presentation/pages/split_bill_history_page.dart';
 import '../../../wallet/presentation/pages/wallet_page.dart';
 import '../widgets/custom_bottom_nav_bar.dart';
 
@@ -36,7 +37,12 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
       body: _pages[_currentIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Action for FAB
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SplitBillHistoryPage(),
+            ),
+          );
         },
         backgroundColor: AppTheme.primaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),

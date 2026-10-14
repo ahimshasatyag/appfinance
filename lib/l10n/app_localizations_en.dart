@@ -793,4 +793,227 @@ class AppLocalizationsEn extends AppLocalizations {
   String daysAgo(int count) {
     return '$count days ago';
   }
+
+  @override
+  String get splitBill => 'Split Bill';
+
+  @override
+  String get createSplitBill => 'Create Split Bill';
+
+  @override
+  String get createFirstSplitBill => '+ Create First Split Bill';
+
+  @override
+  String get tryAgain => 'Try Again';
+
+  @override
+  String get filterPending => 'Pending';
+
+  @override
+  String get filterSettled => 'Settled';
+
+  @override
+  String get statusSettled => 'Paid';
+
+  @override
+  String get statusPending => 'Pending';
+
+  @override
+  String get noBillsYet => 'No Bills Yet';
+
+  @override
+  String get noBillsDescription =>
+      'Start splitting bills with your friends by tapping the button below.';
+
+  @override
+  String peoplePaidCount(int paidCount, int total) {
+    return '$paidCount/$total Paid';
+  }
+
+  @override
+  String get addFriend => 'Add Friend';
+
+  @override
+  String get friendName => 'Friend\'s Name';
+
+  @override
+  String get friendNameHint => 'E.g.: John, Sarah';
+
+  @override
+  String get phoneNumberOptional => 'WhatsApp / Phone No. (Optional)';
+
+  @override
+  String get saveFriend => 'Save Friend';
+
+  @override
+  String get friendNameEmptyError => 'Friend name cannot be empty';
+
+  @override
+  String get editItem => 'Edit Item';
+
+  @override
+  String get addOrderItem => 'Add Order Item';
+
+  @override
+  String get itemNameEmptyError => 'Item name cannot be empty';
+
+  @override
+  String get itemPriceZeroError => 'Unit price must be greater than 0';
+
+  @override
+  String get itemNameLabel => 'Food / Drink Name';
+
+  @override
+  String get itemNameHint => 'E.g.: Fried Rice, Iced Tea';
+
+  @override
+  String get unitPriceLabel => 'Unit Price (Rp)';
+
+  @override
+  String get updateItem => 'Update Item';
+
+  @override
+  String get addToBill => 'Add to Bill';
+
+  @override
+  String get manageTaxesTip => 'Manage Taxes, Discount & Tip';
+
+  @override
+  String get taxPercentageLabel => 'PB1 Tax (%)';
+
+  @override
+  String get servicePercentageLabel => 'Service Charge (%)';
+
+  @override
+  String get discountAmountLabel => 'Discount (Rp)';
+
+  @override
+  String get tipAmountLabel => 'Voluntary Tip (Rp)';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get billTitleLabel => 'Bill Title / Event';
+
+  @override
+  String get billTitleHint => 'E.g.: Dinner at Sushi Tei';
+
+  @override
+  String splitFriends(int count) {
+    return 'Split Friends ($count)';
+  }
+
+  @override
+  String orderItems(int count) {
+    return 'Order Items ($count)';
+  }
+
+  @override
+  String get addItem => 'Add Item';
+
+  @override
+  String get noItemsYet => 'No food/drink items yet';
+
+  @override
+  String get clickAddItemHint => 'Tap \"Add Item\" to start adding orders';
+
+  @override
+  String get calculateAndSaveBill => 'Calculate & Save Bill';
+
+  @override
+  String get enterBillTitleError => 'Please enter a bill title first';
+
+  @override
+  String get addAtLeastOneItemError => 'Please add at least 1 order item';
+
+  @override
+  String get billCreatedSuccess => 'Bill created successfully!';
+
+  @override
+  String get splitBillDetails => 'Split Bill Details';
+
+  @override
+  String get qrisPayment => 'QRIS Payment';
+
+  @override
+  String get qrisStandard => 'National Standard QRIS';
+
+  @override
+  String get allDigitalPayments => 'All Digital Payments';
+
+  @override
+  String get copiedToClipboardSuccess => 'Bill breakdown copied to clipboard!';
+
+  @override
+  String get totalBill => 'Total Bill';
+
+  @override
+  String collectedAmount(int paidCount, int total) {
+    return 'Collected ($paidCount/$total)';
+  }
+
+  @override
+  String get remainingToCollect => 'Remaining to Collect';
+
+  @override
+  String whoPaysWhat(int count) {
+    return 'Who Pays What ($count People)';
+  }
+
+  @override
+  String get me => 'Me';
+
+  @override
+  String get alreadyPaid => 'Paid';
+
+  @override
+  String get details => 'Details ▼';
+
+  @override
+  String get enjoyedItems => 'Items enjoyed:';
+
+  @override
+  String get pb1Tax => 'PB1 Tax';
+
+  @override
+  String get serviceFee => 'Service Fee';
+
+  @override
+  String get markAsUnpaid => 'Mark as Unpaid';
+
+  @override
+  String get markAsPaid => 'Mark as Paid';
+
+  @override
+  String get showTotalQris => 'Show Total Bill QRIS';
+
+  @override
+  String get costSummary => 'Cost Summary';
+
+  @override
+  String get taxesAndTip => 'Taxes & Tip';
+
+  @override
+  String get orderSubtotal => 'Order Subtotal';
+
+  @override
+  String get discountPromo => 'Discount / Promo';
+
+  @override
+  String get voluntaryTip => 'Voluntary Tip';
+
+  @override
+  String coveredBy(int assigned, int total) {
+    return 'Covered by ($assigned/$total):';
+  }
+
+  @override
+  String get selectAll => 'Select All';
+
+  @override
+  String get unselectAll => 'Deselect All';
+
+  @override
+  String get add => 'Add';
 }

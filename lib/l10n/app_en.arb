@@ -1069,6 +1069,329 @@
         "type": "int"
       }
     }
+  },
+  "splitBill": "Split Bill",
+  "@splitBill": {
+    "description": "Judul halaman bagi tagihan"
+  },
+  "createSplitBill": "Create Split Bill",
+  "@createSplitBill": {
+    "description": "Tombol buat split bill"
+  },
+  "createFirstSplitBill": "+ Create First Split Bill",
+  "@createFirstSplitBill": {
+    "description": "Tombol buat split bill pertama"
+  },
+  "tryAgain": "Try Again",
+  "@tryAgain": {
+    "description": "Tombol coba lagi"
+  },
+  "filterAll": "All",
+  "@filterAll": {
+    "description": "Filter semua"
+  },
+  "filterPending": "Pending",
+  "@filterPending": {
+    "description": "Filter belum lunas"
+  },
+  "filterSettled": "Settled",
+  "@filterSettled": {
+    "description": "Filter selesai"
+  },
+  "statusSettled": "Paid",
+  "@statusSettled": {
+    "description": "Status lunas"
+  },
+  "statusPending": "Pending",
+  "@statusPending": {
+    "description": "Status belum selesai"
+  },
+  "noBillsYet": "No Bills Yet",
+  "@noBillsYet": {
+    "description": "Belum ada tagihan"
+  },
+  "noBillsDescription": "Start splitting bills with your friends by tapping the button below.",
+  "@noBillsDescription": {
+    "description": "Deskripsi belum ada tagihan"
+  },
+  "peoplePaidCount": "{paidCount}/{total} Paid",
+  "@peoplePaidCount": {
+    "description": "Jumlah orang yang sudah bayar",
+    "placeholders": {
+      "paidCount": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "addFriend": "Add Friend",
+  "@addFriend": {
+    "description": "Tambah teman"
+  },
+  "friendName": "Friend's Name",
+  "@friendName": {
+    "description": "Nama teman"
+  },
+  "friendNameHint": "E.g.: John, Sarah",
+  "@friendNameHint": {
+    "description": "Hint nama teman"
+  },
+  "phoneNumberOptional": "WhatsApp / Phone No. (Optional)",
+  "@phoneNumberOptional": {
+    "description": "Nomor telepon opsional"
+  },
+  "saveFriend": "Save Friend",
+  "@saveFriend": {
+    "description": "Simpan teman"
+  },
+  "friendNameEmptyError": "Friend name cannot be empty",
+  "@friendNameEmptyError": {
+    "description": "Pesan error nama teman kosong"
+  },
+  "editItem": "Edit Item",
+  "@editItem": {
+    "description": "Edit item"
+  },
+  "addOrderItem": "Add Order Item",
+  "@addOrderItem": {
+    "description": "Tambah item pesanan"
+  },
+  "itemNameEmptyError": "Item name cannot be empty",
+  "@itemNameEmptyError": {
+    "description": "Pesan error nama item kosong"
+  },
+  "itemPriceZeroError": "Unit price must be greater than 0",
+  "@itemPriceZeroError": {
+    "description": "Pesan error harga nol"
+  },
+  "itemNameLabel": "Food / Drink Name",
+  "@itemNameLabel": {
+    "description": "Label nama makanan minuman"
+  },
+  "itemNameHint": "E.g.: Fried Rice, Iced Tea",
+  "@itemNameHint": {
+    "description": "Hint nama makanan minuman"
+  },
+  "unitPriceLabel": "Unit Price (Rp)",
+  "@unitPriceLabel": {
+    "description": "Label harga satuan"
+  },
+  "updateItem": "Update Item",
+  "@updateItem": {
+    "description": "Perbarui item"
+  },
+  "addToBill": "Add to Bill",
+  "@addToBill": {
+    "description": "Tambah ke tagihan"
+  },
+  "manageTaxesTip": "Manage Taxes, Discount & Tip",
+  "@manageTaxesTip": {
+    "description": "Atur pajak diskon tip"
+  },
+  "taxPercentageLabel": "PB1 Tax (%)",
+  "@taxPercentageLabel": {
+    "description": "Pajak PB1 persen"
+  },
+  "servicePercentageLabel": "Service Charge (%)",
+  "@servicePercentageLabel": {
+    "description": "Biaya layanan persen"
+  },
+  "discountAmountLabel": "Discount (Rp)",
+  "@discountAmountLabel": {
+    "description": "Diskon nominal"
+  },
+  "tipAmountLabel": "Voluntary Tip (Rp)",
+  "@tipAmountLabel": {
+    "description": "Tip sukarela nominal"
+  },
+  "apply": "Apply",
+  "@apply": {
+    "description": "Terapkan"
+  },
+  "billTitleLabel": "Bill Title / Event",
+  "@billTitleLabel": {
+    "description": "Judul tagihan acara"
+  },
+  "billTitleHint": "E.g.: Dinner at Sushi Tei",
+  "@billTitleHint": {
+    "description": "Hint judul tagihan"
+  },
+  "splitFriends": "Split Friends ({count})",
+  "@splitFriends": {
+    "description": "Teman patungan dengan jumlah",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "orderItems": "Order Items ({count})",
+  "@orderItems": {
+    "description": "Item pesanan dengan jumlah",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "addItem": "Add Item",
+  "@addItem": {
+    "description": "Tambah item"
+  },
+  "noItemsYet": "No food/drink items yet",
+  "@noItemsYet": {
+    "description": "Belum ada item pesanan"
+  },
+  "clickAddItemHint": "Tap \"Add Item\" to start adding orders",
+  "@clickAddItemHint": {
+    "description": "Petunjuk tambah item"
+  },
+  "calculateAndSaveBill": "Calculate & Save Bill",
+  "@calculateAndSaveBill": {
+    "description": "Hitung dan simpan tagihan"
+  },
+  "enterBillTitleError": "Please enter a bill title first",
+  "@enterBillTitleError": {
+    "description": "Error judul belum diisi"
+  },
+  "addAtLeastOneItemError": "Please add at least 1 order item",
+  "@addAtLeastOneItemError": {
+    "description": "Error minimal 1 item"
+  },
+  "billCreatedSuccess": "Bill created successfully!",
+  "@billCreatedSuccess": {
+    "description": "Sukses membuat tagihan"
+  },
+  "splitBillDetails": "Split Bill Details",
+  "@splitBillDetails": {
+    "description": "Rincian split bill"
+  },
+  "qrisPayment": "QRIS Payment",
+  "@qrisPayment": {
+    "description": "QRIS pembayaran"
+  },
+  "qrisStandard": "National Standard QRIS",
+  "@qrisStandard": {
+    "description": "QRIS standar nasional"
+  },
+  "allDigitalPayments": "All Digital Payments",
+  "@allDigitalPayments": {
+    "description": "Semua pembayaran digital"
+  },
+  "copiedToClipboardSuccess": "Bill breakdown copied to clipboard!",
+  "@copiedToClipboardSuccess": {
+    "description": "Teks rincian berhasil disalin"
+  },
+  "totalBill": "Total Bill",
+  "@totalBill": {
+    "description": "Total tagihan"
+  },
+  "collectedAmount": "Collected ({paidCount}/{total})",
+  "@collectedAmount": {
+    "description": "Terkumpul dengan jumlah orang",
+    "placeholders": {
+      "paidCount": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "remainingToCollect": "Remaining to Collect",
+  "@remainingToCollect": {
+    "description": "Sisa belum bayar"
+  },
+  "whoPaysWhat": "Who Pays What ({count} People)",
+  "@whoPaysWhat": {
+    "description": "Siapa bayar berapa",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "me": "Me",
+  "@me": {
+    "description": "Saya"
+  },
+  "alreadyPaid": "Paid",
+  "@alreadyPaid": {
+    "description": "Sudah lunas"
+  },
+  "details": "Details ▼",
+  "@details": {
+    "description": "Rincian dropdown"
+  },
+  "enjoyedItems": "Items enjoyed:",
+  "@enjoyedItems": {
+    "description": "Item yang dinikmati"
+  },
+  "pb1Tax": "PB1 Tax",
+  "@pb1Tax": {
+    "description": "Pajak PB1"
+  },
+  "serviceFee": "Service Fee",
+  "@serviceFee": {
+    "description": "Biaya layanan"
+  },
+  "markAsUnpaid": "Mark as Unpaid",
+  "@markAsUnpaid": {
+    "description": "Batal lunas"
+  },
+  "markAsPaid": "Mark as Paid",
+  "@markAsPaid": {
+    "description": "Tandai lunas"
+  },
+  "showTotalQris": "Show Total Bill QRIS",
+  "@showTotalQris": {
+    "description": "Tampilkan QRIS total tagihan"
+  },
+  "costSummary": "Cost Summary",
+  "@costSummary": {
+    "description": "Ringkasan biaya"
+  },
+  "taxesAndTip": "Taxes & Tip",
+  "@taxesAndTip": {
+    "description": "Pajak dan tip"
+  },
+  "orderSubtotal": "Order Subtotal",
+  "@orderSubtotal": {
+    "description": "Subtotal pesanan"
+  },
+  "discountPromo": "Discount / Promo",
+  "@discountPromo": {
+    "description": "Diskon promo"
+  },
+  "voluntaryTip": "Voluntary Tip",
+  "@voluntaryTip": {
+    "description": "Tip sukarela"
+  },
+  "coveredBy": "Covered by ({assigned}/{total}):",
+  "@coveredBy": {
+    "description": "Ditanggung oleh jumlah orang",
+    "placeholders": {
+      "assigned": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "selectAll": "Select All",
+  "@selectAll": {
+    "description": "Pilih semua"
+  },
+  "unselectAll": "Deselect All",
+  "@unselectAll": {
+    "description": "Batal semua"
+  },
+  "add": "Add",
+  "@add": {
+    "description": "Tambah"
   }
 }
 

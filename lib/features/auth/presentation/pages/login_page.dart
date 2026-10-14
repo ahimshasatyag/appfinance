@@ -43,7 +43,9 @@ class _LoginPageState extends State<LoginPage> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor: isDark ? AppColors.darkBackground : AppTheme.primaryColor,
+      backgroundColor: isDark
+          ? AppColors.darkBackground
+          : AppTheme.primaryColor,
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthSuccess) {
@@ -54,7 +56,9 @@ class _LoginPageState extends State<LoginPage> {
               onConfirm: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const MainNavigationPage()),
+                  MaterialPageRoute(
+                    builder: (context) => const MainNavigationPage(),
+                  ),
                 );
               },
             );
@@ -101,7 +105,9 @@ class _LoginPageState extends State<LoginPage> {
                                 style: TextStyle(
                                   fontSize: 22,
                                   fontWeight: FontWeight.bold,
-                                  color: isDark ? AppColors.darkTextPrimary : const Color(0xFF2B3A4A),
+                                  color: isDark
+                                      ? AppColors.darkTextPrimary
+                                      : const Color(0xFF2B3A4A),
                                 ),
                               ),
                               const SizedBox(height: 8),
@@ -109,7 +115,9 @@ class _LoginPageState extends State<LoginPage> {
                                 'Notes Your Money',
                                 style: TextStyle(
                                   fontSize: 14,
-                                  color: isDark ? Colors.grey.shade400 : Colors.grey,
+                                  color: isDark
+                                      ? Colors.grey.shade400
+                                      : Colors.grey,
                                 ),
                               ),
 
@@ -147,13 +155,18 @@ class _LoginPageState extends State<LoginPage> {
                                   onTap: () {
                                     Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => const ForgotPasswordPage()),
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ForgotPasswordPage(),
+                                      ),
                                     );
                                   },
                                   child: Text(
                                     'Forgot Password?',
                                     style: TextStyle(
-                                      color: isDark ? AppTheme.secondaryColor : AppTheme.primaryColor,
+                                      color: isDark
+                                          ? AppTheme.secondaryColor
+                                          : AppTheme.primaryColor,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14,
                                     ),
@@ -179,7 +192,9 @@ class _LoginPageState extends State<LoginPage> {
                                   Text(
                                     "Don't have an account ? ",
                                     style: TextStyle(
-                                      color: isDark ? Colors.grey.shade400 : Colors.grey,
+                                      color: isDark
+                                          ? Colors.grey.shade400
+                                          : Colors.grey,
                                       fontSize: 14,
                                     ),
                                   ),
@@ -187,7 +202,10 @@ class _LoginPageState extends State<LoginPage> {
                                     onTap: () {
                                       Navigator.push(
                                         context,
-                                        MaterialPageRoute(builder: (context) => const RegisterPage()),
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const RegisterPage(),
+                                        ),
                                       );
                                     },
                                     child: const Text(

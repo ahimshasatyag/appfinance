@@ -795,4 +795,231 @@ class AppLocalizationsId extends AppLocalizations {
   String daysAgo(int count) {
     return '$count hari lalu';
   }
+
+  @override
+  String get splitBill => 'Bagi Tagihan (Split Bill)';
+
+  @override
+  String get createSplitBill => 'Buat Split Bill';
+
+  @override
+  String get createFirstSplitBill => '+ Buat Split Bill Pertama';
+
+  @override
+  String get tryAgain => 'Coba Lagi';
+
+  @override
+  String get filterPending => 'Belum Lunas';
+
+  @override
+  String get filterSettled => 'Selesai';
+
+  @override
+  String get statusSettled => 'Lunas';
+
+  @override
+  String get statusPending => 'Belum Selesai';
+
+  @override
+  String get noBillsYet => 'Belum Ada Tagihan';
+
+  @override
+  String get noBillsDescription =>
+      'Mulai buat tagihan bersama teman Anda dengan menekan tombol di bawah.';
+
+  @override
+  String peoplePaidCount(int paidCount, int total) {
+    return '$paidCount/$total Orang Lunas';
+  }
+
+  @override
+  String get addFriend => 'Tambah Teman';
+
+  @override
+  String get friendName => 'Nama Teman';
+
+  @override
+  String get friendNameHint => 'Contoh: Budi, Siti';
+
+  @override
+  String get phoneNumberOptional => 'No. WhatsApp / HP (Opsional)';
+
+  @override
+  String get saveFriend => 'Simpan Teman';
+
+  @override
+  String get friendNameEmptyError => 'Nama teman tidak boleh kosong';
+
+  @override
+  String get editItem => 'Edit Item';
+
+  @override
+  String get addOrderItem => 'Tambah Item Pesanan';
+
+  @override
+  String get itemNameEmptyError => 'Nama item tidak boleh kosong';
+
+  @override
+  String get itemPriceZeroError => 'Harga satuan harus lebih dari 0';
+
+  @override
+  String get itemNameLabel => 'Nama Makanan / Minuman';
+
+  @override
+  String get itemNameHint => 'Contoh: Nasi Goreng Spesial, Es Teh';
+
+  @override
+  String get unitPriceLabel => 'Harga Satuan (Rp)';
+
+  @override
+  String get updateItem => 'Perbarui Item';
+
+  @override
+  String get addToBill => 'Tambah ke Tagihan';
+
+  @override
+  String get manageTaxesTip => 'Atur Pajak, Diskon & Tip';
+
+  @override
+  String get taxPercentageLabel => 'Pajak PB1 (%)';
+
+  @override
+  String get servicePercentageLabel => 'Layanan / Service (%)';
+
+  @override
+  String get discountAmountLabel => 'Potongan / Diskon (Rp)';
+
+  @override
+  String get tipAmountLabel => 'Tip Sukarela (Rp)';
+
+  @override
+  String get apply => 'Terapkan';
+
+  @override
+  String get billTitleLabel => 'Judul Tagihan / Acara';
+
+  @override
+  String get billTitleHint => 'Contoh: Makan Malam Sushi Tei';
+
+  @override
+  String splitFriends(int count) {
+    return 'Teman Patungan ($count)';
+  }
+
+  @override
+  String orderItems(int count) {
+    return 'Item Pesanan ($count)';
+  }
+
+  @override
+  String get addItem => 'Tambah Item';
+
+  @override
+  String get noItemsYet => 'Belum ada item makanan/minuman';
+
+  @override
+  String get clickAddItemHint =>
+      'Klik \"Tambah Item\" untuk mulai memasukkan pesanan';
+
+  @override
+  String get calculateAndSaveBill => 'Hitung & Simpan Tagihan';
+
+  @override
+  String get enterBillTitleError =>
+      'Silakan masukkan judul tagihan terlebih dahulu';
+
+  @override
+  String get addAtLeastOneItemError =>
+      'Tambahkan minimal 1 item pesanan makanan/minuman';
+
+  @override
+  String get billCreatedSuccess => 'Tagihan berhasil dibuat!';
+
+  @override
+  String get splitBillDetails => 'Rincian Split Bill';
+
+  @override
+  String get qrisPayment => 'QRIS Pembayaran';
+
+  @override
+  String get qrisStandard => 'QRIS Standar Nasional';
+
+  @override
+  String get allDigitalPayments => 'Semua Pembayaran Digital';
+
+  @override
+  String get copiedToClipboardSuccess =>
+      'Teks rincian tagihan berhasil disalin ke clipboard!';
+
+  @override
+  String get totalBill => 'Total Tagihan';
+
+  @override
+  String collectedAmount(int paidCount, int total) {
+    return 'Terkumpul ($paidCount/$total)';
+  }
+
+  @override
+  String get remainingToCollect => 'Sisa Belum Bayar';
+
+  @override
+  String whoPaysWhat(int count) {
+    return 'Siapa Bayar Berapa ($count Orang)';
+  }
+
+  @override
+  String get me => 'Saya';
+
+  @override
+  String get alreadyPaid => 'Sudah Lunas';
+
+  @override
+  String get details => 'Rincian ▼';
+
+  @override
+  String get enjoyedItems => 'Item yang dinikmati:';
+
+  @override
+  String get pb1Tax => 'Pajak PB1';
+
+  @override
+  String get serviceFee => 'Biaya Layanan';
+
+  @override
+  String get markAsUnpaid => 'Batal Lunas';
+
+  @override
+  String get markAsPaid => 'Tandai Lunas';
+
+  @override
+  String get showTotalQris => 'Tampilkan QRIS Tagihan Total';
+
+  @override
+  String get costSummary => 'Ringkasan Biaya';
+
+  @override
+  String get taxesAndTip => 'Pajak & Tip';
+
+  @override
+  String get orderSubtotal => 'Subtotal Pesanan';
+
+  @override
+  String get discountPromo => 'Diskon / Promo';
+
+  @override
+  String get voluntaryTip => 'Tip Sukarela';
+
+  @override
+  String coveredBy(int assigned, int total) {
+    return 'Ditanggung oleh ($assigned/$total):';
+  }
+
+  @override
+  String get selectAll => 'Pilih Semua';
+
+  @override
+  String get unselectAll => 'Batal Semua';
+
+  @override
+  String get add => 'Tambah';
 }
